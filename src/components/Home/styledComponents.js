@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 
-export const HomeCon = styled.div``
+export const HomeCon = styled.div`
+  width: 100%;
+  padding: 30px;
+`
 
 export const HomePopupCon = styled.div`
-  width: 100%;
+  width: 98%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 10px 55px 10px 50px;
+  padding: 0px 20px 10px 20px;
 `
 export const TempPopupSection = styled.div`
   width: 70%;
@@ -33,14 +36,14 @@ export const TempPopupSectionBtn = styled.button`
 
 export const CloseButton = styled.button`
   border: none;
-  background-color: transparent;
+  background-color: #ffffff;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
 `
 
 export const SearchCon = styled.div`
   width: 100%;
-  padding: 20px 30px 20px 30px;
+  margin-top: 30px;
   display: flex;
   align-items: center;
 `
@@ -64,4 +67,18 @@ export const SearchLabel = styled.label`
   background-color: #f9f9f9;
   border: 1px solid #94a3b8;
   color: #94a3b8;
+`
+
+export const UlCon = styled.ul`
+  width: 100%;
+
+  list-style-type: none;
+  padding: 0;
+`
+export const LoadingCon = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
