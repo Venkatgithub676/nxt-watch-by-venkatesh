@@ -17,7 +17,18 @@ import {
 } from './styledComponents'
 
 class Home extends Component {
+  state = {name: ''}
+
+  componentDidMount() {
+    this.getData()
+  }
+
+  getData = () => {
+    console.log()
+  }
+
   render() {
+    this.getData()
     return (
       <>
         <Header />

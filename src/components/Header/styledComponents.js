@@ -8,21 +8,24 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
 `
 
-export const NavImgContainer = styled.div``
+export const NavImgContainer = styled.div`
+  width: 40%;
+`
 
 export const Logo = styled.img`
-  width: 40%;
+  width: 100px;
 `
 
 export const MobileButtonContainer = styled.div`
   width: 40%;
-
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: 130px;
 `
 export const Buttons = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  font-size: 30px;
-  width: 30%;
+  font-size: 25px;
+  width: 33%;
 `
