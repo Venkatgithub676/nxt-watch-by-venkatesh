@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const LiCon = styled.li`
   width: 100%;
+  color: ${props => (props.isDark ? '#f9f9f9' : '#0f0f0f')};
 `
 
 export const Thumbnail = styled.img`

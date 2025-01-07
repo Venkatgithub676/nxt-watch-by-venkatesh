@@ -9,13 +9,13 @@ import {
 } from './styledComponents'
 
 const HomeVideos = props => {
-  const {each} = props
+  const {each, isDark} = props
 
   const {thumbnailUrl, publishedAt, viewCount, title, channel} = each
   const {name, profileImgUrl} = channel
 
   return (
-    <LiCon>
+    <LiCon isDark={isDark}>
       <Thumbnail src={thumbnailUrl} />
       <HomeVideosDtlsCon>
         <HomeVideosProfileImg src={profileImgUrl} />

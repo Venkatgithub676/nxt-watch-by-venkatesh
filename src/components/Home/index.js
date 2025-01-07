@@ -3,6 +3,7 @@ import {IoMdClose, IoMdSearch} from 'react-icons/io'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import Header from '../Header'
+import GlobalContext from '../../context/GlobalContext'
 import HomeVideos from '../HomeVideos'
 import {
   HomeCon,
@@ -17,6 +18,7 @@ import {
   SearchLabel,
   UlCon,
   LoadingCon,
+  SearchVideosCon,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -59,10 +61,10 @@ class Home extends Component {
     this.setState({videos: updatedData, status: apiStatusConstants.success})
   }
 
-  successView = videos => (
+  successView = (videos, isDark) => (
     <UlCon>
       {videos.map(each => (
-        <HomeVideos each={each} key={each.id} />
+        <HomeVideos each={each} key={each.id} isDark={isDark} />
       ))}
     </UlCon>
   )
@@ -73,11 +75,11 @@ class Home extends Component {
     </LoadingCon>
   )
 
-  getViews = () => {
+  getViews = isDark => {
     const {status, videos} = this.state
     switch (status) {
       case apiStatusConstants.success:
-        return this.successView(videos)
+        return this.successView(videos, isDark)
       case apiStatusConstants.loading:
         return this.loadingView()
       default:
@@ -86,36 +88,44 @@ class Home extends Component {
   }
 
   render() {
-    const {videos, status} = this.state
     // console.log(status)
-    return (
-      <>
-        <Header />
-        <HomeCon>
-          <HomePopupCon>
-            <TempPopupSection>
-              <TempPopupSectionImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
-              <TempPopupSectionHeading>
-                Buy Nxt Watch Premium prepaid plans with UPI
-              </TempPopupSectionHeading>
-              <TempPopupSectionBtn onClick={this.getData}>
-                GET IT NOW
-              </TempPopupSectionBtn>
-            </TempPopupSection>
-            <CloseButton>
-              <IoMdClose />
-            </CloseButton>
-          </HomePopupCon>
 
-          <SearchCon>
-            <InputSearch placeholder="Search" />
-            <SearchLabel>
-              <IoMdSearch />
-            </SearchLabel>
-          </SearchCon>
-        </HomeCon>
-        {this.getViews()}
-      </>
+    return (
+      <GlobalContext.Consumer>
+        {value => {
+          const {isDark} = value
+          return (
+            <>
+              <Header />
+              <HomeCon>
+                <HomePopupCon>
+                  <TempPopupSection>
+                    <TempPopupSectionImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
+                    <TempPopupSectionHeading>
+                      Buy Nxt Watch Premium prepaid plans with UPI
+                    </TempPopupSectionHeading>
+                    <TempPopupSectionBtn onClick={this.getData}>
+                      GET IT NOW
+                    </TempPopupSectionBtn>
+                  </TempPopupSection>
+                  <CloseButton>
+                    <IoMdClose />
+                  </CloseButton>
+                </HomePopupCon>
+                <SearchVideosCon isDark={isDark}>
+                  <SearchCon>
+                    <InputSearch placeholder="Search" isDark={isDark} />
+                    <SearchLabel isDark={isDark}>
+                      <IoMdSearch />
+                    </SearchLabel>
+                  </SearchCon>
+                  {this.getViews(isDark)}
+                </SearchVideosCon>
+              </HomeCon>
+            </>
+          )
+        }}
+      </GlobalContext.Consumer>
     )
   }
 }

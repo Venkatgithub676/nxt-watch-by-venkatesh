@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const HomeCon = styled.div`
   width: 100%;
-  padding: 30px;
 `
 
 export const HomePopupCon = styled.div`
@@ -10,7 +9,7 @@ export const HomePopupCon = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0px 20px 10px 20px;
+  padding: 40px;
 `
 export const TempPopupSection = styled.div`
   width: 70%;
@@ -40,12 +39,15 @@ export const CloseButton = styled.button`
   cursor: pointer;
   font-size: 18px;
 `
-
+export const SearchVideosCon = styled.div`
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+`
 export const SearchCon = styled.div`
   width: 100%;
-  margin-top: 30px;
   display: flex;
   align-items: center;
+  padding: 30px;
+  border-radius: 3px;
 `
 
 export const InputSearch = styled.input`
@@ -54,19 +56,22 @@ export const InputSearch = styled.input`
   font-family: Roboto;
   font-size: 20px;
   padding-left: 20px;
-  border: 1px solid #94a3b8;
+  border-radius: 2px;
+  border: 1px solid ${props => (props.isDark ? '#383838' : '#94a3b8')};
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 
 export const SearchLabel = styled.label`
   height: 40px;
+  background-color: ${props => (props.isDark ? '#313131' : '#f9f9f9')};
   font-size: 20px;
   width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
-  border: 1px solid #94a3b8;
+  border: 1px solid ${props => (props.isDark ? '#383838' : '#94a3b8')};
   color: #94a3b8;
+  border-radius: 2px;
 `
 
 export const UlCon = styled.ul`
