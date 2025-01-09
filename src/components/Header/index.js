@@ -11,6 +11,9 @@ import {
   Logo,
   MobileButtonContainer,
   Buttons,
+  DesktopButtonContainer,
+  ProfileImg,
+  LogoutBtn,
 } from './styledComponents'
 
 const Header = props => (
@@ -32,6 +35,17 @@ const Header = props => (
                 : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
             }
           />
+          <DesktopButtonContainer>
+            <Buttons onClick={changeTheme} isDark={isDark}>
+              {isDark ? <IoSunnyOutline /> : <FaMoon />}
+            </Buttons>
+            <Buttons>
+              <ProfileImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" />
+            </Buttons>
+            <LogoutBtn onClick={clickLogout} isDark={isDark}>
+              Logout
+            </LogoutBtn>
+          </DesktopButtonContainer>
 
           <MobileButtonContainer>
             <Buttons onClick={changeTheme} isDark={isDark}>

@@ -18,6 +18,9 @@ export const MobileButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 130px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
 export const Buttons = styled.button`
   cursor: pointer;
@@ -25,5 +28,39 @@ export const Buttons = styled.button`
   border: 0;
   color: ${props => (props.isDark ? '#f9f9f9' : '#0f0f0f')};
   font-size: 25px;
+  height: 30px;
   width: 33%;
+  @media screen and (min-width: 768px) {
+    width: 20%;
+  }
+`
+
+export const DesktopButtonContainer = styled.div`
+  display: flex;
+  width: 200px;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
+
+export const ProfileImg = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-left: 0;
+`
+
+export const LogoutBtn = styled.button`
+  width: 80px;
+  font-weight: 500;
+  background-color: transparent;
+  border: 1px solid ${props => (props.isDark ? '#ffffff' : '#3b82f6')};
+  cursor: pointer;
+  color: ${props => (props.isDark ? '#ffffff' : '#3b82f6')};
+  margin-left: 10px;
+  font-size: 15px;
+  font-family: Roboto;
+  height: 30px;
+  border-radius: 2px;
 `
