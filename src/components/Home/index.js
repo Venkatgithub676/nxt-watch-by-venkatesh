@@ -1,10 +1,13 @@
 import {Component} from 'react'
-import {IoMdClose, IoMdSearch} from 'react-icons/io'
+import {IoMdClose, IoMdSearch, IoMdHome} from 'react-icons/io'
+import {HiFire} from 'react-icons/hi'
+import {SiYoutubegaming} from 'react-icons/si'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import HomeVideos from '../HomeVideos'
+
 import {
   HomeCon,
   HomePopupCon,
@@ -19,6 +22,11 @@ import {
   UlCon,
   LoadingCon,
   SearchVideosCon,
+  SideBarHomeCon,
+  SideNavBar,
+  SideBarUlCon,
+  SideBarLiItem,
+  SideBarLiItemLabels,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -87,6 +95,29 @@ class Home extends Component {
     }
   }
 
+  sideBar = () => (
+    <SideNavBar>
+      <SideBarUlCon>
+        <SideBarLiItem>
+          <IoMdHome id="home" size={25} />
+          <SideBarLiItemLabels htmlFor="home">Home</SideBarLiItemLabels>
+        </SideBarLiItem>
+        <SideBarLiItem>
+          <HiFire id="fire" size={25} />
+          <SideBarLiItemLabels htmlFor="trending">Trending</SideBarLiItemLabels>
+        </SideBarLiItem>
+        <SideBarLiItem>
+          <SiYoutubegaming id="gaming" size={25} />
+          <SideBarLiItemLabels>Gaming</SideBarLiItemLabels>
+        </SideBarLiItem>
+        <SideBarLiItem>
+          <IoMdHome size={25} />
+          <SideBarLiItemLabels>Saved Videos</SideBarLiItemLabels>
+        </SideBarLiItem>
+      </SideBarUlCon>
+    </SideNavBar>
+  )
+
   render() {
     // console.log(status)
 
@@ -97,31 +128,34 @@ class Home extends Component {
           return (
             <>
               <Header />
-              <HomeCon>
-                <HomePopupCon>
-                  <TempPopupSection>
-                    <TempPopupSectionImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
-                    <TempPopupSectionHeading>
-                      Buy Nxt Watch Premium prepaid plans with UPI
-                    </TempPopupSectionHeading>
-                    <TempPopupSectionBtn onClick={this.getData}>
-                      GET IT NOW
-                    </TempPopupSectionBtn>
-                  </TempPopupSection>
-                  <CloseButton>
-                    <IoMdClose />
-                  </CloseButton>
-                </HomePopupCon>
-                <SearchVideosCon isDark={isDark}>
-                  <SearchCon>
-                    <InputSearch placeholder="Search" isDark={isDark} />
-                    <SearchLabel isDark={isDark}>
-                      <IoMdSearch />
-                    </SearchLabel>
-                  </SearchCon>
-                  {this.getViews(isDark)}
-                </SearchVideosCon>
-              </HomeCon>
+              <SideBarHomeCon>
+                {this.sideBar()}
+                <HomeCon>
+                  <HomePopupCon>
+                    <TempPopupSection>
+                      <TempPopupSectionImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
+                      <TempPopupSectionHeading>
+                        Buy Nxt Watch Premium prepaid plans with UPI
+                      </TempPopupSectionHeading>
+                      <TempPopupSectionBtn onClick={this.getData}>
+                        GET IT NOW
+                      </TempPopupSectionBtn>
+                    </TempPopupSection>
+                    <CloseButton>
+                      <IoMdClose />
+                    </CloseButton>
+                  </HomePopupCon>
+                  <SearchVideosCon isDark={isDark}>
+                    <SearchCon>
+                      <InputSearch placeholder="Search" isDark={isDark} />
+                      <SearchLabel isDark={isDark}>
+                        <IoMdSearch />
+                      </SearchLabel>
+                    </SearchCon>
+                    {this.getViews(isDark)}
+                  </SearchVideosCon>
+                </HomeCon>
+              </SideBarHomeCon>
             </>
           )
         }}

@@ -1,5 +1,31 @@
 import styled from 'styled-components'
 
+export const SideBarHomeCon = styled.div`
+  display: flex;
+`
+export const SideNavBar = styled.div`
+  width: 25%;
+`
+
+export const SideBarUlCon = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+`
+export const SideBarLiItem = styled.li`
+  width: 200px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`
+export const SideBarLiItemLabels = styled.label`
+  margin-left: 20px;
+  font-family: Roboto;
+  font-size: 18px;
+`
+
 export const HomeCon = styled.div`
   width: 100%;
 `
