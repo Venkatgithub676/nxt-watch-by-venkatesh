@@ -4,7 +4,9 @@ export const NavContainer = styled.nav`
   padding: 30px;
   display: flex;
   width: 100%;
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  height: 10vh;
+
+  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
   justify-content: space-between;
 `
 

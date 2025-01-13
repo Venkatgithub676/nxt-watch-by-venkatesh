@@ -11,6 +11,7 @@ import GlobalContext from '../../context/GlobalContext'
 import HomeVideos from '../HomeVideos'
 
 import {
+  TopCon,
   HomeCon,
   HomePopupCon,
   TempPopupSection,
@@ -44,6 +45,7 @@ class Home extends Component {
     videos: [],
     status: apiStatusConstants.initial,
     isSelected: 'HomeBtn',
+    popupClose: true,
   }
 
   componentDidMount() {
@@ -91,7 +93,7 @@ class Home extends Component {
   )
 
   getViews = isDark => {
-    const {status, videos, isSelected} = this.state
+    const {status, videos} = this.state
     switch (status) {
       case apiStatusConstants.success:
         return this.successView(videos, isDark)
@@ -102,18 +104,23 @@ class Home extends Component {
     }
   }
 
+  onClickPopupClose = () => {
+    this.setState({popupClose: false})
+  }
+
   clickBtn = event => {
     console.log(event.target.id)
     this.setState({isSelected: event.target.id})
   }
 
-  sideBar = isSelected => (
-    <SideNavBar>
+  sideBar = (isSelected, isDark) => (
+    <SideNavBar isDark={isDark}>
       <SideBarUlCon>
-        <SideBarLiItem selected={isSelected === 'HomeBtn'}>
+        <SideBarLiItem selected={isSelected === 'HomeBtn'} isDark={isDark}>
           <SideBarLiBtn
             id="HomeBtn"
             onClick={this.clickBtn}
+            isDark={isDark}
             selected={isSelected === 'HomeBtn'}
           >
             <IoMdHome size={20} />
@@ -121,53 +128,60 @@ class Home extends Component {
           <SideBarLiItemLabels
             htmlFor="HomeBtn"
             selected={isSelected === 'HomeBtn'}
+            isDark={isDark}
           >
             Home
           </SideBarLiItemLabels>
         </SideBarLiItem>
 
-        <SideBarLiItem selected={isSelected === 'TrendingBtn'}>
+        <SideBarLiItem isDark={isDark} selected={isSelected === 'TrendingBtn'}>
           <SideBarLiBtn
             id="TrendingBtn"
             onClick={this.clickBtn}
             selected={isSelected === 'TrendingBtn'}
+            isDark={isDark}
           >
             <HiFire size={20} />
           </SideBarLiBtn>
           <SideBarLiItemLabels
             htmlFor="TrendingBtn"
             selected={isSelected === 'TrendingBtn'}
+            isDark={isDark}
           >
             Trending
           </SideBarLiItemLabels>
         </SideBarLiItem>
 
-        <SideBarLiItem selected={isSelected === 'GamingBtn'}>
+        <SideBarLiItem isDark={isDark} selected={isSelected === 'GamingBtn'}>
           <SideBarLiBtn
             onClick={this.clickBtn}
             id="GamingBtn"
             selected={isSelected === 'GamingBtn'}
+            isDark={isDark}
           >
             <SiYoutubegaming size={20} />
           </SideBarLiBtn>
           <SideBarLiItemLabels
             htmlFor="GamingBtn"
             selected={isSelected === 'GamingBtn'}
+            isDark={isDark}
           >
             Gaming
           </SideBarLiItemLabels>
         </SideBarLiItem>
-        <SideBarLiItem selected={isSelected === 'SaveBtn'}>
+        <SideBarLiItem selected={isSelected === 'SaveBtn'} isDark={isDark}>
           <SideBarLiBtn
             onClick={this.clickBtn}
             id="SaveBtn"
             selected={isSelected === 'SaveBtn'}
+            isDark={isDark}
           >
             <HiOutlineSaveAs size={20} />
           </SideBarLiBtn>
           <SideBarLiItemLabels
             htmlFor="SaveBtn"
             selected={isSelected === 'SaveBtn'}
+            isDark={isDark}
           >
             Saved Videos
           </SideBarLiItemLabels>
@@ -183,28 +197,30 @@ class Home extends Component {
       <GlobalContext.Consumer>
         {value => {
           const {isDark} = value
-          const {isSelected} = this.state
+          const {isSelected, popupClose} = this.state
 
           return (
-            <>
+            <TopCon>
               <Header />
               <SideBarHomeCon>
-                {this.sideBar(isSelected)}
+                {this.sideBar(isSelected, isDark)}
                 <HomeCon>
-                  <HomePopupCon>
-                    <TempPopupSection>
-                      <TempPopupSectionImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
-                      <TempPopupSectionHeading>
-                        Buy Nxt Watch Premium prepaid plans with UPI
-                      </TempPopupSectionHeading>
-                      <TempPopupSectionBtn onClick={this.getData}>
-                        GET IT NOW
-                      </TempPopupSectionBtn>
-                    </TempPopupSection>
-                    <CloseButton>
-                      <IoMdClose />
-                    </CloseButton>
-                  </HomePopupCon>
+                  {popupClose && (
+                    <HomePopupCon>
+                      <TempPopupSection>
+                        <TempPopupSectionImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
+                        <TempPopupSectionHeading>
+                          Buy Nxt Watch Premium prepaid plans with UPI
+                        </TempPopupSectionHeading>
+                        <TempPopupSectionBtn onClick={this.getData}>
+                          GET IT NOW
+                        </TempPopupSectionBtn>
+                      </TempPopupSection>
+                      <CloseButton onClick={this.onClickPopupClose}>
+                        <IoMdClose />
+                      </CloseButton>
+                    </HomePopupCon>
+                  )}
                   <SearchVideosCon isDark={isDark}>
                     <SearchCon>
                       <InputSearch placeholder="Search" isDark={isDark} />
@@ -216,7 +232,7 @@ class Home extends Component {
                   </SearchVideosCon>
                 </HomeCon>
               </SideBarHomeCon>
-            </>
+            </TopCon>
           )
         }}
       </GlobalContext.Consumer>
