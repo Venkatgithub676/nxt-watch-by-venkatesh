@@ -13,25 +13,31 @@ export const SideBarUlCon = styled.ul`
   display: flex;
   flex-direction: column;
   padding: 10px;
+  width: 100%;
 `
+
 export const SideBarLiItem = styled.li`
-  width: 200px;
-  margin-bottom: 20px;
-`
-export const SideBarLiBtn = styled.button`
-  background-color: ${props => (props.isSelected ? '#000000' : '#ffffff')};
-  color: ${props => (props.isSelected ? '#ffffff' : '#000000')};
-  font-family: Roboto;
-  border: none;
-  cursor: pointer;
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
+  width: 100%;
+  padding: 10px 5px 10px 5px;
+  font-family: Roboto;
+  background-color: ${props => props.selected && '#f4f4f4'};
+`
+
+export const SideBarLiBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: ${props => (props.selected ? '#ff0000' : '#000000')};
 `
 export const SideBarLiItemLabels = styled.label`
   margin-left: 20px;
   font-family: Roboto;
   font-size: 17px;
   cursor: pointer;
+  font-weight: ${props => (props.selected ? 'bold' : '')};
 `
 
 export const HomeCon = styled.div`

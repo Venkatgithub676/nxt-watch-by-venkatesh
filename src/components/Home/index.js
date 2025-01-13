@@ -40,7 +40,11 @@ const apiStatusConstants = {
 }
 
 class Home extends Component {
-  state = {videos: [], status: apiStatusConstants.initial}
+  state = {
+    videos: [],
+    status: apiStatusConstants.initial,
+    isSelected: 'HomeBtn',
+  }
 
   componentDidMount() {
     this.getData()
@@ -87,7 +91,7 @@ class Home extends Component {
   )
 
   getViews = isDark => {
-    const {status, videos} = this.state
+    const {status, videos, isSelected} = this.state
     switch (status) {
       case apiStatusConstants.success:
         return this.successView(videos, isDark)
@@ -98,38 +102,75 @@ class Home extends Component {
     }
   }
 
-  sideBar = () => (
+  clickBtn = event => {
+    console.log(event.target.id)
+    this.setState({isSelected: event.target.id})
+  }
+
+  sideBar = isSelected => (
     <SideNavBar>
       <SideBarUlCon>
-        <SideBarLiItem>
-          <SideBarLiBtn>
-            <IoMdHome id="home" size={20} />
-            <SideBarLiItemLabels htmlFor="home">Home</SideBarLiItemLabels>
+        <SideBarLiItem selected={isSelected === 'HomeBtn'}>
+          <SideBarLiBtn
+            id="HomeBtn"
+            onClick={this.clickBtn}
+            selected={isSelected === 'HomeBtn'}
+          >
+            <IoMdHome size={20} />
           </SideBarLiBtn>
+          <SideBarLiItemLabels
+            htmlFor="HomeBtn"
+            selected={isSelected === 'HomeBtn'}
+          >
+            Home
+          </SideBarLiItemLabels>
         </SideBarLiItem>
 
-        <SideBarLiItem>
-          <SideBarLiBtn>
-            <HiFire id="fire" size={20} />
-            <SideBarLiItemLabels htmlFor="trending">
-              Trending
-            </SideBarLiItemLabels>
+        <SideBarLiItem selected={isSelected === 'TrendingBtn'}>
+          <SideBarLiBtn
+            id="TrendingBtn"
+            onClick={this.clickBtn}
+            selected={isSelected === 'TrendingBtn'}
+          >
+            <HiFire size={20} />
           </SideBarLiBtn>
+          <SideBarLiItemLabels
+            htmlFor="TrendingBtn"
+            selected={isSelected === 'TrendingBtn'}
+          >
+            Trending
+          </SideBarLiItemLabels>
         </SideBarLiItem>
 
-        <SideBarLiItem>
-          <SideBarLiBtn>
-            <SiYoutubegaming id="gaming" size={20} />
-            <SideBarLiItemLabels>Gaming</SideBarLiItemLabels>
+        <SideBarLiItem selected={isSelected === 'GamingBtn'}>
+          <SideBarLiBtn
+            onClick={this.clickBtn}
+            id="GamingBtn"
+            selected={isSelected === 'GamingBtn'}
+          >
+            <SiYoutubegaming size={20} />
           </SideBarLiBtn>
+          <SideBarLiItemLabels
+            htmlFor="GamingBtn"
+            selected={isSelected === 'GamingBtn'}
+          >
+            Gaming
+          </SideBarLiItemLabels>
         </SideBarLiItem>
-        <SideBarLiItem>
-          <SideBarLiBtn>
-            <HiOutlineSaveAs size={20} id="save" />
-            <SideBarLiItemLabels htmlFor="save">
-              Saved Videos
-            </SideBarLiItemLabels>
+        <SideBarLiItem selected={isSelected === 'SaveBtn'}>
+          <SideBarLiBtn
+            onClick={this.clickBtn}
+            id="SaveBtn"
+            selected={isSelected === 'SaveBtn'}
+          >
+            <HiOutlineSaveAs size={20} />
           </SideBarLiBtn>
+          <SideBarLiItemLabels
+            htmlFor="SaveBtn"
+            selected={isSelected === 'SaveBtn'}
+          >
+            Saved Videos
+          </SideBarLiItemLabels>
         </SideBarLiItem>
       </SideBarUlCon>
     </SideNavBar>
@@ -142,11 +183,13 @@ class Home extends Component {
       <GlobalContext.Consumer>
         {value => {
           const {isDark} = value
+          const {isSelected} = this.state
+
           return (
             <>
               <Header />
               <SideBarHomeCon>
-                {this.sideBar()}
+                {this.sideBar(isSelected)}
                 <HomeCon>
                   <HomePopupCon>
                     <TempPopupSection>
