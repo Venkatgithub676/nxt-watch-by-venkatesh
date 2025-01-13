@@ -16,14 +16,22 @@ export const SideBarUlCon = styled.ul`
 `
 export const SideBarLiItem = styled.li`
   width: 200px;
+  margin-bottom: 20px;
+`
+export const SideBarLiBtn = styled.button`
+  background-color: ${props => (props.isSelected ? '#000000' : '#ffffff')};
+  color: ${props => (props.isSelected ? '#ffffff' : '#000000')};
+  font-family: Roboto;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 `
 export const SideBarLiItemLabels = styled.label`
   margin-left: 20px;
   font-family: Roboto;
-  font-size: 18px;
+  font-size: 17px;
+  cursor: pointer;
 `
 
 export const HomeCon = styled.div`

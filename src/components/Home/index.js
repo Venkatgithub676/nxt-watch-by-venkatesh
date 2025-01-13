@@ -1,8 +1,10 @@
 import {Component} from 'react'
 import {IoMdClose, IoMdSearch, IoMdHome} from 'react-icons/io'
-import {HiFire} from 'react-icons/hi'
+import {HiFire, HiOutlineSaveAs} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
+
 import Loader from 'react-loader-spinner'
+
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
@@ -27,6 +29,7 @@ import {
   SideBarUlCon,
   SideBarLiItem,
   SideBarLiItemLabels,
+  SideBarLiBtn,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -99,20 +102,34 @@ class Home extends Component {
     <SideNavBar>
       <SideBarUlCon>
         <SideBarLiItem>
-          <IoMdHome id="home" size={25} />
-          <SideBarLiItemLabels htmlFor="home">Home</SideBarLiItemLabels>
+          <SideBarLiBtn>
+            <IoMdHome id="home" size={20} />
+            <SideBarLiItemLabels htmlFor="home">Home</SideBarLiItemLabels>
+          </SideBarLiBtn>
+        </SideBarLiItem>
+
+        <SideBarLiItem>
+          <SideBarLiBtn>
+            <HiFire id="fire" size={20} />
+            <SideBarLiItemLabels htmlFor="trending">
+              Trending
+            </SideBarLiItemLabels>
+          </SideBarLiBtn>
+        </SideBarLiItem>
+
+        <SideBarLiItem>
+          <SideBarLiBtn>
+            <SiYoutubegaming id="gaming" size={20} />
+            <SideBarLiItemLabels>Gaming</SideBarLiItemLabels>
+          </SideBarLiBtn>
         </SideBarLiItem>
         <SideBarLiItem>
-          <HiFire id="fire" size={25} />
-          <SideBarLiItemLabels htmlFor="trending">Trending</SideBarLiItemLabels>
-        </SideBarLiItem>
-        <SideBarLiItem>
-          <SiYoutubegaming id="gaming" size={25} />
-          <SideBarLiItemLabels>Gaming</SideBarLiItemLabels>
-        </SideBarLiItem>
-        <SideBarLiItem>
-          <IoMdHome size={25} />
-          <SideBarLiItemLabels>Saved Videos</SideBarLiItemLabels>
+          <SideBarLiBtn>
+            <HiOutlineSaveAs size={20} id="save" />
+            <SideBarLiItemLabels htmlFor="save">
+              Saved Videos
+            </SideBarLiItemLabels>
+          </SideBarLiBtn>
         </SideBarLiItem>
       </SideBarUlCon>
     </SideNavBar>
