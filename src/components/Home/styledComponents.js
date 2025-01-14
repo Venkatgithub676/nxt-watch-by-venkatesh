@@ -5,63 +5,6 @@ export const TopCon = styled.div``
 export const SideBarHomeCon = styled.div`
   display: flex;
 `
-export const SideNavBar = styled.div`
-  width: 25%;
-  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
-`
-
-export const SideBarUlCon = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  width: 100%;
-`
-
-export const SideBarLiItem = styled.li`
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 10px 5px 10px 5px;
-  font-family: Roboto;
-  background-color: ${props => {
-    if (props.isDark && props.selected) {
-      return '#383838'
-    }
-    if (!props.isDark && props.selected) {
-      return '#d7dfe9'
-    }
-    return ''
-  }};
-`
-
-export const SideBarLiBtn = styled.button`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: ${props => {
-    if (props.isDark && props.selected) {
-      return '#ff0000'
-    }
-    if (!props.isDark && props.selected) {
-      return '#ff0000'
-    }
-    if (!props.isDark && !props.selected) {
-      return '#212121'
-    }
-    return '#ffffff'
-  }};
-`
-export const SideBarLiItemLabels = styled.label`
-  margin-left: 20px;
-  font-family: Roboto;
-  font-size: 17px;
-  cursor: pointer;
-  font-weight: ${props => (props.selected ? 'bold' : '')};
-  color: ${props => props.isDark && '#ffffff'}};
-`
 
 export const HomeCon = styled.div`
   width: 100%;

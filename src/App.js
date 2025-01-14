@@ -4,6 +4,7 @@ import GlobalContext from './context/GlobalContext'
 import './App.css'
 import Home from './components/Home'
 import Login from './components/Login'
+import Trending from './components/Trending'
 // Replace your code here
 class App extends Component {
   state = {isDark: false}
@@ -24,6 +25,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/trending" component={Trending} />
         </Switch>
       </GlobalContext.Provider>
     )

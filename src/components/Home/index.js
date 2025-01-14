@@ -1,7 +1,5 @@
 import {Component} from 'react'
-import {IoMdClose, IoMdSearch, IoMdHome} from 'react-icons/io'
-import {HiFire, HiOutlineSaveAs} from 'react-icons/hi'
-import {SiYoutubegaming} from 'react-icons/si'
+import {IoMdClose, IoMdSearch} from 'react-icons/io'
 
 import Loader from 'react-loader-spinner'
 
@@ -9,7 +7,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import HomeVideos from '../HomeVideos'
-
+import SideBarCom from '../SideBarCom'
 import {
   TopCon,
   HomeCon,
@@ -26,11 +24,6 @@ import {
   LoadingCon,
   SearchVideosCon,
   SideBarHomeCon,
-  SideNavBar,
-  SideBarUlCon,
-  SideBarLiItem,
-  SideBarLiItemLabels,
-  SideBarLiBtn,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -44,7 +37,6 @@ class Home extends Component {
   state = {
     videos: [],
     status: apiStatusConstants.initial,
-    isSelected: 'HomeBtn',
     popupClose: true,
   }
 
@@ -108,88 +100,6 @@ class Home extends Component {
     this.setState({popupClose: false})
   }
 
-  clickBtn = event => {
-    console.log(event.target.id)
-    this.setState({isSelected: event.target.id})
-  }
-
-  sideBar = (isSelected, isDark) => (
-    <SideNavBar isDark={isDark}>
-      <SideBarUlCon>
-        <SideBarLiItem selected={isSelected === 'HomeBtn'} isDark={isDark}>
-          <SideBarLiBtn
-            id="HomeBtn"
-            onClick={this.clickBtn}
-            isDark={isDark}
-            selected={isSelected === 'HomeBtn'}
-          >
-            <IoMdHome size={20} />
-          </SideBarLiBtn>
-          <SideBarLiItemLabels
-            htmlFor="HomeBtn"
-            selected={isSelected === 'HomeBtn'}
-            isDark={isDark}
-          >
-            Home
-          </SideBarLiItemLabels>
-        </SideBarLiItem>
-
-        <SideBarLiItem isDark={isDark} selected={isSelected === 'TrendingBtn'}>
-          <SideBarLiBtn
-            id="TrendingBtn"
-            onClick={this.clickBtn}
-            selected={isSelected === 'TrendingBtn'}
-            isDark={isDark}
-          >
-            <HiFire size={20} />
-          </SideBarLiBtn>
-          <SideBarLiItemLabels
-            htmlFor="TrendingBtn"
-            selected={isSelected === 'TrendingBtn'}
-            isDark={isDark}
-          >
-            Trending
-          </SideBarLiItemLabels>
-        </SideBarLiItem>
-
-        <SideBarLiItem isDark={isDark} selected={isSelected === 'GamingBtn'}>
-          <SideBarLiBtn
-            onClick={this.clickBtn}
-            id="GamingBtn"
-            selected={isSelected === 'GamingBtn'}
-            isDark={isDark}
-          >
-            <SiYoutubegaming size={20} />
-          </SideBarLiBtn>
-          <SideBarLiItemLabels
-            htmlFor="GamingBtn"
-            selected={isSelected === 'GamingBtn'}
-            isDark={isDark}
-          >
-            Gaming
-          </SideBarLiItemLabels>
-        </SideBarLiItem>
-        <SideBarLiItem selected={isSelected === 'SaveBtn'} isDark={isDark}>
-          <SideBarLiBtn
-            onClick={this.clickBtn}
-            id="SaveBtn"
-            selected={isSelected === 'SaveBtn'}
-            isDark={isDark}
-          >
-            <HiOutlineSaveAs size={20} />
-          </SideBarLiBtn>
-          <SideBarLiItemLabels
-            htmlFor="SaveBtn"
-            selected={isSelected === 'SaveBtn'}
-            isDark={isDark}
-          >
-            Saved Videos
-          </SideBarLiItemLabels>
-        </SideBarLiItem>
-      </SideBarUlCon>
-    </SideNavBar>
-  )
-
   render() {
     // console.log(status)
 
@@ -197,13 +107,14 @@ class Home extends Component {
       <GlobalContext.Consumer>
         {value => {
           const {isDark} = value
-          const {isSelected, popupClose} = this.state
+          const {popupClose} = this.state
 
           return (
             <TopCon>
               <Header />
               <SideBarHomeCon>
-                {this.sideBar(isSelected, isDark)}
+                <SideBarCom />
+
                 <HomeCon>
                   {popupClose && (
                     <HomePopupCon>
