@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
 export const SideNavBar = styled.div`
-  width: 25%;
+  width: 20%;
+  flex-shrink: 0;
   padding: 0.1px;
   height: 90vh;
   background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const SideBarUlCon = styled.ul`

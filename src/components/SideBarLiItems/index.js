@@ -1,7 +1,9 @@
-import {Link} from 'react-router-dom'
 import {HiFire, HiOutlineSaveAs} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
+import {Link} from 'react-router-dom'
 import {IoMdHome} from 'react-icons/io'
+import GlobalContext from '../../context/GlobalContext'
+
 import {
   SideBarLiItem,
   SideBarLiItemLabels,
@@ -40,12 +42,11 @@ const SideBarLiItems = props => {
   }
 
   return (
-    <Link to={`/${category}`}>
-      <SideBarLiItem selected={isSelected === id} isDark={isDark}>
-        <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
-          <Logos logo={type} />
-        </SideBarLiItemLabels>
-
+    <SideBarLiItem selected={isSelected === id} isDark={isDark}>
+      <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
+        <Logos logo={type} />
+      </SideBarLiItemLabels>
+      <Link to={`/${category}`} style={{textDecoration: 'none'}}>
         <SideBarLiBtn
           isDark={isDark}
           onClick={onClickBtn}
@@ -53,8 +54,8 @@ const SideBarLiItems = props => {
         >
           {text}
         </SideBarLiBtn>
-      </SideBarLiItem>
-    </Link>
+      </Link>
+    </SideBarLiItem>
   )
 }
 
