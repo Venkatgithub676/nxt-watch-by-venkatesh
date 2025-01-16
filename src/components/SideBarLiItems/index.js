@@ -2,7 +2,6 @@ import {HiFire, HiOutlineSaveAs} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
 import {Link} from 'react-router-dom'
 import {IoMdHome} from 'react-icons/io'
-import GlobalContext from '../../context/GlobalContext'
 
 import {
   SideBarLiItem,
@@ -54,7 +53,7 @@ const SideBarLiItems = props => {
         <SideBarLiBtn
           isDark={isDark}
           onClick={onClickBtn}
-          selected={isSelected === type}
+          selected={isSelected === id}
         >
           {text}
         </SideBarLiBtn>

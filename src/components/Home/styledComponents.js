@@ -8,6 +8,8 @@ export const SideBarHomeCon = styled.div`
 
 export const HomeCon = styled.div`
   width: 100%;
+  max-height: 90vh;
+  overflow: scroll;
 `
 
 export const HomePopupCon = styled.div`
@@ -103,8 +105,6 @@ export const UlCon = styled.ul`
   flex-wrap: wrap;
   margin-top: 0;
   justify-content: space-between;
-  max-height: 80vh;
-  overflow: scroll;
 `
 export const LoadingCon = styled.div`
   width: 100%;

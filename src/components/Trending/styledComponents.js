@@ -6,10 +6,12 @@ export const TrendingSideBarCon = styled.div`
 `
 export const TrendingCon = styled.div`
   width: 100%;
+  overflow: scroll;
+  max-height: 90vh;
 `
 export const TrendingTopEmojiHeadingCon = styled.div`
-  background-color: #ebebeb;
-  padding: 20px 50px 20px 50px;
+  padding: 40px 100px 40px 100px;
+  background-color: ${props => (props.isDark ? '#181818' : '#ebebeb')};
 `
 
 export const TrendingHeadingCon = styled.div`
@@ -31,14 +33,14 @@ export const EmojiCon = styled.div`
 export const TrendingHeading = styled.h1`
   font-family: Roboto;
   margin-left: 20px;
+  color: ${props => props.isDark && '#ffffff'};
 `
 export const TrendingBelowCon = styled.div`
-  padding: 20px 50px 20px 50px;
+  padding: 0.1px 100px 40px 100px;
   background-color: #f4f4f4;
+  background-color: ${props => (props.isDark ? '#000000' : '#f4f4f4')};
 `
 export const TrendingUlCon = styled.ul`
-  max-height: 80vh;
   list-style-type: none;
   padding: 0;
-  overflow: scroll;
 `

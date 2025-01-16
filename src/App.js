@@ -43,6 +43,7 @@ const values = [
     text: 'Saved Videos',
   },
 ]
+
 class App extends Component {
   state = {isDark: false, isSelected: values[0].id}
 
@@ -67,8 +68,8 @@ class App extends Component {
         }}
       >
         <Switch>
-          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/trending" component={Trending} />
           <Route exact path="/gaming" component={Gaming} />
           <Route exact path="/saved" component={Saved} />

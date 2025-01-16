@@ -80,7 +80,7 @@ class Home extends Component {
 
   loadingView = () => (
     <LoadingCon>
-      <Loader color="blue" type="BallTriangle" />
+      <Loader color="blue" type="Circles" />
     </LoadingCon>
   )
 

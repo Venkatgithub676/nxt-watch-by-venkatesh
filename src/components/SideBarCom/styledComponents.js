@@ -5,7 +5,7 @@ export const SideNavBar = styled.div`
   flex-shrink: 0;
   padding: 0.1px;
   min-height: 90vh;
-  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
+  background-color: ${props => (props.isDark ? '#212121' : '#f9f9f9')};
   @media screen and (max-width: 768px) {
     display: none;
   }

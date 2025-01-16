@@ -6,7 +6,7 @@ export const NavContainer = styled.nav`
   width: 100%;
   height: 10vh;
 
-  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
+  background-color: ${props => (props.isDark ? '#212121' : '#f9f9f9')};
 
   justify-content: space-between;
 `

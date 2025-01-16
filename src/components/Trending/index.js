@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
+import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
@@ -55,25 +56,37 @@ class Trending extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark} = value
+          const {isDark, isSelected, values} = value
+          const filteredValues = values.filter(each => each.id === isSelected)
+          console.log(filteredValues)
+          if (filteredValues[0].category !== 'trending') {
+            return <Redirect to="/" />
+          }
+
           return (
             <>
               <Header />
               <TrendingSideBarCon>
                 <SideBarCom />
-                <TrendingCon>
-                  <TrendingTopEmojiHeadingCon>
+                <TrendingCon isDark={isDark}>
+                  <TrendingTopEmojiHeadingCon isDark={isDark}>
                     <TrendingHeadingCon>
                       <EmojiCon>
                         <HiFire size={40} />
                       </EmojiCon>
-                      <TrendingHeading>Trending</TrendingHeading>
+                      <TrendingHeading isDark={isDark}>
+                        Trending
+                      </TrendingHeading>
                     </TrendingHeadingCon>
                   </TrendingTopEmojiHeadingCon>
-                  <TrendingBelowCon>
+                  <TrendingBelowCon isDark={isDark}>
                     <TrendingUlCon>
                       {trendingData.map(each => (
-                        <TrendingLiItems each={each} key={each.id} />
+                        <TrendingLiItems
+                          each={each}
+                          key={each.id}
+                          isDark={isDark}
+                        />
                       ))}
                     </TrendingUlCon>
                   </TrendingBelowCon>
