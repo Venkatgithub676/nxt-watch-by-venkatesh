@@ -46,7 +46,11 @@ const SideBarLiItems = props => {
       <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
         <Logos logo={type} />
       </SideBarLiItemLabels>
-      <Link to={`/${category}`} style={{textDecoration: 'none'}}>
+      <Link
+        to={`/${category}`}
+        style={{textDecoration: 'none'}}
+        margin={{top: 5}}
+      >
         <SideBarLiBtn
           isDark={isDark}
           onClick={onClickBtn}

@@ -5,7 +5,7 @@ export const SideBarLiItem = styled.li`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 5px 10px 5px 10px;
+
   font-family: Roboto;
   background-color: ${props => {
     if (props.isDark && props.selected) {
@@ -19,6 +19,7 @@ export const SideBarLiItem = styled.li`
 `
 
 export const SideBarLiItemLabels = styled.label`
+  margin-left: 20px;
   color: ${props => {
     if (props.isDark && props.selected) {
       return '#ff0000'
