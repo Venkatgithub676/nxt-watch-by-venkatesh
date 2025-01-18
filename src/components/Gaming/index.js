@@ -49,7 +49,7 @@ class Gaming extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark, isSelected, values} = value
+          const {isDark, isSelected, values, clickBtn} = value
           const {gamingData} = this.state
           const filteredValues = values.filter(each => each.id === isSelected)
           if (filteredValues[0].category !== 'gaming') {
@@ -77,6 +77,7 @@ class Gaming extends Component {
                           each={each}
                           key={each.id}
                           isDark={isDark}
+                          clickBtn={clickBtn}
                         />
                       ))}
                     </GamingUlCon>

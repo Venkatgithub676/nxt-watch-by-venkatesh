@@ -56,7 +56,7 @@ class Trending extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark, isSelected, values} = value
+          const {isDark, isSelected, values, clickBtn} = value
           const filteredValues = values.filter(each => each.id === isSelected)
           console.log(filteredValues)
           if (filteredValues[0].category !== 'trending') {
@@ -86,6 +86,7 @@ class Trending extends Component {
                           each={each}
                           key={each.id}
                           isDark={isDark}
+                          clickBtn={clickBtn}
                         />
                       ))}
                     </TrendingUlCon>

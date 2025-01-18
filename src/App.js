@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import Saved from './components/Saved'
+import VideoItems from './components/VideoItems'
 // Replace your code here
 
 const optionConstants = {
@@ -73,6 +74,7 @@ class App extends Component {
           <Route exact path="/trending" component={Trending} />
           <Route exact path="/gaming" component={Gaming} />
           <Route exact path="/saved" component={Saved} />
+          <Route exact path="/videos/:id" component={VideoItems} />
         </Switch>
       </GlobalContext.Provider>
     )
