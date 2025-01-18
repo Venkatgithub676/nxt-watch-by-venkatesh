@@ -4,8 +4,7 @@ export const LiCon = styled.li`
   width: 100%;
   color: ${props => (props.isDark ? '#f9f9f9' : '#0f0f0f')};
   @media screen and (min-width: 768px) {
-    width: 33%;
-    padding: 0px 30px 10px 30px;
+    width: 100%;
   }
 `
 

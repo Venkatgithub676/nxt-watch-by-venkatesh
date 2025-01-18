@@ -70,10 +70,15 @@ class Home extends Component {
     this.setState({videos: updatedData, status: apiStatusConstants.success})
   }
 
-  successView = (videos, isDark) => (
+  successView = (videos, isDark, clickBtn) => (
     <UlCon>
       {videos.map(each => (
-        <HomeVideos each={each} key={each.id} isDark={isDark} />
+        <HomeVideos
+          each={each}
+          key={each.id}
+          isDark={isDark}
+          clickBtn={clickBtn}
+        />
       ))}
     </UlCon>
   )
@@ -84,11 +89,11 @@ class Home extends Component {
     </LoadingCon>
   )
 
-  getViews = isDark => {
+  getViews = (isDark, clickBtn) => {
     const {status, videos} = this.state
     switch (status) {
       case apiStatusConstants.success:
-        return this.successView(videos, isDark)
+        return this.successView(videos, isDark, clickBtn)
       case apiStatusConstants.loading:
         return this.loadingView()
       default:
@@ -106,7 +111,7 @@ class Home extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark} = value
+          const {isDark, clickBtn} = value
           const {popupClose} = this.state
 
           return (
@@ -139,7 +144,7 @@ class Home extends Component {
                         <IoMdSearch />
                       </SearchLabel>
                     </SearchCon>
-                    {this.getViews(isDark)}
+                    {this.getViews(isDark, clickBtn)}
                   </SearchVideosCon>
                 </HomeCon>
               </SideBarHomeCon>

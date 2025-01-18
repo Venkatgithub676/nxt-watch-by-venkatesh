@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 import {
   Thumbnail,
   LiCon,
@@ -9,24 +11,37 @@ import {
 } from './styledComponents'
 
 const HomeVideos = props => {
-  const {each, isDark} = props
+  const {each, isDark, clickBtn} = props
 
-  const {thumbnailUrl, publishedAt, viewCount, title, channel} = each
+  const {id, thumbnailUrl, publishedAt, viewCount, title, channel} = each
   const {name, profileImgUrl} = channel
 
+  const clickBtns = () => {
+    clickBtn('')
+  }
   return (
-    <LiCon isDark={isDark}>
-      <Thumbnail src={thumbnailUrl} />
-      <HomeVideosDtlsCon>
-        <HomeVideosProfileImg src={profileImgUrl} />
-        <HomeVideosTitleCon>
-          <HomeVideosTitle>{title}</HomeVideosTitle>
-          <HomeVideosViewPara>
-            {name} . {viewCount} . {publishedAt}{' '}
-          </HomeVideosViewPara>
-        </HomeVideosTitleCon>
-      </HomeVideosDtlsCon>
-    </LiCon>
+    <Link
+      to={`/videos/${id}`}
+      style={{
+        textDecoration: 'none',
+        marginTop: '10px',
+        width: '32%',
+      }}
+      onClick={clickBtns}
+    >
+      <LiCon isDark={isDark}>
+        <Thumbnail src={thumbnailUrl} />
+        <HomeVideosDtlsCon>
+          <HomeVideosProfileImg src={profileImgUrl} />
+          <HomeVideosTitleCon>
+            <HomeVideosTitle>{title}</HomeVideosTitle>
+            <HomeVideosViewPara>
+              {name} . {viewCount} . {publishedAt}{' '}
+            </HomeVideosViewPara>
+          </HomeVideosTitleCon>
+        </HomeVideosDtlsCon>
+      </LiCon>
+    </Link>
   )
 }
 

@@ -18,11 +18,12 @@ export const HomePopupCon = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   padding: 40px;
+
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
   @media screen and (min-width: 768px) {
     width: 100%;
   }
-  background-image: url(https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png);
-  background-size: cover;
 `
 export const TempPopupSection = styled.div`
   width: 100%;
@@ -104,6 +105,7 @@ export const UlCon = styled.ul`
   display: flex;
   flex-wrap: wrap;
   margin-top: 0;
+  padding: 0px 30px;
   justify-content: space-between;
 `
 export const LoadingCon = styled.div`

@@ -1,13 +1,34 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
+import ReactPlayer from 'react-player'
+import {BsDot} from 'react-icons/bs'
+import {BiLike, BiDislike} from 'react-icons/bi'
+import {HiOutlineSaveAs} from 'react-icons/hi'
+import {formatDistanceToNow} from 'date-fns'
+import {Redirect} from 'react-router-dom'
 import Header from '../Header'
+import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
 
 import {
   VideoItemsSideBarCon,
   VideoItemsCon,
   LoadingCon,
+  VideoItemTitle,
+  ViewsLikesCon,
+  Views,
+  LikesSaveCon,
+  MediaCon,
+  MediaButton,
+  MediaLabel,
+  HorizantalLine,
+  ChannelDetailsCon,
+  ProfileImg,
+  ChannelDetails,
+  ChannelName,
+  ChannelSubs,
+  ChannelDesc,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -58,12 +79,10 @@ class VideoItems extends Component {
     this.setState({vidItems: updatedData, status: apiStatusConstants.success})
   }
 
-  successView = () => {
+  successView = isDark => {
     const {vidItems} = this.state
     const {
-      id,
       publishedAt,
-      thumbnailUrl,
       title,
       videoUrl,
       viewCount,
@@ -72,7 +91,49 @@ class VideoItems extends Component {
     } = vidItems
     const {name, subscriberCount, profileImgUrl} = channel
 
-    return <VideoItemsCon>{}</VideoItemsCon>
+    return (
+      <VideoItemsCon isDark={isDark}>
+        <ReactPlayer url={videoUrl} width="100%" height="80vh" controls />
+        <VideoItemTitle>{title}</VideoItemTitle>
+        <ViewsLikesCon>
+          <Views isDark={isDark}>
+            {viewCount} views <BsDot />
+            {formatDistanceToNow(new Date(publishedAt))}
+          </Views>
+          <LikesSaveCon>
+            <MediaCon>
+              <MediaButton isDark={isDark}>
+                <BiLike size={25} />
+              </MediaButton>
+              <MediaLabel isDark={isDark}>Like</MediaLabel>
+            </MediaCon>
+            <MediaCon>
+              <MediaButton isDark={isDark}>
+                <BiDislike size={25} />
+              </MediaButton>
+              <MediaLabel isDark={isDark}>Dislike</MediaLabel>
+            </MediaCon>
+            <MediaCon>
+              <MediaButton isDark={isDark}>
+                <HiOutlineSaveAs size={25} />
+              </MediaButton>
+              <MediaLabel isDark={isDark}>Save</MediaLabel>
+            </MediaCon>
+          </LikesSaveCon>
+        </ViewsLikesCon>
+        <HorizantalLine />
+        <ChannelDetailsCon>
+          <ProfileImg src={profileImgUrl} />
+          <ChannelDetails isDark={isDark}>
+            <ChannelName>{name}</ChannelName>
+            <ChannelSubs isDark={isDark}>
+              {subscriberCount} subscribers
+            </ChannelSubs>
+            <ChannelDesc isDark={isDark}>{description}</ChannelDesc>
+          </ChannelDetails>
+        </ChannelDetailsCon>
+      </VideoItemsCon>
+    )
   }
 
   loadingView = () => (
@@ -81,12 +142,12 @@ class VideoItems extends Component {
     </LoadingCon>
   )
 
-  getViews = () => {
+  getViews = isDark => {
     const {status} = this.state
     console.log(status)
     switch (status) {
       case apiStatusConstants.success:
-        return this.successView()
+        return this.successView(isDark)
       case apiStatusConstants.loading:
         return this.loadingView()
       default:
@@ -96,13 +157,25 @@ class VideoItems extends Component {
 
   render() {
     return (
-      <>
-        <Header />
-        <VideoItemsSideBarCon>
-          <SideBarCom />
-          {this.getViews()}
-        </VideoItemsSideBarCon>
-      </>
+      <GlobalContext.Consumer>
+        {value => {
+          const {isDark, values, isSelected} = value
+
+          const filteredValues = values.filter(each => each.id === isSelected)
+          if (filteredValues.length !== 0) {
+            return <Redirect to="/" />
+          }
+          return (
+            <>
+              <Header />
+              <VideoItemsSideBarCon>
+                <SideBarCom />
+                {this.getViews(isDark, values)}
+              </VideoItemsSideBarCon>
+            </>
+          )
+        }}
+      </GlobalContext.Consumer>
     )
   }
 }
