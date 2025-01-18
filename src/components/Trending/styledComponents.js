@@ -38,6 +38,7 @@ export const TrendingHeading = styled.h1`
 export const TrendingBelowCon = styled.div`
   padding: 0.1px 100px 40px 100px;
   background-color: #f4f4f4;
+  min-height: 90vh;
   background-color: ${props => (props.isDark ? '#000000' : '#f4f4f4')};
 `
 export const TrendingUlCon = styled.ul`
