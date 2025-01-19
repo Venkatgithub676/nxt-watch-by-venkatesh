@@ -38,23 +38,90 @@ export const Views = styled.p`
 export const LikesSaveCon = styled.div`
   display: flex;
 `
-export const MediaCon = styled.div`
+export const LikeCon = styled.div`
   display: flex;
   align-items: center;
   margin-right: 20px;
 `
-export const MediaButton = styled.button`
+export const LikeButton = styled.button`
   border: none;
   background-color: transparent;
   margin-right: 4px;
-  color: ${props => (props.isDark ? '#94a3b8' : '#616e7c')};
+  cursor: pointer;
+  color: ${props => {
+    if (props.isDark && props.liked) {
+      return '#ffffff'
+    }
+    if (!props.isDark && props.liked) {
+      return 'blue'
+    }
+    return '#616e7c'
+  }};
   height: 30px;
+  cursor: pointer;
 `
-export const MediaLabel = styled.label`
+export const LikeLabel = styled.label`
   font-family: Roboto;
   font-size: 17px;
-  color: ${props => (props.isDark ? '#94a3b8' : '#616e7c')};
+  color: ${props => {
+    if (props.isDark && props.liked) {
+      return '#ffffff'
+    }
+    if (!props.isDark && props.liked) {
+      return 'blue'
+    }
+    return '#616e7c'
+  }};
   height: 30px;
+`
+
+export const DislikeCon = styled(LikeCon)``
+export const DislikeButton = styled(LikeButton)`
+  color: ${props => {
+    if (props.isDark && props.disliked) {
+      return '#ffffff'
+    }
+    if (!props.isDark && props.disliked) {
+      return 'blue'
+    }
+    return '#616e7c'
+  }};
+`
+
+export const DisikeLabel = styled(LikeLabel)`
+  color: ${props => {
+    if (props.isDark && props.disliked) {
+      return '#ffffff'
+    }
+    if (!props.isDark && props.disliked) {
+      return 'blue'
+    }
+    return '#616e7c'
+  }};
+`
+
+export const MediaCon = styled(LikeCon)``
+export const MediaButton = styled(LikeButton)`
+  color: ${props => {
+    if (props.isDark && props.saved) {
+      return '#ffffff'
+    }
+    if (!props.isDark && props.saved) {
+      return 'blue'
+    }
+    return '#616e7c'
+  }};
+`
+export const MediaLabel = styled(LikeLabel)`
+  color: ${props => {
+    if (props.isDark && props.saved) {
+      return '#ffffff'
+    }
+    if (!props.isDark && props.saved) {
+      return 'blue'
+    }
+    return '#616e7c'
+  }};
 `
 
 export const HorizantalLine = styled.hr`

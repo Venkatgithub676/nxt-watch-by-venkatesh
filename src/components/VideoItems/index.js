@@ -4,7 +4,8 @@ import Cookies from 'js-cookie'
 import ReactPlayer from 'react-player'
 import {BsDot} from 'react-icons/bs'
 import {BiLike, BiDislike} from 'react-icons/bi'
-import {HiOutlineSaveAs} from 'react-icons/hi'
+import {HiOutlineSaveAs, HiSaveAs} from 'react-icons/hi'
+
 import {formatDistanceToNow} from 'date-fns'
 import {Redirect} from 'react-router-dom'
 import Header from '../Header'
@@ -19,6 +20,12 @@ import {
   ViewsLikesCon,
   Views,
   LikesSaveCon,
+  LikeCon,
+  LikeButton,
+  LikeLabel,
+  DislikeCon,
+  DislikeButton,
+  DisikeLabel,
   MediaCon,
   MediaButton,
   MediaLabel,
@@ -38,7 +45,13 @@ const apiStatusConstants = {
   loading: 'LOADING',
 }
 class VideoItems extends Component {
-  state = {vidItems: [], status: apiStatusConstants.initial}
+  state = {
+    vidItems: [],
+    status: apiStatusConstants.initial,
+    liked: false,
+    disliked: false,
+    saved: false,
+  }
 
   componentDidMount() {
     this.getData()
@@ -74,13 +87,38 @@ class VideoItems extends Component {
       videoUrl: videoDtls.video_url,
       viewCount: videoDtls.view_count,
       description: videoDtls.description,
+      saved: false,
     }
     // console.log(updatedData)
     this.setState({vidItems: updatedData, status: apiStatusConstants.success})
   }
 
-  successView = isDark => {
-    const {vidItems} = this.state
+  clickSave = () => {
+    this.setState(prevState => ({saved: !prevState.saved}))
+  }
+
+  clickLike = () => {
+    this.setState(prevState => {
+      const {liked, disliked} = this.state
+      if (!liked && disliked) {
+        return {liked: !prevState.liked, disliked: !prevState.disliked}
+      }
+      return {liked: !prevState.liked}
+    })
+  }
+
+  clickDislike = () => {
+    this.setState(prevState => {
+      const {liked, disliked} = prevState
+      if (!disliked && liked) {
+        return {disliked: !prevState.disliked, liked: !prevState.liked}
+      }
+      return {disliked: !prevState.disliked}
+    })
+  }
+
+  successView = (isDark, saveVideoBtn) => {
+    const {vidItems, saved, liked, disliked} = this.state
     const {
       publishedAt,
       title,
@@ -90,6 +128,7 @@ class VideoItems extends Component {
       channel,
     } = vidItems
     const {name, subscriberCount, profileImgUrl} = channel
+    console.log(liked, disliked)
 
     return (
       <VideoItemsCon isDark={isDark}>
@@ -101,23 +140,48 @@ class VideoItems extends Component {
             {formatDistanceToNow(new Date(publishedAt))}
           </Views>
           <LikesSaveCon>
-            <MediaCon>
-              <MediaButton isDark={isDark}>
+            <LikeCon>
+              <LikeButton
+                id="like"
+                onClick={this.clickLike}
+                isDark={isDark}
+                liked={liked}
+              >
                 <BiLike size={25} />
-              </MediaButton>
-              <MediaLabel isDark={isDark}>Like</MediaLabel>
-            </MediaCon>
-            <MediaCon>
-              <MediaButton isDark={isDark}>
+              </LikeButton>
+              <LikeLabel liked={liked} htmlFor="like" isDark={isDark}>
+                Like
+              </LikeLabel>
+            </LikeCon>
+            <DislikeCon>
+              <DislikeButton
+                id="dislike"
+                onClick={this.clickDislike}
+                isDark={isDark}
+                disliked={disliked}
+              >
                 <BiDislike size={25} />
-              </MediaButton>
-              <MediaLabel isDark={isDark}>Dislike</MediaLabel>
-            </MediaCon>
+              </DislikeButton>
+              <DisikeLabel
+                disliked={disliked}
+                htmlFor="dislike"
+                isDark={isDark}
+              >
+                Dislike
+              </DisikeLabel>
+            </DislikeCon>
             <MediaCon>
-              <MediaButton isDark={isDark}>
-                <HiOutlineSaveAs size={25} />
+              <MediaButton
+                saved={saved}
+                onClick={this.clickSave}
+                isDark={isDark}
+                id="save"
+              >
+                {saved ? <HiOutlineSaveAs size={25} /> : <HiSaveAs size={25} />}
               </MediaButton>
-              <MediaLabel isDark={isDark}>Save</MediaLabel>
+              <MediaLabel htmlFor="save" saved={saved} isDark={isDark}>
+                Save
+              </MediaLabel>
             </MediaCon>
           </LikesSaveCon>
         </ViewsLikesCon>
@@ -142,12 +206,12 @@ class VideoItems extends Component {
     </LoadingCon>
   )
 
-  getViews = isDark => {
+  getViews = (isDark, saveVideoBtn) => {
     const {status} = this.state
     console.log(status)
     switch (status) {
       case apiStatusConstants.success:
-        return this.successView(isDark)
+        return this.successView(isDark, saveVideoBtn)
       case apiStatusConstants.loading:
         return this.loadingView()
       default:
@@ -159,7 +223,7 @@ class VideoItems extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark, values, isSelected} = value
+          const {isDark, values, isSelected, saveVideoBtn} = value
 
           const filteredValues = values.filter(each => each.id === isSelected)
           if (filteredValues.length !== 0) {
@@ -170,7 +234,7 @@ class VideoItems extends Component {
               <Header />
               <VideoItemsSideBarCon>
                 <SideBarCom />
-                {this.getViews(isDark, values)}
+                {this.getViews(isDark, saveVideoBtn)}
               </VideoItemsSideBarCon>
             </>
           )

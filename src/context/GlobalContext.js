@@ -5,6 +5,8 @@ const GlobalContext = React.createContext({
   changeTheme: () => {},
   clickBtn: () => {},
   isSelected: '',
+  savedVideos: [],
+  saveVideoBtn: () => {},
 })
 
 export default GlobalContext
