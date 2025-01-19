@@ -91,7 +91,7 @@ class Home extends Component {
 
   getViews = (isDark, clickBtn) => {
     const {status, videos} = this.state
-    console.log(videos)
+    // console.log(videos)
     switch (status) {
       case apiStatusConstants.success:
         return this.successView(videos, isDark, clickBtn)

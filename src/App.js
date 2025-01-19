@@ -56,10 +56,18 @@ class App extends Component {
     this.setState({isSelected: id})
   }
 
-  saveVideoBtn = videoItem => {
-    this.setState(prevState => ({
-      savedVideos: [...prevState.savedVideos, videoItem],
-    }))
+  saveVideoBtn = (videoItems, saved) => {
+    const {id} = videoItems
+    const {savedVideos} = this.state
+    // console.log(videoItems, saved)
+    let filteredValues
+    if (!saved) {
+      filteredValues = [...savedVideos, videoItems]
+    } else {
+      filteredValues = savedVideos.filter(each => each.id !== id)
+    }
+    console.log(filteredValues, saved, videoItems)
+    this.setState({savedVideos: filteredValues})
   }
 
   render() {

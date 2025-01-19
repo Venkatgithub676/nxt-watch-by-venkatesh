@@ -87,7 +87,6 @@ class VideoItems extends Component {
       videoUrl: videoDtls.video_url,
       viewCount: videoDtls.view_count,
       description: videoDtls.description,
-      saved: false,
     }
     // console.log(updatedData)
     this.setState({vidItems: updatedData, status: apiStatusConstants.success})
@@ -128,7 +127,11 @@ class VideoItems extends Component {
       channel,
     } = vidItems
     const {name, subscriberCount, profileImgUrl} = channel
-    console.log(liked, disliked)
+    // console.log(saved)
+    const clickSaveBtn = () => {
+      this.clickSave()
+      saveVideoBtn(vidItems, saved)
+    }
 
     return (
       <VideoItemsCon isDark={isDark}>
@@ -173,7 +176,7 @@ class VideoItems extends Component {
             <MediaCon>
               <MediaButton
                 saved={saved}
-                onClick={this.clickSave}
+                onClick={clickSaveBtn}
                 isDark={isDark}
                 id="save"
               >
@@ -208,7 +211,7 @@ class VideoItems extends Component {
 
   getViews = (isDark, saveVideoBtn) => {
     const {status} = this.state
-    console.log(status)
+    // console.log(status)
     switch (status) {
       case apiStatusConstants.success:
         return this.successView(isDark, saveVideoBtn)

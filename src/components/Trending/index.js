@@ -47,7 +47,7 @@ class Trending extends Component {
       title: each.title,
       viewCount: each.view_count,
     }))
-    console.log(updatedData)
+    // console.log(updatedData)
     this.setState({trendingData: updatedData})
   }
 
@@ -58,7 +58,7 @@ class Trending extends Component {
         {value => {
           const {isDark, isSelected, values, clickBtn} = value
           const filteredValues = values.filter(each => each.id === isSelected)
-          console.log(filteredValues)
+          /* console.log(filteredValues) */
           if (filteredValues[0].category !== 'trending') {
             return <Redirect to="/" />
           }
