@@ -116,8 +116,9 @@ class VideoItems extends Component {
     })
   }
 
-  successView = (isDark, saveVideoBtn) => {
-    const {vidItems, saved, liked, disliked} = this.state
+  successView = (isDark, saveVideoBtn, savedVideos) => {
+    const {vidItems, liked, disliked} = this.state
+    let {saved} = this.state
     const {
       publishedAt,
       title,
@@ -125,12 +126,19 @@ class VideoItems extends Component {
       viewCount,
       description,
       channel,
+      id,
     } = vidItems
     const {name, subscriberCount, profileImgUrl} = channel
+
     // console.log(saved)
     const clickSaveBtn = () => {
       this.clickSave()
       saveVideoBtn(vidItems, saved)
+    }
+
+    const filteredValue = savedVideos.filter(each => each.id === id)
+    if (filteredValue.length !== 0) {
+      saved = true
     }
 
     return (
@@ -209,12 +217,12 @@ class VideoItems extends Component {
     </LoadingCon>
   )
 
-  getViews = (isDark, saveVideoBtn) => {
+  getViews = (isDark, saveVideoBtn, savedVideos) => {
     const {status} = this.state
     // console.log(status)
     switch (status) {
       case apiStatusConstants.success:
-        return this.successView(isDark, saveVideoBtn)
+        return this.successView(isDark, saveVideoBtn, savedVideos)
       case apiStatusConstants.loading:
         return this.loadingView()
       default:
@@ -226,7 +234,7 @@ class VideoItems extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark, values, isSelected, saveVideoBtn} = value
+          const {isDark, values, isSelected, saveVideoBtn, savedVideos} = value
 
           const filteredValues = values.filter(each => each.id === isSelected)
           if (filteredValues.length !== 0) {
@@ -237,7 +245,7 @@ class VideoItems extends Component {
               <Header />
               <VideoItemsSideBarCon>
                 <SideBarCom />
-                {this.getViews(isDark, saveVideoBtn)}
+                {this.getViews(isDark, saveVideoBtn, savedVideos)}
               </VideoItemsSideBarCon>
             </>
           )
