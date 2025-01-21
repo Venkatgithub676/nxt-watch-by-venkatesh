@@ -19,7 +19,7 @@ import {
   CloseButton,
   SearchCon,
   InputSearch,
-  SearchLabel,
+  SearchBtn,
   UlCon,
   LoadingCon,
   SearchVideosCon,
@@ -38,6 +38,7 @@ class Home extends Component {
     videos: [],
     status: apiStatusConstants.initial,
     popupClose: true,
+    searchInput: '',
   }
 
   componentDidMount() {
@@ -46,7 +47,9 @@ class Home extends Component {
 
   getData = async () => {
     this.setState({status: apiStatusConstants.loading})
-    const api = 'https://apis.ccbp.in/videos/all?search='
+    const {searchInput} = this.state
+    const api = `https://apis.ccbp.in/videos/all?search=${searchInput}`
+    console.log(api)
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -106,6 +109,16 @@ class Home extends Component {
     this.setState({popupClose: false})
   }
 
+  inputSearch = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  searchBtn = () => {
+    const {searchInput} = this.state
+    console.log(searchInput)
+    this.getData()
+  }
+
   render() {
     // console.log(status)
 
@@ -129,9 +142,7 @@ class Home extends Component {
                         <TempPopupSectionHeading>
                           Buy Nxt Watch Premium prepaid plans with UPI
                         </TempPopupSectionHeading>
-                        <TempPopupSectionBtn onClick={this.getData}>
-                          GET IT NOW
-                        </TempPopupSectionBtn>
+                        <TempPopupSectionBtn>GET IT NOW</TempPopupSectionBtn>
                       </TempPopupSection>
                       <CloseButton onClick={this.onClickPopupClose}>
                         <IoMdClose />
@@ -140,10 +151,15 @@ class Home extends Component {
                   )}
                   <SearchVideosCon isDark={isDark}>
                     <SearchCon>
-                      <InputSearch placeholder="Search" isDark={isDark} />
-                      <SearchLabel isDark={isDark}>
+                      <InputSearch
+                        placeholder="Search"
+                        onChange={this.inputSearch}
+                        type="search"
+                        isDark={isDark}
+                      />
+                      <SearchBtn onClick={this.searchBtn} isDark={isDark}>
                         <IoMdSearch />
-                      </SearchLabel>
+                      </SearchBtn>
                     </SearchCon>
                     {this.getViews(isDark, clickBtn)}
                   </SearchVideosCon>

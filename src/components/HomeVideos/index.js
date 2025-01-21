@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import {formatDistanceToNow} from 'date-fns'
 
 import {
   Thumbnail,
@@ -7,7 +8,8 @@ import {
   HomeVideosProfileImg,
   HomeVideosTitleCon,
   HomeVideosTitle,
-  HomeVideosViewPara,
+  HomeVideosChannelName,
+  HomeVideosChannelDtls,
 } from './styledComponents'
 
 const HomeVideos = props => {
@@ -20,28 +22,28 @@ const HomeVideos = props => {
     clickBtn('')
   }
   return (
-    <Link
-      to={`/videos/${id}`}
-      style={{
-        textDecoration: 'none',
-        marginTop: '10px',
-        width: '32%',
-      }}
-      onClick={clickBtns}
-    >
-      <LiCon isDark={isDark}>
+    <LiCon isDark={isDark}>
+      <Link
+        to={`/videos/${id}`}
+        style={{
+          textDecoration: 'none',
+          marginTop: '10px',
+        }}
+        onClick={clickBtns}
+      >
         <Thumbnail src={thumbnailUrl} />
         <HomeVideosDtlsCon>
           <HomeVideosProfileImg src={profileImgUrl} />
           <HomeVideosTitleCon>
-            <HomeVideosTitle>{title}</HomeVideosTitle>
-            <HomeVideosViewPara>
-              {name} . {viewCount} . {publishedAt}{' '}
-            </HomeVideosViewPara>
+            <HomeVideosTitle isDark={isDark}>{title}</HomeVideosTitle>
+            <HomeVideosChannelName>{name}</HomeVideosChannelName>
+            <HomeVideosChannelDtls>
+              {viewCount} . {formatDistanceToNow(new Date(publishedAt))}
+            </HomeVideosChannelDtls>
           </HomeVideosTitleCon>
         </HomeVideosDtlsCon>
-      </LiCon>
-    </Link>
+      </Link>
+    </LiCon>
   )
 }
 
