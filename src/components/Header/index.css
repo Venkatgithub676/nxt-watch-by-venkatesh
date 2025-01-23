@@ -1,0 +1,9 @@
+.popup-content {
+  width: 400px;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+  .popup-content {
+    width: 300px;
+  }
+}

@@ -55,7 +55,7 @@ export const CloseButton = styled.button`
 `
 export const SearchVideosCon = styled.div`
   background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
-  min-height: 80vh;
+  min-height: 90vh;
 `
 export const SearchCon = styled.div`
   width: 100%;

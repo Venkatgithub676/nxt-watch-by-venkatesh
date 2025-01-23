@@ -67,3 +67,44 @@ export const LogoutBtn = styled.button`
   height: 30px;
   border-radius: 2px;
 `
+
+export const PopupMainCon = styled.div`
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  flex-direction: column;
+  border-radius: 10px;
+`
+export const PopupMsg = styled.p`
+  font-family: Roboto;
+  color: #00306e;
+  font-size: 20px;
+  margin-bottom: 30px;
+`
+export const PopupBtnsCon = styled.div`
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+`
+export const CancelBtn = styled.button`
+  width: 80px;
+  height: 35px;
+  color: #7e858e;
+  font-family: Roboto;
+  background-color: transparent;
+  border: 1px solid #7e858e;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+`
+export const ConfirmBtn = styled(CancelBtn)`
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+`

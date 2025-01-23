@@ -3,10 +3,11 @@ import {IoSunnyOutline} from 'react-icons/io5'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {FiLogOut} from 'react-icons/fi'
 import Cookies from 'js-cookie'
-
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
 import {withRouter, Link} from 'react-router-dom'
 import GlobalContext from '../../context/GlobalContext'
-
+import './index.css'
 import {
   NavContainer,
   Logo,
@@ -15,7 +16,16 @@ import {
   DesktopButtonContainer,
   ProfileImg,
   LogoutBtn,
+  PopupMainCon,
+  PopupMsg,
+  PopupBtnsCon,
+  CancelBtn,
+  ConfirmBtn,
 } from './styledComponents'
+
+const overlayStyles = {
+  width: '100%',
+}
 
 const Header = props => (
   <GlobalContext.Consumer>
@@ -48,9 +58,22 @@ const Header = props => (
             <Buttons>
               <ProfileImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" />
             </Buttons>
-            <LogoutBtn onClick={clickLogout} isDark={isDark}>
-              Logout
-            </LogoutBtn>
+            <Popup
+              trigger={<LogoutBtn isDark={isDark}>Logout</LogoutBtn>}
+              modal
+              className="popup-content"
+              overlayStyle={overlayStyles}
+            >
+              {clickBack => (
+                <PopupMainCon>
+                  <PopupMsg>Are you want to logout? </PopupMsg>
+                  <PopupBtnsCon>
+                    <CancelBtn onClick={clickBack}>Cancel</CancelBtn>
+                    <ConfirmBtn onClick={clickLogout}>Confirm</ConfirmBtn>
+                  </PopupBtnsCon>
+                </PopupMainCon>
+              )}
+            </Popup>
           </DesktopButtonContainer>
 
           <MobileButtonContainer>
@@ -60,9 +83,26 @@ const Header = props => (
             <Buttons isDark={isDark}>
               <GiHamburgerMenu />
             </Buttons>
-            <Buttons onClick={clickLogout} isDark={isDark}>
-              <FiLogOut />
-            </Buttons>
+            <Popup
+              trigger={
+                <Buttons onClick={clickLogout} isDark={isDark}>
+                  <FiLogOut />
+                </Buttons>
+              }
+              modal
+              className="popup-content"
+              overlayStyle={overlayStyles}
+            >
+              {clickBack => (
+                <PopupMainCon>
+                  <PopupMsg>Are you want to logout? </PopupMsg>
+                  <PopupBtnsCon>
+                    <CancelBtn onClick={clickBack}>Cancel</CancelBtn>
+                    <ConfirmBtn onClick={clickLogout}>Confirm</ConfirmBtn>
+                  </PopupBtnsCon>
+                </PopupMainCon>
+              )}
+            </Popup>
           </MobileButtonContainer>
         </NavContainer>
       )
