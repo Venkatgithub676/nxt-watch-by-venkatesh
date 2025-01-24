@@ -191,7 +191,7 @@ class VideoItems extends Component {
                 {saved ? <HiOutlineSaveAs size={25} /> : <HiSaveAs size={25} />}
               </MediaButton>
               <MediaLabel htmlFor="save" saved={saved} isDark={isDark}>
-                Save
+                {saved ? 'Saved' : 'Save'}
               </MediaLabel>
             </MediaCon>
           </LikesSaveCon>
