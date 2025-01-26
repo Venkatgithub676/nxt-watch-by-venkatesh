@@ -1,6 +1,20 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import './index.css'
+import GlobalContext from '../../context/GlobalContext'
+
+import {
+  LoginCon,
+  FormCon,
+  FormImg,
+  FormUsername,
+  FormUserInput,
+  FormPassLabel,
+  FormPasswordInput,
+  FormCheckBoxCon,
+  FormCheckBoxInput,
+  FormCheckBoxLabel,
+  FormLoginBtn,
+} from './styledComponents'
 
 class Login extends Component {
   state = {username: '', password: '', passwordShow: false}
@@ -41,56 +55,85 @@ class Login extends Component {
   render() {
     const {username, password, passwordShow} = this.state
     return (
-      <div className="login-con">
-        <form className="form-con" onSubmit={this.onSubmitForm}>
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-            alt=""
-            className="nxt-watch-img"
-          />
-          <br />
-          <label htmlFor="username" className="input-label">
-            USERNAME
-          </label>
+      <GlobalContext.Consumer>
+        {value => {
+          const {isDark} = value
+          return (
+            <LoginCon className="login-con" isDark={isDark}>
+              <FormCon
+                className="form-con"
+                isDark={isDark}
+                onSubmit={this.onSubmitForm}
+              >
+                <FormImg
+                  src={
+                    isDark
+                      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+                      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+                  }
+                  alt=""
+                  className="nxt-watch-img"
+                />
 
-          <input
-            type="text"
-            id="username"
-            className="input-el"
-            placeholder="Username"
-            value={username}
-            onChange={this.onChangeUsername}
-          />
+                <FormUsername
+                  isDark={isDark}
+                  htmlFor="username"
+                  className="input-label"
+                >
+                  USERNAME
+                </FormUsername>
 
-          <label htmlFor="password" className="input-label">
-            PASSWORD
-          </label>
+                <FormUserInput
+                  type="text"
+                  id="username"
+                  className="input-el"
+                  placeholder="Username"
+                  value={username}
+                  onChange={this.onChangeUsername}
+                  isDark={isDark}
+                />
 
-          <input
-            type={passwordShow ? 'text' : 'password'}
-            className="input-el"
-            placeholder="Password"
-            id="password"
-            onChange={this.onChangePassword}
-            value={password}
-          />
-          <div className="checkbox-password">
-            <input
-              onClick={this.onClickCheckbox}
-              type="checkbox"
-              id="checkbox"
-              className="checkbox"
-            />
-            <label htmlFor="checkbox" className="show-password">
-              Show Password
-            </label>
-          </div>
+                <FormPassLabel
+                  isDark={isDark}
+                  htmlFor="password"
+                  className="input-label"
+                >
+                  PASSWORD
+                </FormPassLabel>
 
-          <button className="login-btn" type="submit">
-            Login
-          </button>
-        </form>
-      </div>
+                <FormPasswordInput
+                  type={passwordShow ? 'text' : 'password'}
+                  className="input-el"
+                  placeholder="Password"
+                  id="password"
+                  onChange={this.onChangePassword}
+                  value={password}
+                  isDark={isDark}
+                />
+                <FormCheckBoxCon className="checkbox-password">
+                  <FormCheckBoxInput
+                    onClick={this.onClickCheckbox}
+                    type="checkbox"
+                    id="checkbox"
+                    className="checkbox"
+                  />
+                  <FormCheckBoxLabel
+                    htmlFor="checkbox"
+                    className="show-password"
+                    isDark={isDark}
+                  >
+                    Show Password
+                  </FormCheckBoxLabel>
+                </FormCheckBoxCon>
+
+                <FormLoginBtn className="login-btn" type="submit">
+                  Login
+                </FormLoginBtn>
+              </FormCon>
+            </LoginCon>
+          )
+        }}
+      </GlobalContext.Consumer>
     )
   }
 }
