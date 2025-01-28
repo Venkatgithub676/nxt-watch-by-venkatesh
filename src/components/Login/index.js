@@ -14,10 +14,17 @@ import {
   FormCheckBoxInput,
   FormCheckBoxLabel,
   FormLoginBtn,
+  ErrorMsg,
 } from './styledComponents'
 
 class Login extends Component {
-  state = {username: '', password: '', passwordShow: false}
+  state = {
+    username: '',
+    password: '',
+    passwordShow: false,
+    err: false,
+    errMsg: '',
+  }
 
   onSubmitForm = async event => {
     event.preventDefault()
@@ -25,7 +32,7 @@ class Login extends Component {
     const api = 'https://apis.ccbp.in/login'
     const {username, password} = this.state
     const userDetails = {username, password}
-    console.log(userDetails)
+
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
@@ -36,7 +43,12 @@ class Login extends Component {
       const response = await apiCall.json()
       //   console.log(response)
       Cookies.set('jwt_token', response.jwt_token, {expires: 20})
+      this.setState({err: false, errMsg: ''})
       history.replace('/')
+      //   console.log(1)
+    } else {
+      const response = await apiCall.json()
+      this.setState({err: true, errMsg: response.error_msg})
     }
   }
 
@@ -53,7 +65,8 @@ class Login extends Component {
   }
 
   render() {
-    const {username, password, passwordShow} = this.state
+    const {username, password, passwordShow, err, errMsg} = this.state
+    // console.log(err)
     return (
       <GlobalContext.Consumer>
         {value => {
@@ -129,6 +142,7 @@ class Login extends Component {
                 <FormLoginBtn className="login-btn" type="submit">
                   Login
                 </FormLoginBtn>
+                {err && <ErrorMsg>*{errMsg}</ErrorMsg>}
               </FormCon>
             </LoginCon>
           )

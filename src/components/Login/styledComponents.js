@@ -72,3 +72,10 @@ export const FormLoginBtn = styled.button`
   font-size: 15px;
   cursor: pointer;
 `
+
+export const ErrorMsg = styled.p`
+  font-family: Roboto;
+  font-size: 12px;
+  color: red;
+  align-self: flex-start;
+`

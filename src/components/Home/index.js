@@ -24,6 +24,11 @@ import {
   LoadingCon,
   SearchVideosCon,
   SideBarHomeCon,
+  NoVideosCon,
+  NoVideosImg,
+  NoVideosHeading,
+  NoVideosPara,
+  NoVideosRetryBtn,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -58,31 +63,50 @@ class Home extends Component {
       },
     }
     const response = await fetch(api, options)
-    const data = await response.json()
-    const updatedData = data.videos.map(each => ({
-      id: each.id,
-      publishedAt: each.published_at,
-      thumbnailUrl: each.thumbnail_url,
-      title: each.title,
-      viewCount: each.view_count,
-      channel: {
-        name: each.channel.name,
-        profileImgUrl: each.channel.profile_image_url,
-      },
-    }))
-    this.setState({videos: updatedData, status: apiStatusConstants.success})
+    if (response.ok) {
+      const data = await response.json()
+      const updatedData = data.videos.map(each => ({
+        id: each.id,
+        publishedAt: each.published_at,
+        thumbnailUrl: each.thumbnail_url,
+        title: each.title,
+        viewCount: each.view_count,
+        channel: {
+          name: each.channel.name,
+          profileImgUrl: each.channel.profile_image_url,
+        },
+      }))
+      this.setState({videos: updatedData, status: apiStatusConstants.success})
+    } else {
+      this.setState({status: apiStatusConstants.failure})
+    }
   }
 
   successView = (videos, isDark, clickBtn) => (
     <UlCon>
-      {videos.map(each => (
-        <HomeVideos
-          each={each}
-          key={each.id}
-          isDark={isDark}
-          clickBtn={clickBtn}
-        />
-      ))}
+      {videos.length !== 0 ? (
+        videos.map(each => (
+          <HomeVideos
+            each={each}
+            key={each.id}
+            isDark={isDark}
+            clickBtn={clickBtn}
+          />
+        ))
+      ) : (
+        <NoVideosCon>
+          <NoVideosImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png" />
+          <NoVideosHeading isDark={isDark}>
+            No Search results found
+          </NoVideosHeading>
+          <NoVideosPara>
+            Try different key words or remove search filter
+          </NoVideosPara>
+          <NoVideosRetryBtn type="button" onClick={this.retryBtn}>
+            Retry
+          </NoVideosRetryBtn>
+        </NoVideosCon>
+      )}
     </UlCon>
   )
 
@@ -100,6 +124,8 @@ class Home extends Component {
         return this.successView(videos, isDark, clickBtn)
       case apiStatusConstants.loading:
         return this.loadingView()
+      case apiStatusConstants.failure:
+        return this.failureview()
       default:
         return null
     }
@@ -111,6 +137,10 @@ class Home extends Component {
 
   inputSearch = event => {
     this.setState({searchInput: event.target.value})
+  }
+
+  retryBtn = () => {
+    this.setState({searchInput: ''}, this.getData)
   }
 
   searchBtn = () => {
@@ -126,7 +156,7 @@ class Home extends Component {
       <GlobalContext.Consumer>
         {value => {
           const {isDark, clickBtn} = value
-          const {popupClose} = this.state
+          const {popupClose, searchInput} = this.state
 
           return (
             <TopCon>
@@ -156,6 +186,7 @@ class Home extends Component {
                         onChange={this.inputSearch}
                         type="search"
                         isDark={isDark}
+                        value={searchInput}
                       />
                       <SearchBtn onClick={this.searchBtn} isDark={isDark}>
                         <IoMdSearch />

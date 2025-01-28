@@ -100,7 +100,6 @@ export const SearchBtn = styled.button`
     width: 80px;
   }
 `
-
 export const UlCon = styled.ul`
   width: 100%;
   overflow: auto;
@@ -115,6 +114,40 @@ export const UlCon = styled.ul`
     padding: 0;
   }
 `
+export const NoVideosCon = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`
+export const NoVideosImg = styled.img`
+  width: 50%;
+  max-width: 500px;
+`
+export const NoVideosHeading = styled.h1`
+  font-family: Roboto;
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: ${props => props.isDark && '#ffffff'};
+`
+export const NoVideosPara = styled.p`
+  color: #7e858e;
+  font-size: 18px;
+  font-family: Roboto;
+  margin-top: 10px;
+`
+export const NoVideosRetryBtn = styled.button`
+  width: 100px;
+  height: 40px;
+  font-family: Roboto;
+  font-size: 15px;
+  background-color: #4f46e5;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+`
+
 export const LoadingCon = styled.div`
   width: 100%;
   height: 100px;
