@@ -79,7 +79,7 @@ class Home extends Component {
       }))
       this.setState({videos: updatedData, status: apiStatusConstants.success})
     } else {
-      this.setState({status: apiStatusConstants.failure})
+      this.setState({videos: [], status: apiStatusConstants.failure})
     }
   }
 
@@ -96,7 +96,10 @@ class Home extends Component {
         ))
       ) : (
         <NoVideosCon>
-          <NoVideosImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png" />
+          <NoVideosImg
+            alt="no videos"
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+          />
           <NoVideosHeading isDark={isDark}>
             No Search results found
           </NoVideosHeading>
@@ -112,7 +115,7 @@ class Home extends Component {
   )
 
   loadingView = () => (
-    <LoadingCon>
+    <LoadingCon data-testid="loader">
       <Loader color="blue" type="ThreeDots" />
     </LoadingCon>
   )
@@ -143,7 +146,7 @@ class Home extends Component {
   }
 
   retryBtn = () => {
-    this.setState({searchInput: ''}, this.getData)
+    this.getData()
   }
 
   searchBtn = () => {
@@ -167,17 +170,23 @@ class Home extends Component {
               <SideBarHomeCon>
                 <SideBarCom />
 
-                <HomeCon>
+                <HomeCon data-testid="home" isDark={isDark}>
                   {popupClose && (
-                    <HomePopupCon>
+                    <HomePopupCon data-testid="banner">
                       <TempPopupSection>
-                        <TempPopupSectionImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
+                        <TempPopupSectionImg
+                          alt="nxt watch logo"
+                          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                        />
                         <TempPopupSectionHeading>
                           Buy Nxt Watch Premium prepaid plans with UPI
                         </TempPopupSectionHeading>
                         <TempPopupSectionBtn>GET IT NOW</TempPopupSectionBtn>
                       </TempPopupSection>
-                      <CloseButton onClick={this.onClickPopupClose}>
+                      <CloseButton
+                        data-testid="close"
+                        onClick={this.onClickPopupClose}
+                      >
                         <IoMdClose />
                       </CloseButton>
                     </HomePopupCon>
@@ -191,7 +200,11 @@ class Home extends Component {
                         isDark={isDark}
                         value={searchInput}
                       />
-                      <SearchBtn onClick={this.searchBtn} isDark={isDark}>
+                      <SearchBtn
+                        data-testid="searchButton"
+                        onClick={this.searchBtn}
+                        isDark={isDark}
+                      >
                         <IoMdSearch />
                       </SearchBtn>
                     </SearchCon>

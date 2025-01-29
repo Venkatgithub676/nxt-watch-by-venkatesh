@@ -19,7 +19,7 @@ const GamingLiItems = props => {
         onClick={clickBtns}
         style={{textDecoration: 'none'}}
       >
-        <GamingItemThumbnail src={thumbnailUrl} />
+        <GamingItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
         <GamingItemTitle isDark={isDark}>{title}</GamingItemTitle>
         <GamingItemViewCount isDark={isDark}>
           {viewCount} Watching Worldwide

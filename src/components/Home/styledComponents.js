@@ -10,6 +10,7 @@ export const HomeCon = styled.div`
   width: 100%;
   max-height: 90vh;
   overflow: scroll;
+  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
 `
 
 export const HomePopupCon = styled.div`

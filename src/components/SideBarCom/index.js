@@ -34,9 +34,18 @@ const SideBarCom = () => (
           <ContactUsSection isDark={isDark}>
             <ContactHeading>CONTACT US</ContactHeading>
             <ContactsCon>
-              <FbLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png " />
-              <TwitterLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png" />
-              <LinkedInLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png " />
+              <FbLogo
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png "
+                alt="facebook logo"
+              />
+              <TwitterLogo
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                alt="twitter logo"
+              />
+              <LinkedInLogo
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png "
+                alt="linked in logo"
+              />
             </ContactsCon>
             <Message>
               Enjoy! Now to see your channels and recommendations!

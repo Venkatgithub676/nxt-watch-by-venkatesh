@@ -44,6 +44,7 @@ const Header = props => (
         <NavContainer isDark={isDark}>
           <Link to="/" onClick={clickLogo}>
             <Logo
+              alt="website logo"
               src={
                 isDark
                   ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
@@ -52,11 +53,14 @@ const Header = props => (
             />
           </Link>
           <DesktopButtonContainer>
-            <Buttons onClick={changeTheme} isDark={isDark}>
+            <Buttons onClick={changeTheme} data-testid="theme" isDark={isDark}>
               {isDark ? <IoSunnyOutline /> : <FaMoon />}
             </Buttons>
             <Buttons>
-              <ProfileImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" />
+              <ProfileImg
+                alt="profile"
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+              />
             </Buttons>
             <Popup
               trigger={<LogoutBtn isDark={isDark}>Logout</LogoutBtn>}
@@ -66,7 +70,9 @@ const Header = props => (
             >
               {clickBack => (
                 <PopupMainCon isDark={isDark}>
-                  <PopupMsg isDark={isDark}> Are you want to logout? </PopupMsg>
+                  <PopupMsg isDark={isDark}>
+                    Are you sure, you want to logout
+                  </PopupMsg>
                   <PopupBtnsCon>
                     <CancelBtn onClick={clickBack}>Cancel</CancelBtn>
                     <ConfirmBtn onClick={clickLogout}>Confirm</ConfirmBtn>

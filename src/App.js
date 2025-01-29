@@ -41,7 +41,7 @@ const values = [
   },
   {
     id: uuidv4(),
-    category: 'saved',
+    category: 'saved-videos',
     type: optionConstants.saveBtn,
     text: 'Saved Videos',
   },
@@ -91,7 +91,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/trending" component={Trending} />
           <Route exact path="/gaming" component={Gaming} />
-          <Route exact path="/saved" component={Saved} />
+          <Route exact path="/saved-videos" component={Saved} />
           <Route exact path="/videos/:id" component={VideoItems} />
           <Route exact path="/not-found" component={NotFound} />
           <Redirect to="not-found" />

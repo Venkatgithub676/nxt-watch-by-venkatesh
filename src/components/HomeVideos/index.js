@@ -31,9 +31,9 @@ const HomeVideos = props => {
         }}
         onClick={clickBtns}
       >
-        <Thumbnail src={thumbnailUrl} />
+        <Thumbnail src={thumbnailUrl} alt="video thumbnail" />
         <HomeVideosDtlsCon>
-          <HomeVideosProfileImg src={profileImgUrl} />
+          <HomeVideosProfileImg src={profileImgUrl} alt="channel logo" />
           <HomeVideosTitleCon>
             <HomeVideosTitle isDark={isDark}>{title}</HomeVideosTitle>
             <HomeVideosChannelName>{name}</HomeVideosChannelName>

@@ -63,7 +63,7 @@ class Gaming extends Component {
   }
 
   successView = (isDark, clickBtn, gamingData) => (
-    <GamingCon isDark={isDark}>
+    <GamingCon isDark={isDark} data-testid="gaming">
       <GamingTopEmojiHeadingCon isDark={isDark}>
         <GamingHeadingCon>
           <EmojiCon>

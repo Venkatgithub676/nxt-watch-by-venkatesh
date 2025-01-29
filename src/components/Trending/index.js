@@ -70,7 +70,7 @@ class Trending extends Component {
   }
 
   successView = (isDark, clickBtn, trendingData) => (
-    <TrendingCon isDark={isDark}>
+    <TrendingCon isDark={isDark} data-testid="trending">
       <TrendingTopEmojiHeadingCon isDark={isDark}>
         <TrendingHeadingCon>
           <EmojiCon>

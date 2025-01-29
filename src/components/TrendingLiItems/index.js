@@ -25,13 +25,13 @@ const TrendingLiItems = props => {
   }
 
   return (
-    <Link
-      to={`/videos/${id}`}
-      onClick={clickBtns}
-      style={{textDecoration: 'none', color: '#000000'}}
-    >
-      <TrendingLiItem>
-        <TrendingItemThumbnail src={thumbnailUrl} />
+    <TrendingLiItem>
+      <Link
+        to={`/videos/${id}`}
+        onClick={clickBtns}
+        style={{textDecoration: 'none', color: '#000000'}}
+      >
+        <TrendingItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
         <TrendingItemMatterConDesktop>
           <TrendingItemTitle isDark={isDark}>{title}</TrendingItemTitle>
           <TrendingItemName isDark={isDark}>{name}</TrendingItemName>
@@ -49,8 +49,8 @@ const TrendingLiItems = props => {
             </TrendingItemViewCountMobile>
           </TrendingItemsMatterConMobile>
         </TrendingProfMatterConMob>
-      </TrendingLiItem>
-    </Link>
+      </Link>
+    </TrendingLiItem>
   )
 }
 

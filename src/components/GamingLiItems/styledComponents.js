@@ -19,7 +19,7 @@ export const GamingItemThumbnail = styled.img`
   @media screen and (min-width: 576px) and (max-width: 768px) {
   }
 `
-export const GamingItemTitle = styled.h1`
+export const GamingItemTitle = styled.p`
   font-family: Roboto;
   font-size: 20px;
   margin-bottom: 8px;

@@ -14,6 +14,7 @@ import SideBarCom from '../SideBarCom'
 import ErrorComponent from '../ErrorComponent'
 
 import {
+  VideoDtlsCon,
   VideoItemsSideBarCon,
   VideoItemsCon,
   VideoPlayer,
@@ -49,7 +50,7 @@ const apiStatusConstants = {
 }
 class VideoItems extends Component {
   state = {
-    vidItems: [],
+    vidItems: {},
     status: apiStatusConstants.initial,
     liked: false,
     disliked: false,
@@ -95,12 +96,12 @@ class VideoItems extends Component {
       // console.log(updatedData)
       this.setState({vidItems: updatedData, status: apiStatusConstants.success})
     } else {
-      this.setState({status: apiStatusConstants.failure})
+      this.setState({vidItems: {}, status: apiStatusConstants.failure})
     }
   }
 
   loadingView = () => (
-    <LoadingCon>
+    <LoadingCon data-testid="loader">
       <Loader color="blue" type="ThreeDots" />
     </LoadingCon>
   )
@@ -157,7 +158,7 @@ class VideoItems extends Component {
     }
 
     return (
-      <VideoItemsCon isDark={isDark}>
+      <VideoItemsCon isDark={isDark} data-testid="videoItemDetails">
         <VideoPlayer>
           <ReactPlayer url={videoUrl} width="100%" height="100%" controls />
         </VideoPlayer>
@@ -256,13 +257,13 @@ class VideoItems extends Component {
             return <Redirect to="/" />
           }
           return (
-            <>
+            <VideoDtlsCon>
               <Header />
               <VideoItemsSideBarCon>
                 <SideBarCom />
                 {this.getViews(isDark, saveVideoBtn, savedVideos)}
               </VideoItemsSideBarCon>
-            </>
+            </VideoDtlsCon>
           )
         }}
       </GlobalContext.Consumer>

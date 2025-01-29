@@ -5,38 +5,52 @@ import {Link} from 'react-router-dom'
 import {
   SavedLiItem,
   SavedItemThumbnail,
-  SavedItemMatterCon,
+  SavedItemMatterConDesktop,
   SavedItemTitle,
   SavedItemName,
   SavedItemViewCount,
+  SavedProfMatterConMob,
+  SavedItemsMatterConMobile,
+  SavedItemViewCountMobile,
+  SavedItemProfileImg,
 } from './styledComponents'
 
 const SavedLiItems = props => {
   const {each, isDark, clickBtn} = props
   const {id, publishedAt, thumbnailUrl, title, viewCount, channel} = each
-  const {name} = channel
+  const {name, profileImgUrl} = channel
 
   const clickBtns = () => {
     clickBtn('')
   }
 
   return (
-    <Link
-      to={`/videos/${id}`}
-      onClick={clickBtns}
-      style={{textDecoration: 'none', color: '#000000'}}
-    >
-      <SavedLiItem>
-        <SavedItemThumbnail src={thumbnailUrl} />
-        <SavedItemMatterCon>
+    <SavedLiItem>
+      <Link
+        to={`/videos/${id}`}
+        onClick={clickBtns}
+        style={{textDecoration: 'none', color: '#000000'}}
+      >
+        <SavedItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
+        <SavedItemMatterConDesktop>
           <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
           <SavedItemName isDark={isDark}>{name}</SavedItemName>
           <SavedItemViewCount isDark={isDark}>
             {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
           </SavedItemViewCount>
-        </SavedItemMatterCon>
-      </SavedLiItem>
-    </Link>
+        </SavedItemMatterConDesktop>
+        <SavedProfMatterConMob>
+          <SavedItemProfileImg src={profileImgUrl} />
+          <SavedItemsMatterConMobile>
+            <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
+            <SavedItemViewCountMobile>
+              {name} <BsDot /> {viewCount} <BsDot />
+              {formatDistanceToNow(new Date(publishedAt))}
+            </SavedItemViewCountMobile>
+          </SavedItemsMatterConMobile>
+        </SavedProfMatterConMob>
+      </Link>
+    </SavedLiItem>
   )
 }
 

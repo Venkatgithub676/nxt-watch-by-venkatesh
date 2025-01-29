@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
+export const VideoDtlsCon = styled.div`
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+`
 export const VideoItemsSideBarCon = styled.div`
   display: flex;
 `
 export const VideoItemsCon = styled.div`
   width: 100%;
   padding: 50px 30px 30px 30px;
-  background-color: ${props => props.isDark && '#000000'};
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
   color: ${props => props.isDark && '#ffffff'};
 
   @media screen and (max-width: 768px) {
@@ -84,12 +87,12 @@ export const LikeButton = styled.button`
 
   color: ${props => {
     if (props.isDark && props.liked) {
-      return '#ffffff'
+      return '#2563eb'
     }
     if (!props.isDark && props.liked) {
-      return 'blue'
+      return '#2563eb'
     }
-    return '#616e7c'
+    return '#64748b'
   }};
   @media screen and (max-width: 768px) {
     margin-right: 2px;
@@ -104,12 +107,12 @@ export const LikeLabel = styled.label`
   height: 20px;
   color: ${props => {
     if (props.isDark && props.liked) {
-      return '#ffffff'
+      return '#2563eb'
     }
     if (!props.isDark && props.liked) {
-      return 'blue'
+      return '#2563eb'
     }
-    return '#616e7c'
+    return '#64748b'
   }};
 
   @media screen and (max-width: 768px) {
@@ -121,24 +124,24 @@ export const DislikeCon = styled(LikeCon)``
 export const DislikeButton = styled(LikeButton)`
   color: ${props => {
     if (props.isDark && props.disliked) {
-      return '#ffffff'
+      return '#2563eb'
     }
     if (!props.isDark && props.disliked) {
-      return 'blue'
+      return '#2563eb'
     }
-    return '#616e7c'
+    return '#64748b'
   }};
 `
 
 export const DisikeLabel = styled(LikeLabel)`
   color: ${props => {
     if (props.isDark && props.disliked) {
-      return '#ffffff'
+      return '#2563eb'
     }
     if (!props.isDark && props.disliked) {
-      return 'blue'
+      return '#2563eb'
     }
-    return '#616e7c'
+    return '#64748b'
   }};
 `
 
@@ -146,23 +149,23 @@ export const MediaCon = styled(LikeCon)``
 export const MediaButton = styled(LikeButton)`
   color: ${props => {
     if (props.isDark && props.saved) {
-      return '#ffffff'
+      return '#2563eb'
     }
     if (!props.isDark && props.saved) {
-      return 'blue'
+      return '#2563eb'
     }
-    return '#616e7c'
+    return '#64748b'
   }};
 `
 export const MediaLabel = styled(LikeLabel)`
   color: ${props => {
     if (props.isDark && props.saved) {
-      return '#ffffff'
+      return '#2563eb'
     }
     if (!props.isDark && props.saved) {
-      return 'blue'
+      return '#2563eb'
     }
-    return '#616e7c'
+    return '#64748b'
   }};
 `
 

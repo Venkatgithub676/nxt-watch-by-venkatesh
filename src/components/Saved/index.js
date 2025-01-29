@@ -31,15 +31,18 @@ const Saved = () => (
 
           <SavedSideBarCon>
             <SideBarCom />
-            <SavedCon isDark={isDark}>
+            <SavedCon isDark={isDark} data-testid="savedVideos">
               {savedVideos.length === 0 ? (
                 <NoSavedVideosCon isDark={isDark}>
-                  <NoSavedVideosImg src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png" />
+                  <NoSavedVideosImg
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
+                    alt="no saved videos"
+                  />
                   <NoSavedVideosHeading isDark={isDark}>
-                    No Saved Videos found
+                    No saved videos found
                   </NoSavedVideosHeading>
                   <NoSavedVideosPara isDark={isDark}>
-                    You can save your videos while watching them
+                    Save your videos by clicking a button
                   </NoSavedVideosPara>
                 </NoSavedVideosCon>
               ) : (
@@ -49,7 +52,7 @@ const Saved = () => (
                       <EmojiCon>
                         <HiOutlineSaveAs size={40} />
                       </EmojiCon>
-                      <SavedHeading isDark={isDark}>Saved</SavedHeading>
+                      <SavedHeading isDark={isDark}>Saved Videos</SavedHeading>
                     </SavedHeadingCon>
                   </SavedTopEmojiHeadingCon>
                   <SavedBelowCon isDark={isDark}>

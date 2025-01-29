@@ -8,10 +8,17 @@ export const SavedCon = styled.div`
   width: 100%;
   overflow: scroll;
   max-height: 90vh;
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 export const SavedTopEmojiHeadingCon = styled.div`
   padding: 40px 100px 40px 100px;
   background-color: ${props => (props.isDark ? '#181818' : '#ebebeb')};
+  @media screen and (max-width: 576px) {
+    padding: 20px 50px 20px 50px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    padding: 15px 30px 15px 30px;
+  }
 `
 
 export const SavedHeadingCon = styled.div`
@@ -40,6 +47,12 @@ export const SavedBelowCon = styled.div`
   background-color: #f4f4f4;
   min-height: 90vh;
   background-color: ${props => (props.isDark ? '#000000' : '#f4f4f4')};
+  @media screen and (max-width: 576px) {
+    padding: 0.1px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    padding: 15px 30px 15px 30px;
+  }
 `
 export const SavedUlCon = styled.ul`
   list-style-type: none;
@@ -73,6 +86,5 @@ export const NoSavedVideosPara = styled.p`
   font-size: 20px;
   font-family: Roboto;
   margin-top: 10px;
-
   color: ${props => (props.isDark ? '#ffffff' : '#475569')};
 `

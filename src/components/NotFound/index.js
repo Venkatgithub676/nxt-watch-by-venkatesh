@@ -26,10 +26,11 @@ const NotFound = () => (
                     ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
                     : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
                 }
+                alt="not found"
               />
               <NotFoundHeading isDark={isDark}>Page Not Found</NotFoundHeading>
               <NotFoundPara isDark={isDark}>
-                We are sorry, the page you requested could not be found
+                we are sorry, the page you requested could not be found.
               </NotFoundPara>
             </NotFoundCon>
           </NotFoundSideBarCon>

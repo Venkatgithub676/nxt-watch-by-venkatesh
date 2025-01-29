@@ -16,7 +16,7 @@ export const TrendingLiItem = styled.li`
 export const TrendingItemThumbnail = styled.img`
   width: 100%;
 
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 768px) {
     width: 350px;
     height: 200px;
     margin-right: 20px;
@@ -24,6 +24,7 @@ export const TrendingItemThumbnail = styled.img`
   @media screen and (min-width: 576px) and (max-width: 768px) {
     width: 300px;
     height: 200px;
+    margin-right: 20px;
   }
 `
 
