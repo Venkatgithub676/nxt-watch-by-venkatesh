@@ -1,4 +1,4 @@
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import {v4 as uuidv4} from 'uuid'
 import {Component} from 'react'
 import GlobalContext from './context/GlobalContext'
@@ -9,6 +9,8 @@ import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import Saved from './components/Saved'
 import VideoItems from './components/VideoItems'
+import NotFound from './components/NotFound'
+
 // Replace your code here
 
 const optionConstants = {
@@ -91,6 +93,8 @@ class App extends Component {
           <Route exact path="/gaming" component={Gaming} />
           <Route exact path="/saved" component={Saved} />
           <Route exact path="/videos/:id" component={VideoItems} />
+          <Route exact path="/not-found" component={NotFound} />
+          <Redirect to="not-found" />
         </Switch>
       </GlobalContext.Provider>
     )
