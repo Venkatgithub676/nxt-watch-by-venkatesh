@@ -10,7 +10,7 @@ export const VideoItemsCon = styled.div`
   color: ${props => props.isDark && '#ffffff'};
 `
 export const LoadingCon = styled.div`
-  height: 40vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;

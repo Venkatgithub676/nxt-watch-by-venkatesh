@@ -11,6 +11,7 @@ import {Redirect} from 'react-router-dom'
 import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
+import ErrorComponent from '../ErrorComponent'
 
 import {
   VideoItemsSideBarCon,
@@ -71,26 +72,38 @@ class VideoItems extends Component {
       },
     }
     const response = await fetch(apiUrl, options)
-    const data = await response.json()
-    // console.log(data)
-    const videoDtls = data.video_details
-    const updatedData = {
-      channel: {
-        name: videoDtls.channel.name,
-        profileImgUrl: videoDtls.channel.profile_image_url,
-        subscriberCount: videoDtls.channel.subscriber_count,
-      },
-      id: videoDtls.id,
-      publishedAt: videoDtls.published_at,
-      thumbnailUrl: videoDtls.thumbnail_url,
-      title: videoDtls.title,
-      videoUrl: videoDtls.video_url,
-      viewCount: videoDtls.view_count,
-      description: videoDtls.description,
+    if (response.ok) {
+      const data = await response.json()
+      // console.log(data)
+      const videoDtls = data.video_details
+      const updatedData = {
+        channel: {
+          name: videoDtls.channel.name,
+          profileImgUrl: videoDtls.channel.profile_image_url,
+          subscriberCount: videoDtls.channel.subscriber_count,
+        },
+        id: videoDtls.id,
+        publishedAt: videoDtls.published_at,
+        thumbnailUrl: videoDtls.thumbnail_url,
+        title: videoDtls.title,
+        videoUrl: videoDtls.video_url,
+        viewCount: videoDtls.view_count,
+        description: videoDtls.description,
+      }
+      // console.log(updatedData)
+      this.setState({vidItems: updatedData, status: apiStatusConstants.success})
+    } else {
+      this.setState({status: apiStatusConstants.failure})
     }
-    // console.log(updatedData)
-    this.setState({vidItems: updatedData, status: apiStatusConstants.success})
   }
+
+  loadingView = () => (
+    <LoadingCon>
+      <Loader color="blue" type="ThreeDots" />
+    </LoadingCon>
+  )
+
+  failureView = () => <ErrorComponent />
 
   clickSave = () => {
     this.setState(prevState => ({saved: !prevState.saved}))
@@ -211,12 +224,6 @@ class VideoItems extends Component {
     )
   }
 
-  loadingView = () => (
-    <LoadingCon>
-      <Loader type="Circles" color="red" />
-    </LoadingCon>
-  )
-
   getViews = (isDark, saveVideoBtn, savedVideos) => {
     const {status} = this.state
     // console.log(status)
@@ -225,6 +232,8 @@ class VideoItems extends Component {
         return this.successView(isDark, saveVideoBtn, savedVideos)
       case apiStatusConstants.loading:
         return this.loadingView()
+      case apiStatusConstants.failure:
+        return this.failureView()
       default:
         return null
     }

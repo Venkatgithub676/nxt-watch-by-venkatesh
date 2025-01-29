@@ -54,7 +54,7 @@ export const CloseButton = styled.button`
   font-size: 18px;
 `
 export const SearchVideosCon = styled.div`
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
   min-height: 90vh;
 `
 export const SearchCon = styled.div`
@@ -62,6 +62,7 @@ export const SearchCon = styled.div`
   display: flex;
   align-items: center;
   padding: 30px;
+
   border-radius: 3px;
   margin-bottom: 0;
 
@@ -150,7 +151,7 @@ export const NoVideosRetryBtn = styled.button`
 
 export const LoadingCon = styled.div`
   width: 100%;
-  height: 100px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;

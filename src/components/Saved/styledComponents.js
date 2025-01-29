@@ -48,3 +48,31 @@ export const SavedUlCon = styled.ul`
   flex-wrap: wrap;
   justify-content: space-between;
 `
+
+export const NoSavedVideosCon = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
+`
+export const NoSavedVideosImg = styled.img`
+  width: 50%;
+  max-width: 500px;
+  margin-bottom: 30px;
+`
+export const NoSavedVideosHeading = styled.h1`
+  font-size: 30px;
+  font-family: Roboto;
+  margin-bottom: 10px;
+  color: ${props => props.isDark && '#ffffff'};
+`
+export const NoSavedVideosPara = styled.p`
+  font-size: 20px;
+  font-family: Roboto;
+  margin-top: 10px;
+
+  color: ${props => (props.isDark ? '#ffffff' : '#475569')};
+`

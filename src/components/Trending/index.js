@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
@@ -15,10 +16,20 @@ import {
   TrendingTopEmojiHeadingCon,
   TrendingUlCon,
   TrendingBelowCon,
+  LoadingCon,
 } from './styledComponents'
 
+import ErrorComponent from '../ErrorComponent'
+
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  loading: 'LOADING',
+}
+
 class Trending extends Component {
-  state = {trendingData: []}
+  state = {trendingData: [], status: apiStatusConstants.initial}
 
   componentDidMount() {
     this.getData()
@@ -34,25 +45,79 @@ class Trending extends Component {
       },
     }
     const response = await fetch(apiUrl, options)
-    const data = await response.json()
-    // console.log(data)
-    const updatedData = data.videos.map(each => ({
-      id: each.id,
-      channel: {
-        name: each.channel.name,
-        profileImgUrl: each.channel.profile_image_url,
-      },
-      publishedAt: each.published_at,
-      thumbnailUrl: each.thumbnail_url,
-      title: each.title,
-      viewCount: each.view_count,
-    }))
-    // console.log(updatedData)
-    this.setState({trendingData: updatedData})
+    if (response.ok) {
+      const data = await response.json()
+      // console.log(data)
+      const updatedData = data.videos.map(each => ({
+        id: each.id,
+        channel: {
+          name: each.channel.name,
+          profileImgUrl: each.channel.profile_image_url,
+        },
+        publishedAt: each.published_at,
+        thumbnailUrl: each.thumbnail_url,
+        title: each.title,
+        viewCount: each.view_count,
+      }))
+      // console.log(updatedData)
+      this.setState({
+        trendingData: updatedData,
+        status: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({status: apiStatusConstants.failure})
+    }
+  }
+
+  successView = (isDark, clickBtn, trendingData) => (
+    <TrendingCon isDark={isDark}>
+      <TrendingTopEmojiHeadingCon isDark={isDark}>
+        <TrendingHeadingCon>
+          <EmojiCon>
+            <HiFire size={40} />
+          </EmojiCon>
+          <TrendingHeading isDark={isDark}>Trending</TrendingHeading>
+        </TrendingHeadingCon>
+      </TrendingTopEmojiHeadingCon>
+      <TrendingBelowCon isDark={isDark}>
+        <TrendingUlCon>
+          {trendingData.map(each => (
+            <TrendingLiItems
+              each={each}
+              key={each.id}
+              isDark={isDark}
+              clickBtn={clickBtn}
+            />
+          ))}
+        </TrendingUlCon>
+      </TrendingBelowCon>
+    </TrendingCon>
+  )
+
+  loadingView = () => (
+    <LoadingCon>
+      <Loader color="blue" type="ThreeDots" />
+    </LoadingCon>
+  )
+
+  failureView = () => <ErrorComponent />
+
+  getViews = (isDark, clickBtn) => {
+    const {status, trendingData} = this.state
+    // console.log(videos)
+    switch (status) {
+      case apiStatusConstants.success:
+        return this.successView(isDark, clickBtn, trendingData)
+      case apiStatusConstants.loading:
+        return this.loadingView()
+      case apiStatusConstants.failure:
+        return this.failureView()
+      default:
+        return null
+    }
   }
 
   render() {
-    const {trendingData} = this.state
     return (
       <GlobalContext.Consumer>
         {value => {
@@ -68,30 +133,7 @@ class Trending extends Component {
               <Header />
               <TrendingSideBarCon>
                 <SideBarCom />
-                <TrendingCon isDark={isDark}>
-                  <TrendingTopEmojiHeadingCon isDark={isDark}>
-                    <TrendingHeadingCon>
-                      <EmojiCon>
-                        <HiFire size={40} />
-                      </EmojiCon>
-                      <TrendingHeading isDark={isDark}>
-                        Trending
-                      </TrendingHeading>
-                    </TrendingHeadingCon>
-                  </TrendingTopEmojiHeadingCon>
-                  <TrendingBelowCon isDark={isDark}>
-                    <TrendingUlCon>
-                      {trendingData.map(each => (
-                        <TrendingLiItems
-                          each={each}
-                          key={each.id}
-                          isDark={isDark}
-                          clickBtn={clickBtn}
-                        />
-                      ))}
-                    </TrendingUlCon>
-                  </TrendingBelowCon>
-                </TrendingCon>
+                {this.getViews(isDark, clickBtn)}
               </TrendingSideBarCon>
             </>
           )

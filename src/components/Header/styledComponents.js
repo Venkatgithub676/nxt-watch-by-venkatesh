@@ -69,17 +69,17 @@ export const LogoutBtn = styled.button`
 `
 
 export const PopupMainCon = styled.div`
-  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 150px;
   flex-direction: column;
   border-radius: 10px;
+  background-color: ${props => (props.isDark ? '#231f20' : '#ffffff')};
 `
 export const PopupMsg = styled.p`
   font-family: Roboto;
-  color: #00306e;
+  color: ${props => (props.isDark ? '#ffffff' : '#00306e')};
   font-size: 20px;
   margin-bottom: 30px;
 `

@@ -8,6 +8,7 @@ import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import HomeVideos from '../HomeVideos'
 import SideBarCom from '../SideBarCom'
+import ErrorComponent from '../ErrorComponent'
 import {
   TopCon,
   HomeCon,
@@ -54,7 +55,7 @@ class Home extends Component {
     this.setState({status: apiStatusConstants.loading})
     const {searchInput} = this.state
     const api = `https://apis.ccbp.in/videos/all?search=${searchInput}`
-    console.log(api)
+    // console.log(api)
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -112,9 +113,11 @@ class Home extends Component {
 
   loadingView = () => (
     <LoadingCon>
-      <Loader color="blue" type="Circles" />
+      <Loader color="blue" type="ThreeDots" />
     </LoadingCon>
   )
+
+  failureView = () => <ErrorComponent />
 
   getViews = (isDark, clickBtn) => {
     const {status, videos} = this.state
@@ -125,7 +128,7 @@ class Home extends Component {
       case apiStatusConstants.loading:
         return this.loadingView()
       case apiStatusConstants.failure:
-        return this.failureview()
+        return this.failureView()
       default:
         return null
     }
@@ -144,8 +147,8 @@ class Home extends Component {
   }
 
   searchBtn = () => {
-    const {searchInput} = this.state
-    console.log(searchInput)
+    // const {searchInput} = this.state
+    // console.log(searchInput)
     this.getData()
   }
 

@@ -48,3 +48,11 @@ export const GamingUlCon = styled.ul`
   flex-wrap: wrap;
   justify-content: space-between;
 `
+
+export const LoadingCon = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

@@ -45,3 +45,11 @@ export const TrendingUlCon = styled.ul`
   list-style-type: none;
   padding: 0;
 `
+
+export const LoadingCon = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

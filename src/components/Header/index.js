@@ -65,8 +65,8 @@ const Header = props => (
               overlayStyle={overlayStyles}
             >
               {clickBack => (
-                <PopupMainCon>
-                  <PopupMsg>Are you want to logout? </PopupMsg>
+                <PopupMainCon isDark={isDark}>
+                  <PopupMsg isDark={isDark}> Are you want to logout? </PopupMsg>
                   <PopupBtnsCon>
                     <CancelBtn onClick={clickBack}>Cancel</CancelBtn>
                     <ConfirmBtn onClick={clickLogout}>Confirm</ConfirmBtn>
