@@ -4,16 +4,21 @@ import {Link} from 'react-router-dom'
 import {
   TrendingLiItem,
   TrendingItemThumbnail,
-  TrendingItemMatterCon,
+  TrendingItemMatterConDesktop,
   TrendingItemTitle,
   TrendingItemName,
   TrendingItemViewCount,
+  TrendingProfMatterConMob,
+  TrendingItemsMatterConMobile,
+  TrendingItemViewCountMobile,
+  TrendingItemProfileImg,
 } from './styledComponents'
 
 const TrendingLiItems = props => {
   const {each, isDark, clickBtn} = props
+  console.log(each)
   const {id, publishedAt, thumbnailUrl, title, viewCount, channel} = each
-  const {name} = channel
+  const {name, profileImgUrl} = channel
 
   const clickBtns = () => {
     clickBtn('')
@@ -27,13 +32,23 @@ const TrendingLiItems = props => {
     >
       <TrendingLiItem>
         <TrendingItemThumbnail src={thumbnailUrl} />
-        <TrendingItemMatterCon>
+        <TrendingItemMatterConDesktop>
           <TrendingItemTitle isDark={isDark}>{title}</TrendingItemTitle>
           <TrendingItemName isDark={isDark}>{name}</TrendingItemName>
           <TrendingItemViewCount isDark={isDark}>
             {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
           </TrendingItemViewCount>
-        </TrendingItemMatterCon>
+        </TrendingItemMatterConDesktop>
+        <TrendingProfMatterConMob>
+          <TrendingItemProfileImg src={profileImgUrl} />
+          <TrendingItemsMatterConMobile>
+            <TrendingItemTitle isDark={isDark}>{title}</TrendingItemTitle>
+            <TrendingItemViewCountMobile>
+              {name} <BsDot /> {viewCount} <BsDot />
+              {formatDistanceToNow(new Date(publishedAt))}
+            </TrendingItemViewCountMobile>
+          </TrendingItemsMatterConMobile>
+        </TrendingProfMatterConMob>
       </TrendingLiItem>
     </Link>
   )

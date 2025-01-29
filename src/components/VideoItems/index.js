@@ -16,7 +16,9 @@ import ErrorComponent from '../ErrorComponent'
 import {
   VideoItemsSideBarCon,
   VideoItemsCon,
+  VideoPlayer,
   LoadingCon,
+  VideoItemsMatterCon,
   VideoItemTitle,
   ViewsLikesCon,
   Views,
@@ -131,7 +133,7 @@ class VideoItems extends Component {
 
   successView = (isDark, saveVideoBtn, savedVideos) => {
     const {vidItems, liked, disliked} = this.state
-    let {saved} = this.state
+    let saved = false
     const {
       publishedAt,
       title,
@@ -156,70 +158,74 @@ class VideoItems extends Component {
 
     return (
       <VideoItemsCon isDark={isDark}>
-        <ReactPlayer url={videoUrl} width="100%" height="80vh" controls />
-        <VideoItemTitle>{title}</VideoItemTitle>
-        <ViewsLikesCon>
-          <Views isDark={isDark}>
-            {viewCount} views <BsDot />
-            {formatDistanceToNow(new Date(publishedAt))}
-          </Views>
-          <LikesSaveCon>
-            <LikeCon>
-              <LikeButton
-                id="like"
-                onClick={this.clickLike}
-                isDark={isDark}
-                liked={liked}
-              >
-                <BiLike size={25} />
-              </LikeButton>
-              <LikeLabel liked={liked} htmlFor="like" isDark={isDark}>
-                Like
-              </LikeLabel>
-            </LikeCon>
-            <DislikeCon>
-              <DislikeButton
-                id="dislike"
-                onClick={this.clickDislike}
-                isDark={isDark}
-                disliked={disliked}
-              >
-                <BiDislike size={25} />
-              </DislikeButton>
-              <DisikeLabel
-                disliked={disliked}
-                htmlFor="dislike"
-                isDark={isDark}
-              >
-                Dislike
-              </DisikeLabel>
-            </DislikeCon>
-            <MediaCon>
-              <MediaButton
-                saved={saved}
-                onClick={clickSaveBtn}
-                isDark={isDark}
-                id="save"
-              >
-                {saved ? <HiOutlineSaveAs size={25} /> : <HiSaveAs size={25} />}
-              </MediaButton>
-              <MediaLabel htmlFor="save" saved={saved} isDark={isDark}>
-                {saved ? 'Saved' : 'Save'}
-              </MediaLabel>
-            </MediaCon>
-          </LikesSaveCon>
-        </ViewsLikesCon>
-        <HorizantalLine />
-        <ChannelDetailsCon>
-          <ProfileImg src={profileImgUrl} />
-          <ChannelDetails isDark={isDark}>
-            <ChannelName>{name}</ChannelName>
-            <ChannelSubs isDark={isDark}>
-              {subscriberCount} subscribers
-            </ChannelSubs>
-            <ChannelDesc isDark={isDark}>{description}</ChannelDesc>
-          </ChannelDetails>
-        </ChannelDetailsCon>
+        <VideoPlayer>
+          <ReactPlayer url={videoUrl} width="100%" height="100%" controls />
+        </VideoPlayer>
+        <VideoItemsMatterCon>
+          <VideoItemTitle>{title}</VideoItemTitle>
+          <ViewsLikesCon>
+            <Views isDark={isDark}>
+              {viewCount} views <BsDot />
+              {formatDistanceToNow(new Date(publishedAt))}
+            </Views>
+            <LikesSaveCon>
+              <LikeCon>
+                <LikeButton
+                  id="like"
+                  onClick={this.clickLike}
+                  isDark={isDark}
+                  liked={liked}
+                >
+                  <BiLike />
+                </LikeButton>
+                <LikeLabel liked={liked} htmlFor="like" isDark={isDark}>
+                  Like
+                </LikeLabel>
+              </LikeCon>
+              <DislikeCon>
+                <DislikeButton
+                  id="dislike"
+                  onClick={this.clickDislike}
+                  isDark={isDark}
+                  disliked={disliked}
+                >
+                  <BiDislike />
+                </DislikeButton>
+                <DisikeLabel
+                  disliked={disliked}
+                  htmlFor="dislike"
+                  isDark={isDark}
+                >
+                  Dislike
+                </DisikeLabel>
+              </DislikeCon>
+              <MediaCon>
+                <MediaButton
+                  saved={saved}
+                  onClick={clickSaveBtn}
+                  isDark={isDark}
+                  id="save"
+                >
+                  {saved ? <HiOutlineSaveAs /> : <HiSaveAs size={25} />}
+                </MediaButton>
+                <MediaLabel htmlFor="save" saved={saved} isDark={isDark}>
+                  {saved ? 'Saved' : 'Save'}
+                </MediaLabel>
+              </MediaCon>
+            </LikesSaveCon>
+          </ViewsLikesCon>
+          <HorizantalLine />
+          <ChannelDetailsCon>
+            <ProfileImg src={profileImgUrl} />
+            <ChannelDetails isDark={isDark}>
+              <ChannelName>{name}</ChannelName>
+              <ChannelSubs isDark={isDark}>
+                {subscriberCount} subscribers
+              </ChannelSubs>
+            </ChannelDetails>
+          </ChannelDetailsCon>
+          <ChannelDesc isDark={isDark}>{description}</ChannelDesc>
+        </VideoItemsMatterCon>
       </VideoItemsCon>
     )
   }

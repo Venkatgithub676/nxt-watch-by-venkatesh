@@ -13,19 +13,19 @@ const GamingLiItems = props => {
     clickBtn('')
   }
   return (
-    <Link
-      to={`/videos/${id}`}
-      onClick={clickBtns}
-      style={{textDecoration: 'none', color: '#000000'}}
-    >
-      <GamingItemCon>
+    <GamingItemCon>
+      <Link
+        to={`/videos/${id}`}
+        onClick={clickBtns}
+        style={{textDecoration: 'none'}}
+      >
         <GamingItemThumbnail src={thumbnailUrl} />
         <GamingItemTitle isDark={isDark}>{title}</GamingItemTitle>
         <GamingItemViewCount isDark={isDark}>
           {viewCount} Watching Worldwide
         </GamingItemViewCount>
-      </GamingItemCon>
-    </Link>
+      </Link>
+    </GamingItemCon>
   )
 }
 

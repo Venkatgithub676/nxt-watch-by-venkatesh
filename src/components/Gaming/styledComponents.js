@@ -12,6 +12,12 @@ export const GamingCon = styled.div`
 export const GamingTopEmojiHeadingCon = styled.div`
   padding: 40px 100px 40px 100px;
   background-color: ${props => (props.isDark ? '#181818' : '#ebebeb')};
+  @media screen and (max-width: 576px) {
+    padding: 20px 50px 20px 50px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    padding: 15px 30px 15px 30px;
+  }
 `
 
 export const GamingHeadingCon = styled.div`
@@ -40,6 +46,12 @@ export const GamingBelowCon = styled.div`
   background-color: #f4f4f4;
   min-height: 90vh;
   background-color: ${props => (props.isDark ? '#000000' : '#f4f4f4')};
+  @media screen and (max-width: 576px) {
+    padding: 10px 50px 10px 50px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    padding: 15px 30px 15px 30px;
+  }
 `
 export const GamingUlCon = styled.ul`
   list-style-type: none;
