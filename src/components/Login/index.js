@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 import GlobalContext from '../../context/GlobalContext'
 
 import {
@@ -66,6 +67,11 @@ class Login extends Component {
 
   render() {
     const {username, password, passwordShow, err, errMsg} = this.state
+
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
     // console.log(err)
     return (
       <GlobalContext.Consumer>

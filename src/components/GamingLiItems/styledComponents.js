@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const GamingItemCon = styled.div`
   width: 30%;
-
   @media screen and (max-width: 576px) {
     width: 46%;
   }

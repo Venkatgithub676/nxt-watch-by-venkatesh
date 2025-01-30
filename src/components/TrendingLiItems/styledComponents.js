@@ -74,6 +74,7 @@ export const TrendingItemViewCount = styled.p`
 export const TrendingProfMatterConMob = styled.div`
   display: flex;
   margin-top: 20px;
+
   @media screen and (min-width: 576px) {
     display: none;
   }

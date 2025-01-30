@@ -27,7 +27,6 @@ const HomeVideos = props => {
         to={`/videos/${id}`}
         style={{
           textDecoration: 'none',
-          marginTop: '10px',
         }}
         onClick={clickBtns}
       >

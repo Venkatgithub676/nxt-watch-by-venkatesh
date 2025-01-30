@@ -10,6 +10,7 @@ import Gaming from './components/Gaming'
 import Saved from './components/Saved'
 import VideoItems from './components/VideoItems'
 import NotFound from './components/NotFound'
+import ProtectedRoute from './components/ProtectedRoute'
 
 // Replace your code here
 
@@ -88,13 +89,13 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/trending" component={Trending} />
-          <Route exact path="/gaming" component={Gaming} />
-          <Route exact path="/saved-videos" component={Saved} />
-          <Route exact path="/videos/:id" component={VideoItems} />
-          <Route exact path="/not-found" component={NotFound} />
-          <Redirect to="not-found" />
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
+          <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/saved-videos" component={Saved} />
+          <ProtectedRoute exact path="/videos/:id" component={VideoItems} />
+          <ProtectedRoute exact path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </GlobalContext.Provider>
     )

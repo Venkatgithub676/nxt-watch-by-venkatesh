@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const SavedLiItem = styled.li`
+export const SavedLiItem = styled.li``
+
+export const SavedInternalCon = styled.div`
   margin-bottom: 50px;
   margin-top: 50px;
   display: flex;

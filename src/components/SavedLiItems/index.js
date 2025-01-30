@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 
 import {
   SavedLiItem,
+  SavedInternalCon,
   SavedItemThumbnail,
   SavedItemMatterConDesktop,
   SavedItemTitle,
@@ -31,24 +32,26 @@ const SavedLiItems = props => {
         onClick={clickBtns}
         style={{textDecoration: 'none', color: '#000000'}}
       >
-        <SavedItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
-        <SavedItemMatterConDesktop>
-          <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
-          <SavedItemName isDark={isDark}>{name}</SavedItemName>
-          <SavedItemViewCount isDark={isDark}>
-            {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
-          </SavedItemViewCount>
-        </SavedItemMatterConDesktop>
-        <SavedProfMatterConMob>
-          <SavedItemProfileImg src={profileImgUrl} />
-          <SavedItemsMatterConMobile>
+        <SavedInternalCon>
+          <SavedItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
+          <SavedItemMatterConDesktop>
             <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
-            <SavedItemViewCountMobile>
-              {name} <BsDot /> {viewCount} <BsDot />
-              {formatDistanceToNow(new Date(publishedAt))}
-            </SavedItemViewCountMobile>
-          </SavedItemsMatterConMobile>
-        </SavedProfMatterConMob>
+            <SavedItemName isDark={isDark}>{name}</SavedItemName>
+            <SavedItemViewCount isDark={isDark}>
+              {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
+            </SavedItemViewCount>
+          </SavedItemMatterConDesktop>
+          <SavedProfMatterConMob>
+            <SavedItemProfileImg src={profileImgUrl} />
+            <SavedItemsMatterConMobile>
+              <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
+              <SavedItemViewCountMobile>
+                {name} <BsDot /> {viewCount} <BsDot />
+                {formatDistanceToNow(new Date(publishedAt))}
+              </SavedItemViewCountMobile>
+            </SavedItemsMatterConMobile>
+          </SavedProfMatterConMob>
+        </SavedInternalCon>
       </Link>
     </SavedLiItem>
   )

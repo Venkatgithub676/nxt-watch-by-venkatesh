@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 export const LiCon = styled.li`
   width: 100%;
-  color: ${props => (props.isDark ? '#f9f9f9' : '#0f0f0f')};
-  margin-bottom: 20px;
   @media screen and (max-width: 768px) and (min-width: 576px) {
     width: 48%;
   }
   @media screen and (min-width: 768px) {
     width: 32%;
   }
+  color: ${props => (props.isDark ? '#f9f9f9' : '#0f0f0f')};
+  margin-bottom: 20px;
 `
 
 export const Thumbnail = styled.img`
