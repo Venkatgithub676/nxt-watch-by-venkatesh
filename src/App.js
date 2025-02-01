@@ -94,7 +94,7 @@ class App extends Component {
           <ProtectedRoute exact path="/gaming" component={Gaming} />
           <ProtectedRoute exact path="/saved-videos" component={Saved} />
           <ProtectedRoute exact path="/videos/:id" component={VideoItems} />
-          <ProtectedRoute exact path="/not-found" component={NotFound} />
+          <ProtectedRoute path="/not-found" component={NotFound} />
           <Redirect to="/not-found" />
         </Switch>
       </GlobalContext.Provider>

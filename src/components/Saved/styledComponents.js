@@ -8,6 +8,8 @@ export const SavedCon = styled.div`
   width: 100%;
   overflow: scroll;
   max-height: 90vh;
+`
+export const SaveCon = styled.div`
   background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 export const SavedTopEmojiHeadingCon = styled.div`

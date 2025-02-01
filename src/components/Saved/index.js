@@ -6,6 +6,7 @@ import GlobalContext from '../../context/GlobalContext'
 import {
   SavedSideBarCon,
   SavedCon,
+  SaveCon,
   SavedTopEmojiHeadingCon,
   SavedHeadingCon,
   EmojiCon,
@@ -31,7 +32,7 @@ const Saved = () => (
 
           <SavedSideBarCon>
             <SideBarCom />
-            <SavedCon isDark={isDark} data-testid="savedVideos">
+            <SavedCon isDark={isDark}>
               {savedVideos.length === 0 ? (
                 <NoSavedVideosCon isDark={isDark}>
                   <NoSavedVideosImg
@@ -46,7 +47,7 @@ const Saved = () => (
                   </NoSavedVideosPara>
                 </NoSavedVideosCon>
               ) : (
-                <>
+                <SaveCon data-testid="savedVideos">
                   <SavedTopEmojiHeadingCon isDark={isDark}>
                     <SavedHeadingCon>
                       <EmojiCon>
@@ -67,7 +68,7 @@ const Saved = () => (
                       ))}
                     </SavedUlCon>
                   </SavedBelowCon>
-                </>
+                </SaveCon>
               )}
             </SavedCon>
           </SavedSideBarCon>

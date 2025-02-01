@@ -4,6 +4,7 @@ export const TrendingLiItem = styled.li`
   margin-bottom: 50px;
   margin-top: 50px;
   display: flex;
+
   @media screen and (max-width: 576px) {
     flex-direction: column;
     margin-top: 20px;
@@ -11,6 +12,9 @@ export const TrendingLiItem = styled.li`
   }
   @media screen and (min-width: 576px) and (max-width: 768px) {
   }
+`
+export const InnerCon = styled.div`
+  display: flex;
 `
 
 export const TrendingItemThumbnail = styled.img`

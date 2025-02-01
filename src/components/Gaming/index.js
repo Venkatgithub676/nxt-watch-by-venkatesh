@@ -36,6 +36,7 @@ class Gaming extends Component {
   }
 
   getData = async () => {
+    this.setState({status: apiStatusConstants.loading})
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/videos/gaming`
     const options = {
@@ -88,7 +89,7 @@ class Gaming extends Component {
   )
 
   loadingView = () => (
-    <LoadingCon>
+    <LoadingCon data-testid="loader">
       <Loader color="blue" type="ThreeDots" />
     </LoadingCon>
   )
@@ -117,9 +118,6 @@ class Gaming extends Component {
           const {isDark, isSelected, values, clickBtn} = value
 
           const filteredValues = values.filter(each => each.id === isSelected)
-          if (filteredValues[0].category !== 'gaming') {
-            return <Redirect to="/" />
-          }
 
           return (
             <>
