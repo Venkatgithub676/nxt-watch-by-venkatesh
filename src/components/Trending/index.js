@@ -8,6 +8,7 @@ import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
 import TrendingLiItems from '../TrendingLiItems'
 import {
+  TrendingConMain,
   TrendingCon,
   TrendingSideBarCon,
   TrendingHeadingCon,
@@ -36,6 +37,7 @@ class Trending extends Component {
   }
 
   getData = async () => {
+    this.setState({status: apiStatusConstants.loading})
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = 'https://apis.ccbp.in/videos/trending'
     const options = {
@@ -70,7 +72,7 @@ class Trending extends Component {
   }
 
   successView = (isDark, clickBtn, trendingData) => (
-    <TrendingCon isDark={isDark} data-testid="trending">
+    <TrendingCon isDark={isDark}>
       <TrendingTopEmojiHeadingCon isDark={isDark}>
         <TrendingHeadingCon>
           <EmojiCon>
@@ -95,7 +97,7 @@ class Trending extends Component {
   )
 
   loadingView = () => (
-    <LoadingCon>
+    <LoadingCon data-testid="loader">
       <Loader color="blue" type="ThreeDots" />
     </LoadingCon>
   )
@@ -124,18 +126,15 @@ class Trending extends Component {
           const {isDark, isSelected, values, clickBtn} = value
           const filteredValues = values.filter(each => each.id === isSelected)
           /* console.log(filteredValues) */
-          if (filteredValues[0].category !== 'trending') {
-            return <Redirect to="/" />
-          }
 
           return (
-            <>
+            <TrendingConMain data-testid="trending">
               <Header />
               <TrendingSideBarCon>
                 <SideBarCom />
                 {this.getViews(isDark, clickBtn)}
               </TrendingSideBarCon>
-            </>
+            </TrendingConMain>
           )
         }}
       </GlobalContext.Consumer>

@@ -39,7 +39,7 @@ export const TrendingItemMatterConDesktop = styled.div`
     display: none;
   }
 `
-export const TrendingItemTitle = styled.h1`
+export const TrendingItemTitle = styled.p`
   margin-top: 0px;
   font-size: 22px;
   font-family: Roboto;

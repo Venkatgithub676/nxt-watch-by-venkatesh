@@ -46,7 +46,7 @@ const TrendingLiItems = props => {
             <TrendingItemsMatterConMobile>
               <TrendingItemTitle isDark={isDark}>{title}</TrendingItemTitle>
               <TrendingItemViewCountMobile>
-                {name} <BsDot /> {viewCount} <BsDot />
+                <BsDot /> {viewCount} <BsDot />
                 {formatDistanceToNow(new Date(publishedAt))}
               </TrendingItemViewCountMobile>
             </TrendingItemsMatterConMobile>
