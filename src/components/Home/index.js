@@ -146,7 +146,7 @@ class Home extends Component {
   }
 
   retryBtn = () => {
-    this.getData()
+    this.setState({searchInput: ''}, this.getData)
   }
 
   searchBtn = () => {

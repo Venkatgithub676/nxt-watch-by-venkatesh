@@ -10,6 +10,7 @@ import TrendingLiItems from '../TrendingLiItems'
 import {
   TrendingConMain,
   TrendingCon,
+  TrendCon,
   TrendingSideBarCon,
   TrendingHeadingCon,
   TrendingHeading,
@@ -128,13 +129,15 @@ class Trending extends Component {
           /* console.log(filteredValues) */
 
           return (
-            <TrendingConMain data-testid="trending">
+            <>
               <Header />
               <TrendingSideBarCon>
                 <SideBarCom />
-                {this.getViews(isDark, clickBtn)}
+                <TrendCon data-testid="trending">
+                  {this.getViews(isDark, clickBtn)}
+                </TrendCon>
               </TrendingSideBarCon>
-            </TrendingConMain>
+            </>
           )
         }}
       </GlobalContext.Consumer>
