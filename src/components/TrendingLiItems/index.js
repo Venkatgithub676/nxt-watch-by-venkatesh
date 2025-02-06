@@ -17,7 +17,7 @@ import {
 
 const TrendingLiItems = props => {
   const {each, isDark, clickBtn} = props
-  console.log(each)
+  //   console.log(each)
   const {id, publishedAt, thumbnailUrl, title, viewCount, channel} = each
   const {name, profileImgUrl} = channel
 

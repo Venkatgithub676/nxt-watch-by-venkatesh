@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const GamingSideBarCon = styled.div`
   display: flex;
   width: 100%;
+  background-color: ${props => (props.isDark ? '#181818' : '#ebebeb')};
 `
 export const GamingCon = styled.div`
   width: 100%;
@@ -64,7 +65,7 @@ export const GamingUlCon = styled.ul`
 
 export const LoadingCon = styled.div`
   width: 100%;
-  height: 200px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;

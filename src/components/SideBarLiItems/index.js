@@ -41,15 +41,16 @@ const SideBarLiItems = props => {
   }
 
   return (
-    <SideBarLiItem selected={isSelected === id} isDark={isDark}>
-      <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
-        <Logos logo={type} />
-      </SideBarLiItemLabels>
-      <Link
-        to={`/${category}`}
-        style={{textDecoration: 'none'}}
-        margin={{top: 5}}
-      >
+    <Link
+      to={`/${category}`}
+      style={{textDecoration: 'none'}}
+      margin={{top: 5}}
+    >
+      <SideBarLiItem selected={isSelected === id} isDark={isDark}>
+        <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
+          <Logos logo={type} />
+        </SideBarLiItemLabels>
+
         <SideBarLiBtn
           isDark={isDark}
           onClick={onClickBtn}
@@ -57,8 +58,8 @@ const SideBarLiItems = props => {
         >
           {text}
         </SideBarLiBtn>
-      </Link>
-    </SideBarLiItem>
+      </SideBarLiItem>
+    </Link>
   )
 }
 

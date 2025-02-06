@@ -7,12 +7,13 @@ export const TrendingSideBarCon = styled.div`
 `
 
 export const TrendCon = styled.div`
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  width: 100%;
 `
 export const TrendingCon = styled.div`
   width: 100%;
   overflow: scroll;
   max-height: 90vh;
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 export const TrendingTopEmojiHeadingCon = styled.div`
   padding: 40px 100px 40px 100px;
@@ -66,8 +67,9 @@ export const TrendingUlCon = styled.ul`
 
 export const LoadingCon = styled.div`
   width: 100%;
-  height: 200px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${props => (props.isDark ? '#000000' : '#f4f4f4')};
 `

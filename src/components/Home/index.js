@@ -165,12 +165,12 @@ class Home extends Component {
           const {popupClose, searchInput} = this.state
 
           return (
-            <TopCon>
+            <TopCon data-testid="home" isDark={isDark}>
               <Header />
               <SideBarHomeCon>
                 <SideBarCom />
 
-                <HomeCon data-testid="home" isDark={isDark}>
+                <HomeCon isDark={isDark}>
                   {popupClose && (
                     <HomePopupCon data-testid="banner">
                       <TempPopupSection>

@@ -122,7 +122,7 @@ class Gaming extends Component {
           return (
             <>
               <Header />
-              <GamingSideBarCon>
+              <GamingSideBarCon isDark={isDark}>
                 <SideBarCom />
                 {this.getViews(isDark, clickBtn)}
               </GamingSideBarCon>

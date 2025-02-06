@@ -14,8 +14,10 @@ export const Logo = styled.img`
   height: 30px;
 `
 
-export const MobileButtonContainer = styled.div`
+export const MobileButtonContainer = styled.ul`
   width: 40%;
+  padding: 0;
+  list-style-type: none;
   display: flex;
   justify-content: space-between;
   max-width: 130px;
@@ -23,6 +25,8 @@ export const MobileButtonContainer = styled.div`
     display: none;
   }
 `
+
+export const LiBtn = styled.li``
 export const Buttons = styled.button`
   cursor: pointer;
   background-color: transparent;
@@ -36,8 +40,10 @@ export const Buttons = styled.button`
   }
 `
 
-export const DesktopButtonContainer = styled.div`
+export const DesktopButtonContainer = styled.ul`
   display: flex;
+  padding: 0;
+  list-style-type: none;
   width: 200px;
   align-items: center;
   justify-content: space-between;

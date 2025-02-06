@@ -90,8 +90,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/saved-videos" component={Saved} />
           <ProtectedRoute exact path="/videos/:id" component={VideoItems} />
           <Route component={NotFound} />

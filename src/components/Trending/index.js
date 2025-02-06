@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
-import {Redirect} from 'react-router-dom'
+// import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
@@ -8,9 +8,7 @@ import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
 import TrendingLiItems from '../TrendingLiItems'
 import {
-  TrendingConMain,
   TrendingCon,
-  TrendCon,
   TrendingSideBarCon,
   TrendingHeadingCon,
   TrendingHeading,
@@ -40,6 +38,7 @@ class Trending extends Component {
   getData = async () => {
     this.setState({status: apiStatusConstants.loading})
     const jwtToken = Cookies.get('jwt_token')
+    // console.log(jwtToken)
     const apiUrl = 'https://apis.ccbp.in/videos/trending'
     const options = {
       method: 'GET',
@@ -73,7 +72,7 @@ class Trending extends Component {
   }
 
   successView = (isDark, clickBtn, trendingData) => (
-    <TrendingCon isDark={isDark}>
+    <TrendingCon isDark={isDark} data-testid="trending">
       <TrendingTopEmojiHeadingCon isDark={isDark}>
         <TrendingHeadingCon>
           <EmojiCon>
@@ -97,8 +96,8 @@ class Trending extends Component {
     </TrendingCon>
   )
 
-  loadingView = () => (
-    <LoadingCon data-testid="loader">
+  loadingView = isDark => (
+    <LoadingCon data-testid="loader" isDark={isDark}>
       <Loader color="blue" type="ThreeDots" />
     </LoadingCon>
   )
@@ -112,7 +111,7 @@ class Trending extends Component {
       case apiStatusConstants.success:
         return this.successView(isDark, clickBtn, trendingData)
       case apiStatusConstants.loading:
-        return this.loadingView()
+        return this.loadingView(isDark)
       case apiStatusConstants.failure:
         return this.failureView()
       default:
@@ -126,16 +125,13 @@ class Trending extends Component {
         {value => {
           const {isDark, isSelected, values, clickBtn} = value
           const filteredValues = values.filter(each => each.id === isSelected)
-          /* console.log(filteredValues) */
 
           return (
             <>
               <Header />
-              <TrendingSideBarCon>
+              <TrendingSideBarCon isDark={isDark}>
                 <SideBarCom />
-                <TrendCon data-testid="trending">
-                  {this.getViews(isDark, clickBtn)}
-                </TrendCon>
+                {this.getViews(isDark, clickBtn)}
               </TrendingSideBarCon>
             </>
           )
