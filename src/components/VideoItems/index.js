@@ -171,47 +171,51 @@ class VideoItems extends Component {
             </Views>
             <LikesSaveCon>
               <LikeCon>
+                <LikeLabel liked={liked} htmlFor="like" isDark={isDark}>
+                  <BiLike />
+                </LikeLabel>
+
                 <LikeButton
                   id="like"
                   onClick={this.clickLike}
                   isDark={isDark}
                   liked={liked}
                 >
-                  <BiLike />
-                </LikeButton>
-                <LikeLabel liked={liked} htmlFor="like" isDark={isDark}>
                   Like
-                </LikeLabel>
+                </LikeButton>
               </LikeCon>
+
               <DislikeCon>
+                <DisikeLabel
+                  disliked={disliked}
+                  htmlFor="dislike"
+                  isDark={isDark}
+                >
+                  <BiDislike />
+                </DisikeLabel>
+
                 <DislikeButton
                   id="dislike"
                   onClick={this.clickDislike}
                   isDark={isDark}
                   disliked={disliked}
                 >
-                  <BiDislike />
-                </DislikeButton>
-                <DisikeLabel
-                  disliked={disliked}
-                  htmlFor="dislike"
-                  isDark={isDark}
-                >
                   Dislike
-                </DisikeLabel>
+                </DislikeButton>
               </DislikeCon>
+
               <MediaCon>
+                <MediaLabel htmlFor="save" saved={saved} isDark={isDark}>
+                  {saved ? <HiOutlineSaveAs /> : <HiSaveAs size={25} />}
+                </MediaLabel>
                 <MediaButton
                   saved={saved}
                   onClick={clickSaveBtn}
                   isDark={isDark}
                   id="save"
                 >
-                  {saved ? <HiOutlineSaveAs /> : <HiSaveAs size={25} />}
-                </MediaButton>
-                <MediaLabel htmlFor="save" saved={saved} isDark={isDark}>
                   {saved ? 'Saved' : 'Save'}
-                </MediaLabel>
+                </MediaButton>
               </MediaCon>
             </LikesSaveCon>
           </ViewsLikesCon>

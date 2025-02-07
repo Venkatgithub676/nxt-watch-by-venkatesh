@@ -73,7 +73,9 @@ export const LikesSaveCon = styled.div`
 export const LikeCon = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 10px;
+  width: 80px;
+  justify-content: center;
 `
 export const LikeButton = styled.button`
   border: none;
@@ -82,38 +84,22 @@ export const LikeButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 15px;
   height: 20px;
 
-  color: ${props => {
-    if (props.isDark && props.liked) {
-      return '#2563eb'
-    }
-    if (!props.isDark && props.liked) {
-      return '#2563eb'
-    }
-    return '#64748b'
-  }};
+  color: ${props => (props.liked ? '#2563eb' : '#64748b')};
   @media screen and (max-width: 768px) {
     margin-right: 2px;
   }
 `
 export const LikeLabel = styled.label`
   font-family: Roboto;
-  font-size: 17px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
-  color: ${props => {
-    if (props.isDark && props.liked) {
-      return '#2563eb'
-    }
-    if (!props.isDark && props.liked) {
-      return '#2563eb'
-    }
-    return '#64748b'
-  }};
+  color: ${props => (props.liked ? '#2563eb' : '#64748b')};
 
   @media screen and (max-width: 768px) {
     font-size: 15px;
@@ -122,30 +108,16 @@ export const LikeLabel = styled.label`
 
 export const DislikeCon = styled(LikeCon)``
 export const DislikeButton = styled(LikeButton)`
-  color: ${props => {
-    if (props.isDark && props.disliked) {
-      return '#2563eb'
-    }
-    if (!props.isDark && props.disliked) {
-      return '#2563eb'
-    }
-    return '#64748b'
-  }};
+  color: ${props => (props.disliked ? '#2563eb' : '#64748b')};
 `
 
 export const DisikeLabel = styled(LikeLabel)`
-  color: ${props => {
-    if (props.isDark && props.disliked) {
-      return '#2563eb'
-    }
-    if (!props.isDark && props.disliked) {
-      return '#2563eb'
-    }
-    return '#64748b'
-  }};
+  color: ${props => (props.disliked ? '#2563eb' : '#64748b')};
 `
 
-export const MediaCon = styled(LikeCon)``
+export const MediaCon = styled(LikeCon)`
+  width: 90px;
+`
 export const MediaButton = styled(LikeButton)`
   color: ${props => {
     if (props.isDark && props.saved) {
@@ -156,6 +128,7 @@ export const MediaButton = styled(LikeButton)`
     }
     return '#64748b'
   }};
+  width: 40px;
 `
 export const MediaLabel = styled(LikeLabel)`
   color: ${props => {
