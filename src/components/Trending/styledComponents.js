@@ -1,19 +1,15 @@
 import styled from 'styled-components'
 
-export const TrendingConMain = styled.div``
 export const TrendingSideBarCon = styled.div`
   display: flex;
   width: 100%;
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 
-export const TrendCon = styled.div`
-  width: 100%;
-`
 export const TrendingCon = styled.div`
   width: 100%;
   overflow: scroll;
   max-height: 90vh;
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 export const TrendingTopEmojiHeadingCon = styled.div`
   padding: 40px 100px 40px 100px;

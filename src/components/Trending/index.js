@@ -1,9 +1,8 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
-// import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
 import TrendingLiItems from '../TrendingLiItems'
@@ -72,7 +71,7 @@ class Trending extends Component {
   }
 
   successView = (isDark, clickBtn, trendingData) => (
-    <TrendingCon isDark={isDark} data-testid="trending">
+    <TrendingCon>
       <TrendingTopEmojiHeadingCon isDark={isDark}>
         <TrendingHeadingCon>
           <EmojiCon>
@@ -125,15 +124,16 @@ class Trending extends Component {
         {value => {
           const {isDark, isSelected, values, clickBtn} = value
           const filteredValues = values.filter(each => each.id === isSelected)
+          // console.log(isSelected)
 
+          if (filteredValues[0].category !== 'trending') {
+            return <Redirect to="/" />
+          }
           return (
-            <>
-              <Header />
-              <TrendingSideBarCon isDark={isDark}>
-                <SideBarCom />
-                {this.getViews(isDark, clickBtn)}
-              </TrendingSideBarCon>
-            </>
+            <TrendingSideBarCon isDark={isDark} data-testid="trending">
+              <SideBarCom />
+              {this.getViews(isDark, clickBtn)}
+            </TrendingSideBarCon>
           )
         }}
       </GlobalContext.Consumer>

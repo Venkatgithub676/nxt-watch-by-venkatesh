@@ -1,16 +1,12 @@
 import {Component} from 'react'
 import {IoMdClose, IoMdSearch} from 'react-icons/io'
-
 import Loader from 'react-loader-spinner'
-
 import Cookies from 'js-cookie'
-import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import HomeVideos from '../HomeVideos'
 import SideBarCom from '../SideBarCom'
 import ErrorComponent from '../ErrorComponent'
 import {
-  TopCon,
   HomeCon,
   HomePopupCon,
   TempPopupSection,
@@ -146,7 +142,7 @@ class Home extends Component {
   }
 
   retryBtn = () => {
-    this.setState({searchInput: ''}, this.getData)
+    this.getData()
   }
 
   searchBtn = () => {
@@ -165,54 +161,51 @@ class Home extends Component {
           const {popupClose, searchInput} = this.state
 
           return (
-            <TopCon data-testid="home" isDark={isDark}>
-              <Header />
-              <SideBarHomeCon>
-                <SideBarCom />
+            <SideBarHomeCon data-testid="home" isDark={isDark}>
+              <SideBarCom />
 
-                <HomeCon isDark={isDark}>
-                  {popupClose && (
-                    <HomePopupCon data-testid="banner">
-                      <TempPopupSection>
-                        <TempPopupSectionImg
-                          alt="nxt watch logo"
-                          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                        />
-                        <TempPopupSectionHeading>
-                          Buy Nxt Watch Premium prepaid plans with UPI
-                        </TempPopupSectionHeading>
-                        <TempPopupSectionBtn>GET IT NOW</TempPopupSectionBtn>
-                      </TempPopupSection>
-                      <CloseButton
-                        data-testid="close"
-                        onClick={this.onClickPopupClose}
-                      >
-                        <IoMdClose />
-                      </CloseButton>
-                    </HomePopupCon>
-                  )}
-                  <SearchVideosCon isDark={isDark}>
-                    <SearchCon>
-                      <InputSearch
-                        placeholder="Search"
-                        onChange={this.inputSearch}
-                        type="search"
-                        isDark={isDark}
-                        value={searchInput}
+              <HomeCon isDark={isDark}>
+                {popupClose && (
+                  <HomePopupCon data-testid="banner">
+                    <TempPopupSection>
+                      <TempPopupSectionImg
+                        alt="nxt watch logo"
+                        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                       />
-                      <SearchBtn
-                        data-testid="searchButton"
-                        onClick={this.searchBtn}
-                        isDark={isDark}
-                      >
-                        <IoMdSearch />
-                      </SearchBtn>
-                    </SearchCon>
-                    {this.getViews(isDark, clickBtn)}
-                  </SearchVideosCon>
-                </HomeCon>
-              </SideBarHomeCon>
-            </TopCon>
+                      <TempPopupSectionHeading>
+                        Buy Nxt Watch Premium prepaid plans with UPI
+                      </TempPopupSectionHeading>
+                      <TempPopupSectionBtn>GET IT NOW</TempPopupSectionBtn>
+                    </TempPopupSection>
+                    <CloseButton
+                      data-testid="close"
+                      onClick={this.onClickPopupClose}
+                    >
+                      <IoMdClose />
+                    </CloseButton>
+                  </HomePopupCon>
+                )}
+                <SearchVideosCon isDark={isDark}>
+                  <SearchCon>
+                    <InputSearch
+                      placeholder="Search"
+                      onChange={this.inputSearch}
+                      type="search"
+                      isDark={isDark}
+                      value={searchInput}
+                    />
+                    <SearchBtn
+                      data-testid="searchButton"
+                      onClick={this.searchBtn}
+                      isDark={isDark}
+                    >
+                      <IoMdSearch />
+                    </SearchBtn>
+                  </SearchCon>
+                  {this.getViews(isDark, clickBtn)}
+                </SearchVideosCon>
+              </HomeCon>
+            </SideBarHomeCon>
           )
         }}
       </GlobalContext.Consumer>

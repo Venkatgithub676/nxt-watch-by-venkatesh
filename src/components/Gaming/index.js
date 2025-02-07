@@ -1,9 +1,7 @@
 import {SiYoutubegaming} from 'react-icons/si'
-import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {Component} from 'react'
-import Header from '../Header'
 import SideBarCom from '../SideBarCom'
 import GamingLiItems from '../GamingLiItems'
 import GlobalContext from '../../context/GlobalContext'
@@ -117,16 +115,13 @@ class Gaming extends Component {
         {value => {
           const {isDark, isSelected, values, clickBtn} = value
 
-          const filteredValues = values.filter(each => each.id === isSelected)
+          /* const filteredValues = values.filter(each => each.id === isSelected) */
 
           return (
-            <>
-              <Header />
-              <GamingSideBarCon isDark={isDark}>
-                <SideBarCom />
-                {this.getViews(isDark, clickBtn)}
-              </GamingSideBarCon>
-            </>
+            <GamingSideBarCon isDark={isDark}>
+              <SideBarCom />
+              {this.getViews(isDark, clickBtn)}
+            </GamingSideBarCon>
           )
         }}
       </GlobalContext.Consumer>

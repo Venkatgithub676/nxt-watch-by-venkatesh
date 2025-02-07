@@ -1,10 +1,11 @@
-import {Route, Switch, Redirect} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import {v4 as uuidv4} from 'uuid'
 import {Component} from 'react'
 import GlobalContext from './context/GlobalContext'
 import './App.css'
 import Home from './components/Home'
 import Login from './components/Login'
+import Header from './components/Header'
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import Saved from './components/Saved'
@@ -69,7 +70,7 @@ class App extends Component {
     } else {
       filteredValues = savedVideos.filter(each => each.id !== id)
     }
-    console.log(filteredValues, saved, videoItems)
+    // console.log(filteredValues, saved, videoItems)
     this.setState({savedVideos: filteredValues})
   }
 
@@ -87,6 +88,8 @@ class App extends Component {
           saveVideoBtn: this.saveVideoBtn,
         }}
       >
+        <Header />
+
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
