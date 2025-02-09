@@ -62,7 +62,7 @@ class Gaming extends Component {
   }
 
   successView = (isDark, clickBtn, gamingData) => (
-    <GamingCon isDark={isDark} data-testid="gaming">
+    <GamingCon isDark={isDark}>
       <GamingTopEmojiHeadingCon isDark={isDark}>
         <GamingHeadingCon>
           <EmojiCon>
@@ -86,8 +86,8 @@ class Gaming extends Component {
     </GamingCon>
   )
 
-  loadingView = () => (
-    <LoadingCon data-testid="loader">
+  loadingView = isDark => (
+    <LoadingCon data-testid="loader" isDark={isDark}>
       <Loader color="blue" type="ThreeDots" />
     </LoadingCon>
   )
@@ -101,7 +101,7 @@ class Gaming extends Component {
       case apiStatusConstants.success:
         return this.successView(isDark, clickBtn, gamingData)
       case apiStatusConstants.loading:
-        return this.loadingView()
+        return this.loadingView(isDark)
       case apiStatusConstants.failure:
         return this.failureView()
       default:
@@ -118,7 +118,7 @@ class Gaming extends Component {
           /* const filteredValues = values.filter(each => each.id === isSelected) */
 
           return (
-            <GamingSideBarCon isDark={isDark}>
+            <GamingSideBarCon isDark={isDark} data-testid="gaming">
               <SideBarCom />
               {this.getViews(isDark, clickBtn)}
             </GamingSideBarCon>

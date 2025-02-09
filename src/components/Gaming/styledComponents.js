@@ -65,8 +65,8 @@ export const GamingUlCon = styled.ul`
 
 export const LoadingCon = styled.div`
   width: 100%;
-  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${props => (props.isDark ? '#000000' : '#f4f4f4')};
 `

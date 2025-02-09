@@ -126,9 +126,6 @@ class Trending extends Component {
           const filteredValues = values.filter(each => each.id === isSelected)
           // console.log(isSelected)
 
-          if (filteredValues[0].category !== 'trending') {
-            return <Redirect to="/" />
-          }
           return (
             <TrendingSideBarCon isDark={isDark} data-testid="trending">
               <SideBarCom />
