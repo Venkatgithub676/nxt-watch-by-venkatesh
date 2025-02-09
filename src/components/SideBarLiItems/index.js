@@ -34,18 +34,15 @@ const Logos = props => {
 
 const SideBarLiItems = props => {
   const {each, isSelected, clickBtn, isDark} = props
-  const {category, id, type, text} = each
+  const {path, id, type, text} = each
 
   const onClickBtn = () => {
     clickBtn(id)
   }
+  console.log(path)
 
   return (
-    <Link
-      to={`/${category}`}
-      style={{textDecoration: 'none'}}
-      margin={{top: 5}}
-    >
+    <Link to={path} style={{textDecoration: 'none'}} margin={{top: 5}}>
       <SideBarLiItem selected={isSelected === id} isDark={isDark}>
         <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
           <Logos logo={type} />

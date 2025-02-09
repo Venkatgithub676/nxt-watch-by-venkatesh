@@ -25,25 +25,25 @@ const optionConstants = {
 const values = [
   {
     id: uuidv4(),
-    category: '',
+    path: '/',
     type: optionConstants.homeBtn,
     text: 'Home',
   },
   {
     id: uuidv4(),
-    category: 'trending',
+    path: '/trending',
     type: optionConstants.trendingBtn,
     text: 'Trending',
   },
   {
     id: uuidv4(),
-    category: 'gaming',
+    path: '/gaming',
     type: optionConstants.gamingBtn,
     text: 'Gaming',
   },
   {
     id: uuidv4(),
-    category: 'saved-videos',
+    path: '/saved-videos',
     type: optionConstants.saveBtn,
     text: 'Saved Videos',
   },
