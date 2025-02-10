@@ -18,7 +18,7 @@ export const SideBarLiItem = styled.li`
   }};
 `
 
-export const SideBarLiItemLabels = styled.label`
+export const SideBarLiItemLabels = styled.div`
   margin-left: 20px;
   color: ${props => {
     if (props.isDark && props.selected) {
@@ -33,7 +33,7 @@ export const SideBarLiItemLabels = styled.label`
     return '#ffffff'
   }};
 `
-export const SideBarLiBtn = styled.button`
+export const SideBarLi = styled.p`
   border: none;
   cursor: pointer;
   background-color:transparent;
@@ -42,6 +42,7 @@ export const SideBarLiBtn = styled.button`
   font-family: Roboto;
   font-size: 17px;
   cursor: pointer;
+  text-decoration:none;
   
   font-weight: ${props => (props.selected ? 'bold' : '')};
   color: ${props => props.isDark && '#ffffff'}};

@@ -3,11 +3,7 @@ import {SiYoutubegaming} from 'react-icons/si'
 import {Link} from 'react-router-dom'
 import {IoMdHome} from 'react-icons/io'
 
-import {
-  SideBarLiItem,
-  SideBarLiItemLabels,
-  SideBarLiBtn,
-} from './styledComponents'
+import {SideBarLiItem, SideBarLiItemLabels, SideBarLi} from './styledComponents'
 
 const optionConstants = {
   homeBtn: 'HomeBtn',
@@ -42,21 +38,13 @@ const SideBarLiItems = props => {
   console.log(path)
 
   return (
-    <Link to={path} style={{textDecoration: 'none'}} margin={{top: 5}}>
-      <SideBarLiItem selected={isSelected === id} isDark={isDark}>
-        <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
-          <Logos logo={type} />
-        </SideBarLiItemLabels>
+    <SideBarLiItem selected={isSelected === id} isDark={isDark}>
+      <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
+        <Logos logo={type} />
+      </SideBarLiItemLabels>
 
-        <SideBarLiBtn
-          isDark={isDark}
-          onClick={onClickBtn}
-          selected={isSelected === id}
-        >
-          {text}
-        </SideBarLiBtn>
-      </SideBarLiItem>
-    </Link>
+      <Link to={path}>{text}</Link>
+    </SideBarLiItem>
   )
 }
 
