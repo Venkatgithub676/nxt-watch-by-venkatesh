@@ -28,7 +28,6 @@ const HomeVideos = props => {
         style={{
           textDecoration: 'none',
         }}
-        onClick={clickBtns}
       >
         <Thumbnail src={thumbnailUrl} alt="video thumbnail" />
         <HomeVideosDtlsCon>

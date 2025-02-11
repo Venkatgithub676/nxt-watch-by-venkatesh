@@ -39,7 +39,7 @@ const Saved = () => (
                   No saved videos found
                 </NoSavedVideosHeading>
                 <NoSavedVideosPara isDark={isDark}>
-                  Save your videos by clicking a button
+                  You can save your videos while watching them
                 </NoSavedVideosPara>
               </NoSavedVideosCon>
             ) : (

@@ -29,7 +29,6 @@ const TrendingLiItems = props => {
     <TrendingLiItem>
       <Link
         to={`/videos/${id}`}
-        onClick={clickBtns}
         style={{textDecoration: 'none', color: '#000000'}}
       >
         <InnerCon>
@@ -41,16 +40,6 @@ const TrendingLiItems = props => {
               {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
             </TrendingItemViewCount>
           </TrendingItemMatterConDesktop>
-          <TrendingProfMatterConMob>
-            <TrendingItemProfileImg src={profileImgUrl} />
-            <TrendingItemsMatterConMobile>
-              <TrendingItemTitle isDark={isDark}>{title}</TrendingItemTitle>
-              <TrendingItemViewCountMobile>
-                <BsDot /> {viewCount} <BsDot />
-                {formatDistanceToNow(new Date(publishedAt))}
-              </TrendingItemViewCountMobile>
-            </TrendingItemsMatterConMobile>
-          </TrendingProfMatterConMob>
         </InnerCon>
       </Link>
     </TrendingLiItem>

@@ -38,13 +38,13 @@ const SideBarLiItems = props => {
   console.log(path)
 
   return (
-    <SideBarLiItem selected={isSelected === id} isDark={isDark}>
-      <SideBarLiItemLabels selected={isSelected === id} isDark={isDark}>
+    <Link to={path}>
+      <SideBarLiItem isDark={isDark}>
         <Logos logo={type} />
-      </SideBarLiItemLabels>
 
-      <Link to={path}>{text}</Link>
-    </SideBarLiItem>
+        <SideBarLi>{text}</SideBarLi>
+      </SideBarLiItem>
+    </Link>
   )
 }
 
