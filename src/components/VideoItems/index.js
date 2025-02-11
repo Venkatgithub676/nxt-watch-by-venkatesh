@@ -221,7 +221,7 @@ class VideoItems extends Component {
           </ViewsLikesCon>
           <HorizantalLine />
           <ChannelDetailsCon>
-            <ProfileImg src={profileImgUrl} />
+            <ProfileImg src={profileImgUrl} alt="channel logo" />
             <ChannelDetails isDark={isDark}>
               <ChannelName>{name}</ChannelName>
               <ChannelSubs isDark={isDark}>
@@ -257,17 +257,12 @@ class VideoItems extends Component {
           const {isDark, values, isSelected, saveVideoBtn, savedVideos} = value
 
           const filteredValues = values.filter(each => each.id === isSelected)
-          if (filteredValues.length !== 0) {
-            return <Redirect to="/" />
-          }
+
           return (
-            <VideoDtlsCon>
-              <Header />
-              <VideoItemsSideBarCon>
-                <SideBarCom />
-                {this.getViews(isDark, saveVideoBtn, savedVideos)}
-              </VideoItemsSideBarCon>
-            </VideoDtlsCon>
+            <VideoItemsSideBarCon>
+              <SideBarCom />
+              {this.getViews(isDark, saveVideoBtn, savedVideos)}
+            </VideoItemsSideBarCon>
           )
         }}
       </GlobalContext.Consumer>
