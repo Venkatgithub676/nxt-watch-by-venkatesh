@@ -171,12 +171,11 @@ class VideoItems extends Component {
             </Views>
             <LikesSaveCon>
               <LikeCon>
-                <LikeLabel liked={liked} htmlFor="like" isDark={isDark}>
+                <LikeLabel liked={liked} isDark={isDark}>
                   <BiLike />
                 </LikeLabel>
 
                 <LikeButton
-                  id="like"
                   onClick={this.clickLike}
                   isDark={isDark}
                   liked={liked}
@@ -186,16 +185,11 @@ class VideoItems extends Component {
               </LikeCon>
 
               <DislikeCon>
-                <DisikeLabel
-                  disliked={disliked}
-                  htmlFor="dislike"
-                  isDark={isDark}
-                >
+                <DisikeLabel disliked={disliked} isDark={isDark}>
                   <BiDislike />
                 </DisikeLabel>
 
                 <DislikeButton
-                  id="dislike"
                   onClick={this.clickDislike}
                   isDark={isDark}
                   disliked={disliked}
@@ -205,14 +199,13 @@ class VideoItems extends Component {
               </DislikeCon>
 
               <MediaCon>
-                <MediaLabel htmlFor="save" saved={saved} isDark={isDark}>
+                <MediaLabel saved={saved} isDark={isDark}>
                   {saved ? <HiOutlineSaveAs /> : <HiSaveAs size={25} />}
                 </MediaLabel>
                 <MediaButton
                   saved={saved}
                   onClick={clickSaveBtn}
                   isDark={isDark}
-                  id="save"
                 >
                   {saved ? 'Saved' : 'Save'}
                 </MediaButton>

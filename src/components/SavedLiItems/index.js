@@ -29,7 +29,6 @@ const SavedLiItems = props => {
     <SavedLiItem>
       <Link
         to={`/videos/${id}`}
-        onClick={clickBtns}
         style={{textDecoration: 'none', color: '#000000'}}
       >
         <SavedInternalCon>
@@ -41,16 +40,6 @@ const SavedLiItems = props => {
               {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
             </SavedItemViewCount>
           </SavedItemMatterConDesktop>
-          <SavedProfMatterConMob>
-            <SavedItemProfileImg src={profileImgUrl} />
-            <SavedItemsMatterConMobile>
-              <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
-              <SavedItemViewCountMobile>
-                {name} <BsDot /> {viewCount} <BsDot />
-                {formatDistanceToNow(new Date(publishedAt))}
-              </SavedItemViewCountMobile>
-            </SavedItemsMatterConMobile>
-          </SavedProfMatterConMob>
         </SavedInternalCon>
       </Link>
     </SavedLiItem>

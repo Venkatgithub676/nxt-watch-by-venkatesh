@@ -92,7 +92,7 @@ export const LikeButton = styled.button`
     margin-right: 2px;
   }
 `
-export const LikeLabel = styled.label`
+export const LikeLabel = styled.div`
   font-family: Roboto;
   font-size: 20px;
   display: flex;
@@ -119,26 +119,11 @@ export const MediaCon = styled(LikeCon)`
   width: 90px;
 `
 export const MediaButton = styled(LikeButton)`
-  color: ${props => {
-    if (props.isDark && props.saved) {
-      return '#2563eb'
-    }
-    if (!props.isDark && props.saved) {
-      return '#2563eb'
-    }
-    return '#64748b'
-  }};
+  color: ${props => (props.saved ? '#2563eb' : '#64748b')};
   width: 40px;
 `
 export const MediaLabel = styled(LikeLabel)`
-  color: ${props => {
-    if (props.isDark && props.saved) {
-      return '#2563eb'
-    }
-    if (!props.isDark && props.saved) {
-      return '#2563eb'
-    }
-    return '#64748b'
+  color: ${props => (props.saved ? '#2563eb' : '#64748b')};
   }};
 `
 
