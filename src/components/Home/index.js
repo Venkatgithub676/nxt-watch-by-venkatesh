@@ -116,7 +116,7 @@ class Home extends Component {
     </LoadingCon>
   )
 
-  failureView = () => <ErrorComponent />
+  failureView = () => <ErrorComponent retryBtn={this.retryBtn} />
 
   getViews = (isDark, clickBtn) => {
     const {status, videos} = this.state
@@ -198,6 +198,7 @@ class Home extends Component {
                       data-testid="searchButton"
                       onClick={this.searchBtn}
                       isDark={isDark}
+                      type="button"
                     >
                       <IoMdSearch />
                     </SearchBtn>

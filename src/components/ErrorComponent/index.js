@@ -8,10 +8,11 @@ import {
 
 import GlobalContext from '../../context/GlobalContext'
 
-const ErrorComponent = () => (
+const ErrorComponent = props => (
   <GlobalContext.Consumer>
     {value => {
       const {isDark} = value
+      const {retryBtn} = props
 
       return (
         <ErrorCon isDark={isDark}>
@@ -30,7 +31,9 @@ const ErrorComponent = () => (
             We are having some trouble to complete your request. Please try
             again.
           </ErrorPara>
-          <ErrorRetryBtn>Retry</ErrorRetryBtn>
+          <ErrorRetryBtn type="button" onClick={retryBtn}>
+            Retry
+          </ErrorRetryBtn>
         </ErrorCon>
       )
     }}
