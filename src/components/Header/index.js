@@ -31,19 +31,17 @@ const overlayStyles = {
 const Header = props => (
   <GlobalContext.Consumer>
     {value => {
-      const {isDark, changeTheme, clickBtn, values} = value
+      const {isDark, changeTheme} = value
 
       const clickLogout = () => {
         Cookies.remove('jwt_token')
         const {history} = props
         history.replace('/login')
       }
-      const clickLogo = () => {
-        clickBtn(values[0].id)
-      }
+
       return (
         <NavContainer isDark={isDark}>
-          <Link to="/" onClick={clickLogo}>
+          <Link to="/">
             <Logo
               alt="website logo"
               src={

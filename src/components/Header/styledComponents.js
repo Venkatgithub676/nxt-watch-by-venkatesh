@@ -7,6 +7,7 @@ export const NavContainer = styled.nav`
   height: 10vh;
   background-color: ${props => (props.isDark ? '#212121' : '#f9f9f9')};
   justify-content: space-between;
+  align-items: center;
 `
 
 export const Logo = styled.img`
@@ -34,10 +35,6 @@ export const Buttons = styled.button`
   color: ${props => (props.isDark ? '#f9f9f9' : '#0f0f0f')};
   font-size: 25px;
   height: 30px;
-  width: 33%;
-  @media screen and (min-width: 768px) {
-    width: 20%;
-  }
 `
 
 export const DesktopButtonContainer = styled.ul`

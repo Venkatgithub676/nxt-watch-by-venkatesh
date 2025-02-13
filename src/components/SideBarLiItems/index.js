@@ -35,7 +35,7 @@ const SideBarLiItems = props => {
   console.log(path, originalPath)
 
   return (
-    <Link to={path} style={{textDecoration: 'none'}}>
+    <Link to={path} style={{textDecoration: 'none', color: '#212121'}}>
       <SideBarLiItem selected={path === originalPath} isDark={isDark}>
         <SideBarLiItemLabels selected={path === originalPath} isDark={isDark}>
           <Logos logo={type} />

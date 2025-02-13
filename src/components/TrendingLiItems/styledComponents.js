@@ -15,6 +15,9 @@ export const TrendingLiItem = styled.li`
 `
 export const InnerCon = styled.div`
   display: flex;
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+  }
 `
 
 export const TrendingItemThumbnail = styled.img`
@@ -35,9 +38,6 @@ export const TrendingItemThumbnail = styled.img`
 export const TrendingItemMatterConDesktop = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 576px) {
-    display: none;
-  }
 `
 export const TrendingItemTitle = styled.p`
   margin-top: 0px;
