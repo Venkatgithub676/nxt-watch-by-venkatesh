@@ -113,13 +113,14 @@ class Gaming extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark, isSelected, values, clickBtn} = value
+          const {isDark, clickBtn} = value
 
           /* const filteredValues = values.filter(each => each.id === isSelected) */
-
+          const {match} = this.props
+          const {path} = match
           return (
             <GamingSideBarCon isDark={isDark} data-testid="gaming">
-              <SideBarCom />
+              <SideBarCom originalPath={path} />
               {this.getViews(isDark, clickBtn)}
             </GamingSideBarCon>
           )

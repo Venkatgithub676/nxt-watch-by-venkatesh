@@ -50,14 +50,10 @@ const values = [
 ]
 
 class App extends Component {
-  state = {isDark: false, isSelected: values[0].id, savedVideos: []}
+  state = {isDark: false, savedVideos: []}
 
   changeTheme = () => {
     this.setState(prevState => ({isDark: !prevState.isDark}))
-  }
-
-  clickBtn = id => {
-    this.setState({isSelected: id})
   }
 
   saveVideoBtn = (videoItems, saved) => {
@@ -75,15 +71,13 @@ class App extends Component {
   }
 
   render() {
-    const {isDark, isSelected, savedVideos} = this.state
+    const {isDark, savedVideos} = this.state
     return (
       <GlobalContext.Provider
         value={{
           isDark,
           changeTheme: this.changeTheme,
           values,
-          isSelected,
-          clickBtn: this.clickBtn,
           savedVideos,
           saveVideoBtn: this.saveVideoBtn,
         }}

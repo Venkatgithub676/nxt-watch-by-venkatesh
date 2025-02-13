@@ -159,10 +159,12 @@ class Home extends Component {
         {value => {
           const {isDark, clickBtn} = value
           const {popupClose, searchInput} = this.state
+          const {match} = this.props
+          const {path} = match
 
           return (
             <SideBarHomeCon data-testid="home" isDark={isDark}>
-              <SideBarCom />
+              <SideBarCom originalPath={path} />
 
               <HomeCon isDark={isDark}>
                 {popupClose && (

@@ -7,14 +7,12 @@ import {BiLike, BiDislike} from 'react-icons/bi'
 import {HiOutlineSaveAs, HiSaveAs} from 'react-icons/hi'
 
 import {formatDistanceToNow} from 'date-fns'
-import {Redirect} from 'react-router-dom'
-import Header from '../Header'
+
 import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
 import ErrorComponent from '../ErrorComponent'
 
 import {
-  VideoDtlsCon,
   VideoItemsSideBarCon,
   VideoItemsCon,
   VideoPlayer,
@@ -247,9 +245,7 @@ class VideoItems extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark, values, isSelected, saveVideoBtn, savedVideos} = value
-
-          const filteredValues = values.filter(each => each.id === isSelected)
+          const {isDark, saveVideoBtn, savedVideos} = value
 
           return (
             <VideoItemsSideBarCon>

@@ -7,18 +7,12 @@ import {
 } from './styledComponents'
 
 const GamingLiItems = props => {
-  const {each, isDark, clickBtn} = props
+  const {each, isDark} = props
   const {id, viewCount, title, thumbnailUrl} = each
-  const clickBtns = () => {
-    clickBtn('')
-  }
+
   return (
     <GamingItemCon>
-      <Link
-        to={`/videos/${id}`}
-        onClick={clickBtns}
-        style={{textDecoration: 'none'}}
-      >
+      <Link to={`/videos/${id}`} style={{textDecoration: 'none'}}>
         <GamingItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
         <GamingItemTitle isDark={isDark}>{title}</GamingItemTitle>
         <GamingItemViewCount isDark={isDark}>

@@ -12,11 +12,11 @@ import {
 } from './styledComponents'
 import SideBarLiItems from '../SideBarLiItems'
 
-const SideBarCom = () => (
+const SideBarCom = props => (
   <GlobalContext.Consumer>
     {value => {
       const {isDark, values, isSelected, clickBtn} = value
-
+      const {originalPath} = props
       return (
         <SideNavBar isDark={isDark}>
           <SideBarUlCon>
@@ -27,6 +27,7 @@ const SideBarCom = () => (
                 isSelected={isSelected}
                 isDark={isDark}
                 clickBtn={clickBtn}
+                originalPath={originalPath}
               />
             ))}
           </SideBarUlCon>

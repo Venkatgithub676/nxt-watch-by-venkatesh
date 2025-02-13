@@ -16,14 +16,10 @@ import {
 } from './styledComponents'
 
 const TrendingLiItems = props => {
-  const {each, isDark, clickBtn} = props
+  const {each, isDark} = props
   //   console.log(each)
   const {id, publishedAt, thumbnailUrl, title, viewCount, channel} = each
   const {name, profileImgUrl} = channel
-
-  const clickBtns = () => {
-    clickBtn('')
-  }
 
   return (
     <TrendingLiItem>

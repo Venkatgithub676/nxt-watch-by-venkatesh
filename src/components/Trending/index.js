@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
-import {Redirect} from 'react-router-dom'
+
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import GlobalContext from '../../context/GlobalContext'
@@ -122,13 +122,14 @@ class Trending extends Component {
     return (
       <GlobalContext.Consumer>
         {value => {
-          const {isDark, isSelected, values, clickBtn} = value
-          const filteredValues = values.filter(each => each.id === isSelected)
-          // console.log(isSelected)
+          const {isDark, clickBtn} = value
 
+          // console.log(isSelected)
+          const {match} = this.props
+          const {path} = match
           return (
             <TrendingSideBarCon isDark={isDark} data-testid="trending">
-              <SideBarCom />
+              <SideBarCom originalPath={path} />
               {this.getViews(isDark, clickBtn)}
             </TrendingSideBarCon>
           )

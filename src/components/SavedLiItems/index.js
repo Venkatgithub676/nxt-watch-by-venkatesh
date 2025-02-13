@@ -17,13 +17,9 @@ import {
 } from './styledComponents'
 
 const SavedLiItems = props => {
-  const {each, isDark, clickBtn} = props
+  const {each, isDark} = props
   const {id, publishedAt, thumbnailUrl, title, viewCount, channel} = each
   const {name, profileImgUrl} = channel
-
-  const clickBtns = () => {
-    clickBtn('')
-  }
 
   return (
     <SavedLiItem>

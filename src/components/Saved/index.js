@@ -20,14 +20,16 @@ import {
 
 import SavedLiItems from '../SavedLiItems'
 
-const Saved = () => (
+const Saved = props => (
   <GlobalContext.Consumer>
     {value => {
       const {isDark, clickBtn, savedVideos} = value
       // console.log(savedVideos)
+      const {match} = props
+      const {path} = match
       return (
         <SavedSideBarCon>
-          <SideBarCom />
+          <SideBarCom originalPath={path} />
           <SavedCon isDark={isDark}>
             {savedVideos.length === 0 ? (
               <NoSavedVideosCon isDark={isDark}>

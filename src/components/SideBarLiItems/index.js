@@ -29,20 +29,20 @@ const Logos = props => {
 }
 
 const SideBarLiItems = props => {
-  const {each, isSelected, clickBtn, isDark} = props
-  const {path, id, type, text} = each
+  const {each, isDark, originalPath} = props
+  const {path, type, text} = each
 
-  const onClickBtn = () => {
-    clickBtn(id)
-  }
-  console.log(path)
+  console.log(path, originalPath)
 
   return (
-    <Link to={path}>
-      <SideBarLiItem isDark={isDark}>
-        <Logos logo={type} />
-
-        <SideBarLi>{text}</SideBarLi>
+    <Link to={path} style={{textDecoration: 'none'}}>
+      <SideBarLiItem selected={path === originalPath} isDark={isDark}>
+        <SideBarLiItemLabels selected={path === originalPath} isDark={isDark}>
+          <Logos logo={type} />
+        </SideBarLiItemLabels>
+        <SideBarLi selected={path === originalPath} isDark={isDark}>
+          {text}
+        </SideBarLi>
       </SideBarLiItem>
     </Link>
   )

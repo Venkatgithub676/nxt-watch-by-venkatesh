@@ -5,7 +5,7 @@ import {
   NotFoundPara,
   NotFoundSideBarCon,
 } from './styledComponents'
-import Header from '../Header'
+
 import SideBarCom from '../SideBarCom'
 import GlobalContext from '../../context/GlobalContext'
 

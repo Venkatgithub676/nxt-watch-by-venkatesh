@@ -13,14 +13,11 @@ import {
 } from './styledComponents'
 
 const HomeVideos = props => {
-  const {each, isDark, clickBtn} = props
+  const {each, isDark} = props
 
   const {id, thumbnailUrl, publishedAt, viewCount, title, channel} = each
   const {name, profileImgUrl} = channel
 
-  const clickBtns = () => {
-    clickBtn('')
-  }
   return (
     <LiCon isDark={isDark}>
       <Link
