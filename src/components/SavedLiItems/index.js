@@ -6,9 +6,12 @@ import {
   SavedLiItem,
   SavedInternalCon,
   SavedItemThumbnail,
+  BioCon,
   SavedItemMatterConDesktop,
   SavedItemTitle,
+  ChannelNameBio,
   SavedItemName,
+  DotCon,
   SavedItemViewCount,
   SavedProfMatterConMob,
   SavedItemsMatterConMobile,
@@ -29,13 +32,22 @@ const SavedLiItems = props => {
       >
         <SavedInternalCon>
           <SavedItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
-          <SavedItemMatterConDesktop>
-            <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
-            <SavedItemName isDark={isDark}>{name}</SavedItemName>
-            <SavedItemViewCount isDark={isDark}>
-              {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
-            </SavedItemViewCount>
-          </SavedItemMatterConDesktop>
+          <BioCon>
+            <SavedItemProfileImg src={profileImgUrl} />
+            <SavedItemMatterConDesktop>
+              <SavedItemTitle isDark={isDark}>{title}</SavedItemTitle>
+              <ChannelNameBio>
+                <SavedItemName isDark={isDark}>{name}</SavedItemName>
+                <DotCon>
+                  <BsDot />
+                </DotCon>
+                <SavedItemViewCount isDark={isDark}>
+                  {viewCount} <BsDot />{' '}
+                  {formatDistanceToNow(new Date(publishedAt))}
+                </SavedItemViewCount>
+              </ChannelNameBio>
+            </SavedItemMatterConDesktop>
+          </BioCon>
         </SavedInternalCon>
       </Link>
     </SavedLiItem>

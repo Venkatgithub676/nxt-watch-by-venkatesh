@@ -6,9 +6,9 @@ export const SavedInternalCon = styled.div`
   margin-bottom: 50px;
   margin-top: 50px;
   display: flex;
-
+  flex-direction: column;
   @media screen and (max-width: 576px) {
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -16,6 +16,7 @@ export const SavedInternalCon = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  background-color: red;
 `
 
 export const SavedItemThumbnail = styled.img`
@@ -29,6 +30,16 @@ export const SavedItemThumbnail = styled.img`
     width: 300px;
     height: 200px;
     margin-right: 20px;
+  }
+`
+
+export const BioCon = styled.div`
+  display: flex;
+  margin-top: 20px;
+
+  @media screen and (min-width: 576px) {
+    flex-direction: column;
+    margin-top: 0;
   }
 `
 export const SavedItemMatterConDesktop = styled.div`
@@ -50,6 +61,16 @@ export const SavedItemTitle = styled.p`
   @media screen and (min-width: 576px) and (max-width: 768px) {
     font-size: 18px;
   }
+`
+export const ChannelNameBio = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 576px) {
+    flex-direction: row;
+    align-items: center;
+  }
+  height: 30px;
 `
 export const SavedItemName = styled.p`
   font-size: 18px;
@@ -74,6 +95,13 @@ export const SavedItemViewCount = styled.p`
   }
 `
 
+export const DotCon = styled.div`
+  color: ${props => (props.isDark ? '#7e858e' : '#616e7c')};
+  @media screen and (min-width: 576px) {
+    display: none;
+  }
+`
+
 export const SavedProfMatterConMob = styled.div`
   display: flex;
   margin-top: 20px;
@@ -91,6 +119,9 @@ export const SavedItemProfileImg = styled.img`
   height: 50px;
   border-radius: 100%;
   margin-right: 20px;
+  @media screen and (min-width: 576px) {
+    display: none;
+  }
 `
 
 export const SavedItemViewCountMobile = styled(SavedItemViewCount)`

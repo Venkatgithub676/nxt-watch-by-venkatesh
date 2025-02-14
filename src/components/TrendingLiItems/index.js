@@ -5,9 +5,12 @@ import {
   TrendingLiItem,
   InnerCon,
   TrendingItemThumbnail,
+  BioCon,
   TrendingItemMatterConDesktop,
   TrendingItemTitle,
+  ChannelNameBio,
   TrendingItemName,
+  DotCon,
   TrendingItemViewCount,
   TrendingProfMatterConMob,
   TrendingItemsMatterConMobile,
@@ -29,13 +32,22 @@ const TrendingLiItems = props => {
       >
         <InnerCon>
           <TrendingItemThumbnail src={thumbnailUrl} alt="video thumbnail" />
-          <TrendingItemMatterConDesktop>
-            <TrendingItemTitle isDark={isDark}>{title}</TrendingItemTitle>
-            <TrendingItemName isDark={isDark}>{name}</TrendingItemName>
-            <TrendingItemViewCount isDark={isDark}>
-              {viewCount} <BsDot /> {formatDistanceToNow(new Date(publishedAt))}
-            </TrendingItemViewCount>
-          </TrendingItemMatterConDesktop>
+          <BioCon>
+            <TrendingItemProfileImg src={profileImgUrl} />
+            <TrendingItemMatterConDesktop>
+              <TrendingItemTitle isDark={isDark}>{title}</TrendingItemTitle>
+              <ChannelNameBio>
+                <TrendingItemName isDark={isDark}>{name}</TrendingItemName>
+                <DotCon>
+                  <BsDot />
+                </DotCon>
+                <TrendingItemViewCount isDark={isDark}>
+                  {viewCount} <BsDot />
+                  {formatDistanceToNow(new Date(publishedAt))}
+                </TrendingItemViewCount>
+              </ChannelNameBio>
+            </TrendingItemMatterConDesktop>
+          </BioCon>
         </InnerCon>
       </Link>
     </TrendingLiItem>
