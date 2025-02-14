@@ -6,9 +6,9 @@ export const SavedInternalCon = styled.div`
   margin-bottom: 50px;
   margin-top: 50px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   @media screen and (max-width: 576px) {
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -16,7 +16,6 @@ export const SavedInternalCon = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  background-color: red;
 `
 
 export const SavedItemThumbnail = styled.img`
@@ -35,19 +34,16 @@ export const SavedItemThumbnail = styled.img`
 
 export const BioCon = styled.div`
   display: flex;
-  margin-top: 20px;
+  flex-direction: column;
 
-  @media screen and (min-width: 576px) {
-    flex-direction: column;
-    margin-top: 0;
+  @media screen and (max-width: 576px) {
+    flex-direction: row;
+    margin-top: 20px;
   }
 `
 export const SavedItemMatterConDesktop = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 576px) {
-    display: none;
-  }
 `
 export const SavedItemTitle = styled.p`
   margin-top: 10px;
@@ -65,12 +61,12 @@ export const SavedItemTitle = styled.p`
 export const ChannelNameBio = styled.div`
   display: flex;
   flex-direction: column;
+  height: 30px;
 
   @media screen and (max-width: 576px) {
     flex-direction: row;
     align-items: center;
   }
-  height: 30px;
 `
 export const SavedItemName = styled.p`
   font-size: 18px;
@@ -81,17 +77,8 @@ export const SavedItemName = styled.p`
   @media screen and (min-width: 576px) and (max-width: 768px) {
     font-size: 14px;
   }
-`
-export const SavedItemViewCount = styled.p`
-  display: flex;
-  height: 20px;
-  align-items: center;
-  font-size: 18px;
-  margin-top: 10px;
-  font-family: Roboto;
-  color: ${props => (props.isDark ? '#7e858e' : '#616e7c')};
-  @media screen and (min-width: 576px) and (max-width: 768px) {
-    font-size: 14px;
+  @media screen and (max-width: 576px) {
+    font-size: 15px;
   }
 `
 
@@ -99,6 +86,24 @@ export const DotCon = styled.div`
   color: ${props => (props.isDark ? '#7e858e' : '#616e7c')};
   @media screen and (min-width: 576px) {
     display: none;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 15px;
+  }
+`
+export const SavedItemViewCount = styled.p`
+  display: flex;
+  height: 20px;
+  align-items: center;
+  font-size: 18px;
+
+  font-family: Roboto;
+  color: ${props => (props.isDark ? '#7e858e' : '#616e7c')};
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 15px;
   }
 `
 

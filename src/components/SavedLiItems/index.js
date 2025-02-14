@@ -42,7 +42,7 @@ const SavedLiItems = props => {
                   <BsDot />
                 </DotCon>
                 <SavedItemViewCount isDark={isDark}>
-                  {viewCount} <BsDot />{' '}
+                  {viewCount} <BsDot />
                   {formatDistanceToNow(new Date(publishedAt))}
                 </SavedItemViewCount>
               </ChannelNameBio>

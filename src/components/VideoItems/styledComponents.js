@@ -10,6 +10,7 @@ export const VideoItemsCon = styled.div`
   width: 100%;
   padding: 50px 30px 30px 30px;
   background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  min-height: 90vh;
   color: ${props => props.isDark && '#ffffff'};
 
   @media screen and (max-width: 768px) {
