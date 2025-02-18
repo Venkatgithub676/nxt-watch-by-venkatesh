@@ -32,7 +32,7 @@ const SideBarLiItems = props => {
   const {each, isDark, originalPath} = props
   const {path, type, text} = each
 
-  console.log(path, originalPath)
+  //   console.log(path, originalPath)
 
   return (
     <Link to={path} style={{textDecoration: 'none', color: '#212121'}}>

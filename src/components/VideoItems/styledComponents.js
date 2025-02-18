@@ -116,14 +116,14 @@ export const DisikeLabel = styled(LikeLabel)`
   color: ${props => (props.disliked ? '#2563eb' : '#64748b')};
 `
 
-export const MediaCon = styled(LikeCon)`
+export const SaveCon = styled(LikeCon)`
   width: 90px;
 `
-export const MediaButton = styled(LikeButton)`
+export const SaveButton = styled(LikeButton)`
   color: ${props => (props.saved ? '#2563eb' : '#64748b')};
   width: 40px;
 `
-export const MediaLabel = styled(LikeLabel)`
+export const SaveText = styled(LikeLabel)`
   color: ${props => (props.saved ? '#2563eb' : '#64748b')};
   }};
 `

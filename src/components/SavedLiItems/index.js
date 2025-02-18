@@ -13,9 +13,6 @@ import {
   SavedItemName,
   DotCon,
   SavedItemViewCount,
-  SavedProfMatterConMob,
-  SavedItemsMatterConMobile,
-  SavedItemViewCountMobile,
   SavedItemProfileImg,
 } from './styledComponents'
 

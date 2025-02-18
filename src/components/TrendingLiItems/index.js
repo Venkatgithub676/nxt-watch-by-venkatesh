@@ -12,9 +12,6 @@ import {
   TrendingItemName,
   DotCon,
   TrendingItemViewCount,
-  TrendingProfMatterConMob,
-  TrendingItemsMatterConMobile,
-  TrendingItemViewCountMobile,
   TrendingItemProfileImg,
 } from './styledComponents'
 

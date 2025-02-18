@@ -28,9 +28,9 @@ import {
   DislikeCon,
   DislikeButton,
   DisikeLabel,
-  MediaCon,
-  MediaButton,
-  MediaLabel,
+  SaveCon,
+  SaveButton,
+  SaveText,
   HorizantalLine,
   ChannelDetailsCon,
   ProfileImg,
@@ -106,33 +106,34 @@ class VideoItems extends Component {
 
   failureView = () => <ErrorComponent />
 
-  clickSave = () => {
-    this.setState(prevState => ({saved: !prevState.saved}))
-  }
-
-  clickLike = () => {
-    this.setState(prevState => {
-      const {liked, disliked} = this.state
-      if (!liked && disliked) {
-        return {liked: !prevState.liked, disliked: !prevState.disliked}
-      }
-      return {liked: !prevState.liked}
-    })
-  }
-
-  clickDislike = () => {
-    this.setState(prevState => {
-      const {liked, disliked} = prevState
-      if (!disliked && liked) {
-        return {disliked: !prevState.disliked, liked: !prevState.liked}
-      }
-      return {disliked: !prevState.disliked}
-    })
+  getBtnDetails = event => {
+    // console.log(event.target.id)
+    if (event.target.id === 'like') {
+      this.setState(prevState => {
+        const {liked, disliked} = this.state
+        if (!liked && disliked) {
+          return {liked: !prevState.liked, disliked: !prevState.disliked}
+        }
+        return {liked: !prevState.liked}
+      })
+    }
+    if (event.target.id === 'dislike') {
+      this.setState(prevState => {
+        const {liked, disliked} = prevState
+        if (!disliked && liked) {
+          return {disliked: !prevState.disliked, liked: !prevState.liked}
+        }
+        return {disliked: !prevState.disliked}
+      })
+    }
+    if (event.target.id === 'saved') {
+      this.setState(prevState => ({saved: !prevState.saved}))
+    }
   }
 
   successView = (isDark, saveVideoBtn, savedVideos) => {
-    const {vidItems, liked, disliked} = this.state
-    let saved = false
+    const {vidItems, liked, disliked, saved} = this.state
+    // let saved = false
     const {
       publishedAt,
       title,
@@ -146,14 +147,14 @@ class VideoItems extends Component {
 
     // console.log(saved)
     const clickSaveBtn = () => {
-      this.clickSave()
+      this.getBtnDetails()
       saveVideoBtn(vidItems, saved)
     }
 
     const filteredValue = savedVideos.filter(each => each.id === id)
-    if (filteredValue.length !== 0) {
-      saved = true
-    }
+    // if (filteredValue.length !== 0) {
+    //   saved = true
+    // }
 
     return (
       <VideoItemsCon isDark={isDark} data-testid="videoItemDetails">
@@ -167,17 +168,13 @@ class VideoItems extends Component {
               {viewCount} views <BsDot />
               {formatDistanceToNow(new Date(publishedAt))}
             </Views>
-            <LikesSaveCon>
+            <LikesSaveCon onClick={this.getBtnDetails}>
               <LikeCon>
                 <LikeLabel liked={liked} isDark={isDark}>
                   <BiLike />
                 </LikeLabel>
 
-                <LikeButton
-                  onClick={this.clickLike}
-                  isDark={isDark}
-                  liked={liked}
-                >
+                <LikeButton id="like" isDark={isDark} liked={liked}>
                   Like
                 </LikeButton>
               </LikeCon>
@@ -187,27 +184,19 @@ class VideoItems extends Component {
                   <BiDislike />
                 </DisikeLabel>
 
-                <DislikeButton
-                  onClick={this.clickDislike}
-                  isDark={isDark}
-                  disliked={disliked}
-                >
+                <DislikeButton id="dislike" isDark={isDark} disliked={disliked}>
                   Dislike
                 </DislikeButton>
               </DislikeCon>
 
-              <MediaCon>
-                <MediaLabel saved={saved} isDark={isDark}>
+              <SaveCon>
+                <SaveText saved={saved} isDark={isDark}>
                   {saved ? <HiOutlineSaveAs /> : <HiSaveAs size={25} />}
-                </MediaLabel>
-                <MediaButton
-                  saved={saved}
-                  onClick={clickSaveBtn}
-                  isDark={isDark}
-                >
+                </SaveText>
+                <SaveButton saved={saved} id="saved" isDark={isDark}>
                   {saved ? 'Saved' : 'Save'}
-                </MediaButton>
-              </MediaCon>
+                </SaveButton>
+              </SaveCon>
             </LikesSaveCon>
           </ViewsLikesCon>
           <HorizantalLine />

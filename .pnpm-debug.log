@@ -3,17 +3,20 @@
     "selected": 1
   },
   "1 error pnpm": {
-    "errno": 1,
-    "code": "ELIFECYCLE",
-    "pkgid": "nxt-watch@1.0.0",
-    "stage": "test",
-    "script": "craco test",
-    "pkgname": "nxt-watch",
+    "code": "ERR_PNPM_UNSUPPORTED_ENGINE",
+    "packageId": "/home/workspace/reactjs/coding-practices/nxtWatchApp",
+    "wanted": {
+      "pnpm": "8.x"
+    },
+    "current": {
+      "node": "v14.18.2",
+      "pnpm": "6.32.10"
+    },
     "err": {
       "name": "pnpm",
-      "message": "nxt-watch@1.0.0 test: `craco test`\nExit status 1",
-      "code": "ELIFECYCLE",
-      "stack": "pnpm: nxt-watch@1.0.0 test: `craco test`\nExit status 1\n    at EventEmitter.<anonymous> (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:105830:20)\n    at EventEmitter.emit (events.js:400:28)\n    at ChildProcess.<anonymous> (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:92391:18)\n    at ChildProcess.emit (events.js:400:28)\n    at maybeClose (internal/child_process.js:1058:16)\n    at Process.ChildProcess._handle.onexit (internal/child_process.js:293:5)"
+      "message": "Unsupported engine for /home/workspace/reactjs/coding-practices/nxtWatchApp: wanted: {\"pnpm\":\"8.x\"} (current: {\"node\":\"v14.18.2\",\"pnpm\":\"6.32.10\"})",
+      "code": "ERR_PNPM_UNSUPPORTED_ENGINE",
+      "stack": "pnpm: Unsupported engine for /home/workspace/reactjs/coding-practices/nxtWatchApp: wanted: {\"pnpm\":\"8.x\"} (current: {\"node\":\"v14.18.2\",\"pnpm\":\"6.32.10\"})\n    at checkEngine (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41384:16)\n    at checkPackage (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43480:104)\n    at packageIsInstallable (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43504:61)\n    at tryReadProjectManifest (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43836:55)\n    at async handler (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:122067:48)\n    at async /usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:182617:21\n    at async run (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:182591:34)\n    at async runPnpm (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:182810:5)\n    at async /usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:182802:7"
     }
   }
 }
