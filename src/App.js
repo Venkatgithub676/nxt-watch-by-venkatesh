@@ -59,7 +59,7 @@ class App extends Component {
   saveVideoBtn = (videoItems, saved) => {
     const {id} = videoItems
     const {savedVideos} = this.state
-    // console.log(videoItems, saved)
+    console.log(videoItems, saved)
     let filteredValues
     if (!saved) {
       filteredValues = [...savedVideos, videoItems]
@@ -67,6 +67,7 @@ class App extends Component {
       filteredValues = savedVideos.filter(each => each.id !== id)
     }
     // console.log(filteredValues, saved, videoItems)
+
     this.setState({savedVideos: filteredValues})
   }
 

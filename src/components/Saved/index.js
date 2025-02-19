@@ -24,7 +24,7 @@ const Saved = props => (
   <GlobalContext.Consumer>
     {value => {
       const {isDark, clickBtn, savedVideos} = value
-      // console.log(savedVideos)
+      /* console.log(savedVideos) */
       const {match} = props
       const {path} = match
       return (

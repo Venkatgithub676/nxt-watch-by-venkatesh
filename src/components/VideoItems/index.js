@@ -127,13 +127,14 @@ class VideoItems extends Component {
       })
     }
     if (event.target.id === 'saved') {
+      console.log(2)
       this.setState(prevState => ({saved: !prevState.saved}))
     }
   }
 
   successView = (isDark, saveVideoBtn, savedVideos) => {
-    const {vidItems, liked, disliked, saved} = this.state
-    // let saved = false
+    const {vidItems, liked, disliked} = this.state
+    let saved = false
     const {
       publishedAt,
       title,
@@ -146,15 +147,17 @@ class VideoItems extends Component {
     const {name, subscriberCount, profileImgUrl} = channel
 
     // console.log(saved)
-    const clickSaveBtn = () => {
-      this.getBtnDetails()
-      saveVideoBtn(vidItems, saved)
-    }
 
     const filteredValue = savedVideos.filter(each => each.id === id)
-    // if (filteredValue.length !== 0) {
-    //   saved = true
-    // }
+    if (filteredValue.length !== 0) {
+      saved = true
+    }
+
+    const clickSave = () => {
+      console.log(1, vidItems, saved)
+
+      saveVideoBtn(vidItems, saved)
+    }
 
     return (
       <VideoItemsCon isDark={isDark} data-testid="videoItemDetails">
@@ -193,7 +196,12 @@ class VideoItems extends Component {
                 <SaveText saved={saved} isDark={isDark}>
                   {saved ? <HiOutlineSaveAs /> : <HiSaveAs size={25} />}
                 </SaveText>
-                <SaveButton saved={saved} id="saved" isDark={isDark}>
+                <SaveButton
+                  saved={saved}
+                  id="saved"
+                  onClick={clickSave}
+                  isDark={isDark}
+                >
                   {saved ? 'Saved' : 'Save'}
                 </SaveButton>
               </SaveCon>
