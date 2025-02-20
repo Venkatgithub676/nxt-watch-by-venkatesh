@@ -3,6 +3,7 @@ import {HiFire} from 'react-icons/hi'
 
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
 import TrendingLiItems from '../TrendingLiItems'
@@ -128,10 +129,13 @@ class Trending extends Component {
           const {match} = this.props
           const {path} = match
           return (
-            <TrendingSideBarCon isDark={isDark} data-testid="trending">
-              <SideBarCom originalPath={path} />
-              {this.getViews(isDark, clickBtn)}
-            </TrendingSideBarCon>
+            <>
+              <Header />
+              <TrendingSideBarCon isDark={isDark} data-testid="trending">
+                <SideBarCom originalPath={path} />
+                {this.getViews(isDark, clickBtn)}
+              </TrendingSideBarCon>
+            </>
           )
         }}
       </GlobalContext.Consumer>

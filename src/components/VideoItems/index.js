@@ -7,7 +7,7 @@ import {BiLike, BiDislike} from 'react-icons/bi'
 import {HiOutlineSaveAs, HiSaveAs} from 'react-icons/hi'
 
 import {formatDistanceToNow} from 'date-fns'
-
+import Header from '../Header'
 import GlobalContext from '../../context/GlobalContext'
 import SideBarCom from '../SideBarCom'
 import ErrorComponent from '../ErrorComponent'
@@ -52,7 +52,6 @@ class VideoItems extends Component {
     status: apiStatusConstants.initial,
     liked: false,
     disliked: false,
-    saved: false,
   }
 
   componentDidMount() {
@@ -126,10 +125,6 @@ class VideoItems extends Component {
         return {disliked: !prevState.disliked}
       })
     }
-    if (event.target.id === 'saved') {
-      console.log(2)
-      this.setState(prevState => ({saved: !prevState.saved}))
-    }
   }
 
   successView = (isDark, saveVideoBtn, savedVideos) => {
@@ -154,8 +149,7 @@ class VideoItems extends Component {
     }
 
     const clickSave = () => {
-      console.log(1, vidItems, saved)
-
+      //   console.log(1, vidItems, saved)
       saveVideoBtn(vidItems, saved)
     }
 
@@ -245,10 +239,13 @@ class VideoItems extends Component {
           const {isDark, saveVideoBtn, savedVideos} = value
 
           return (
-            <VideoItemsSideBarCon>
-              <SideBarCom />
-              {this.getViews(isDark, saveVideoBtn, savedVideos)}
-            </VideoItemsSideBarCon>
+            <>
+              <Header />
+              <VideoItemsSideBarCon>
+                <SideBarCom />
+                {this.getViews(isDark, saveVideoBtn, savedVideos)}
+              </VideoItemsSideBarCon>
+            </>
           )
         }}
       </GlobalContext.Consumer>

@@ -5,7 +5,7 @@ import GlobalContext from './context/GlobalContext'
 import './App.css'
 import Home from './components/Home'
 import Login from './components/Login'
-import Header from './components/Header'
+
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import Saved from './components/Saved'
@@ -83,8 +83,6 @@ class App extends Component {
           saveVideoBtn: this.saveVideoBtn,
         }}
       >
-        <Header />
-
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />

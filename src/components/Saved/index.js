@@ -1,4 +1,5 @@
 import {HiOutlineSaveAs} from 'react-icons/hi'
+import Header from '../Header'
 import SideBarCom from '../SideBarCom'
 import GlobalContext from '../../context/GlobalContext'
 
@@ -28,48 +29,51 @@ const Saved = props => (
       const {match} = props
       const {path} = match
       return (
-        <SavedSideBarCon>
-          <SideBarCom originalPath={path} />
-          <SavedCon isDark={isDark}>
-            {savedVideos.length === 0 ? (
-              <NoSavedVideosCon isDark={isDark}>
-                <NoSavedVideosImg
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
-                  alt="no saved videos"
-                />
-                <NoSavedVideosHeading isDark={isDark}>
-                  No saved videos found
-                </NoSavedVideosHeading>
-                <NoSavedVideosPara isDark={isDark}>
-                  You can save your videos while watching them
-                </NoSavedVideosPara>
-              </NoSavedVideosCon>
-            ) : (
-              <SaveCon data-testid="savedVideos">
-                <SavedTopEmojiHeadingCon isDark={isDark}>
-                  <SavedHeadingCon>
-                    <EmojiCon>
-                      <HiOutlineSaveAs size={40} />
-                    </EmojiCon>
-                    <SavedHeading isDark={isDark}>Saved Videos</SavedHeading>
-                  </SavedHeadingCon>
-                </SavedTopEmojiHeadingCon>
-                <SavedBelowCon isDark={isDark}>
-                  <SavedUlCon>
-                    {savedVideos.map(each => (
-                      <SavedLiItems
-                        each={each}
-                        key={each.id}
-                        isDark={isDark}
-                        clickBtn={clickBtn}
-                      />
-                    ))}
-                  </SavedUlCon>
-                </SavedBelowCon>
-              </SaveCon>
-            )}
-          </SavedCon>
-        </SavedSideBarCon>
+        <>
+          <Header />
+          <SavedSideBarCon>
+            <SideBarCom originalPath={path} />
+            <SavedCon isDark={isDark}>
+              {savedVideos.length === 0 ? (
+                <NoSavedVideosCon isDark={isDark}>
+                  <NoSavedVideosImg
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
+                    alt="no saved videos"
+                  />
+                  <NoSavedVideosHeading isDark={isDark}>
+                    No saved videos found
+                  </NoSavedVideosHeading>
+                  <NoSavedVideosPara isDark={isDark}>
+                    You can save your videos while watching them
+                  </NoSavedVideosPara>
+                </NoSavedVideosCon>
+              ) : (
+                <SaveCon data-testid="savedVideos">
+                  <SavedTopEmojiHeadingCon isDark={isDark}>
+                    <SavedHeadingCon>
+                      <EmojiCon>
+                        <HiOutlineSaveAs size={40} />
+                      </EmojiCon>
+                      <SavedHeading isDark={isDark}>Saved Videos</SavedHeading>
+                    </SavedHeadingCon>
+                  </SavedTopEmojiHeadingCon>
+                  <SavedBelowCon isDark={isDark}>
+                    <SavedUlCon>
+                      {savedVideos.map(each => (
+                        <SavedLiItems
+                          each={each}
+                          key={each.id}
+                          isDark={isDark}
+                          clickBtn={clickBtn}
+                        />
+                      ))}
+                    </SavedUlCon>
+                  </SavedBelowCon>
+                </SaveCon>
+              )}
+            </SavedCon>
+          </SavedSideBarCon>
+        </>
       )
     }}
   </GlobalContext.Consumer>

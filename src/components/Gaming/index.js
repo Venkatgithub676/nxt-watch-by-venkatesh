@@ -2,6 +2,7 @@ import {SiYoutubegaming} from 'react-icons/si'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {Component} from 'react'
+import Header from '../Header'
 import SideBarCom from '../SideBarCom'
 import GamingLiItems from '../GamingLiItems'
 import GlobalContext from '../../context/GlobalContext'
@@ -119,10 +120,13 @@ class Gaming extends Component {
           const {match} = this.props
           const {path} = match
           return (
-            <GamingSideBarCon isDark={isDark} data-testid="gaming">
-              <SideBarCom originalPath={path} />
-              {this.getViews(isDark, clickBtn)}
-            </GamingSideBarCon>
+            <>
+              <Header />
+              <GamingSideBarCon isDark={isDark} data-testid="gaming">
+                <SideBarCom originalPath={path} />
+                {this.getViews(isDark, clickBtn)}
+              </GamingSideBarCon>
+            </>
           )
         }}
       </GlobalContext.Consumer>
