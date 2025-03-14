@@ -29,7 +29,6 @@ specifiers:
   reactjs-popup: 2.0.5
   styled-components: 5.3.0
   surge: 0.23.0
-  uuid: '2'
 
 dependencies:
   '@craco/craco': 6.1.1_react-scripts@4.0.3
@@ -51,7 +50,6 @@ dependencies:
   reactjs-popup: 2.0.5_react-dom@17.0.1+react@17.0.1
   styled-components: 5.3.0_react-dom@17.0.1+react@17.0.1
   surge: 0.23.0
-  uuid: 2.0.3
 
 devDependencies:
   babel-plugin-styled-components: 1.13.2_styled-components@5.3.0
@@ -12316,11 +12314,6 @@ packages:
     resolution: {integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=}
     engines: {node: '>= 0.4.0'}
     dev: true
-
-  /uuid/2.0.3:
-    resolution: {integrity: sha512-FULf7fayPdpASncVy4DLh3xydlXEJJpvIELjYjNeQWYUZ9pclcpvCZSr2gkmN2FrrGcI7G/cJsIEwk5/8vfXpg==}
-    deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
-    dev: false
 
   /uuid/3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}

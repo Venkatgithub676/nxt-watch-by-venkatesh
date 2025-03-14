@@ -1,5 +1,4 @@
 import {Route, Switch} from 'react-router-dom'
-import {v4 as uuidv4} from 'uuid'
 import {Component} from 'react'
 import GlobalContext from './context/GlobalContext'
 import './App.css'
@@ -24,25 +23,25 @@ const optionConstants = {
 
 const values = [
   {
-    id: uuidv4(),
+    id: 1,
     path: '/',
     type: optionConstants.homeBtn,
     text: 'Home',
   },
   {
-    id: uuidv4(),
+    id: 2,
     path: '/trending',
     type: optionConstants.trendingBtn,
     text: 'Trending',
   },
   {
-    id: uuidv4(),
+    id: 3,
     path: '/gaming',
     type: optionConstants.gamingBtn,
     text: 'Gaming',
   },
   {
-    id: uuidv4(),
+    id: 4,
     path: '/saved-videos',
     type: optionConstants.saveBtn,
     text: 'Saved Videos',
