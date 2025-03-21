@@ -213,7 +213,7 @@ class VideoItems extends Component {
             </ChannelDetails>
           </ChannelDetailsCon>
           <ChannelDesc isDark={isDark}>{description}</ChannelDesc>
-          {true && <p>print</p>}
+          
         </VideoItemsMatterCon>
       </VideoItemsCon>
     )
