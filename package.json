@@ -42,7 +42,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "pnpm build",
+    "build": "craco build",
     "test": "craco test",
     "lint": "eslint .",
     "lint:fix": "eslint --fix src/",
