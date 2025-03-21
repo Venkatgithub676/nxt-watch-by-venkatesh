@@ -152,6 +152,7 @@ class VideoItems extends Component {
       //   console.log(1, vidItems, saved)
       saveVideoBtn(vidItems, saved)
     }
+    console.log(disliked)
 
     return (
       <VideoItemsCon isDark={isDark} data-testid="videoItemDetails">
@@ -212,6 +213,7 @@ class VideoItems extends Component {
             </ChannelDetails>
           </ChannelDetailsCon>
           <ChannelDesc isDark={isDark}>{description}</ChannelDesc>
+          {true && <p>print</p>}
         </VideoItemsMatterCon>
       </VideoItemsCon>
     )
